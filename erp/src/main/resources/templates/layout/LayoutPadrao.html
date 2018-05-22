@@ -39,26 +39,26 @@
 
 
 <body>
-	<div class="aw-layout-page">
+	<div th:replace="layout/fragments/MenuLateral :: layout-sidebar"></div>
 		<!-- MENU BAR DA ESQUERDA -->
 
-		<div th:replace="layout/fragments/MenuLateral :: layout-sidebar"></div>
 		<!-- MENUBAR DA DIREITA FIXADA NO TOPO -->
 		<!-- Utilizo isso aqui pra pegar o arquivo barraNavegacao.html a partir do navbar -->
-		<div   th:replace="layout/fragments/BarraNavegacao :: layout-navbar">
-			<section class="aw-layout-content  js-content"
-				layout:fragment="conteudo"></section>
+<!--		<div   th:replace="layout/fragments/BarraNavegacao :: layout-navbar">
+
 		</div>
+		-->
 
 
-
+		<section class="aw-layout-content  js-content"
+			layout:fragment="conteudo"></section>
 		<!-- FORM PRINCIPAL DE CADASTRO. QUEM CHAMAR ESSE FORM VAI ALTERAR ESSE CONTEUDO -->
 
 
 
 		<!-- RODAPÉ -->
-		<div th:replace="layout/fragments/Footer :: layout-footer"></div>
-	</div>
+		<!--<div th:replace="layout/fragments/Footer :: layout-footer"></div>-->
+		
 	<script th:src="@{/layout/js/vendor/jquery-2.1.4.min.js}"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>

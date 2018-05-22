@@ -4,8 +4,8 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <body>
-	<div  id="right-panel" class="right-panel" th:fragment ="layout-navbar">
-        <header id="header" class="header" >
+	<div  id="right-panel" class="right-panel" >
+        <header id="header" class="header" th:fragment ="layout-navbar" >
 
             <div class="header-menu">
 
@@ -131,6 +131,8 @@
         </header><!-- /header -->
         <!-- Header-->
 
+					<section class="aw-layout-content  js-content"
+				layout:fragment="conteudo"></section>
         </div>
 </body>
 </html>
