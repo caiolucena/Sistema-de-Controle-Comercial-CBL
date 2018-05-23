@@ -37,14 +37,14 @@ public class UsuariosController {
 	 * @return mv, que é um objeto ModelAndView que contém os parâmetros que foram adicionados para exibir na view.
 	 */
 	@RequestMapping("/novo")
-	public ModelAndView novo(  ) { 
+	public ModelAndView novo( Funcionario funcionario ) { 
 		ModelAndView mv = new ModelAndView("layout/fragments/index");
 		//mv.addObject("grupos",cadastroGrupoService.buscaGrupos());
 		
 		return mv;
 		
 	}
-}
+
 //	@RequestMapping("/pesquisar")
 //	public ModelAndView pesquisar(String busca) {
 //		ModelAndView mv = new ModelAndView("usuario/PesquisaUsuario");
@@ -72,30 +72,30 @@ public class UsuariosController {
 //	 * @param attributes, que serve para fornecer avisos na view (sucesso ou erro)
 //	 * @return new ModelAndView("redirect:/usuarios/novo"), que renderiza a página no endereço usuarios/novo (caso haja sucesso na inserção) 
 //	 */
-	//@RequestMapping(value = "/novo", method = RequestMethod.POST)
-//	public ModelAndView cadastro(@Valid Funcionario funcionario, BindingResult result,RedirectAttributes attributes, Model model ) {
-//		if(result.hasErrors()) {
-//			return novo(funcionario);
+	@RequestMapping(value = "/novo", method = RequestMethod.POST)
+	public ModelAndView cadastro(@Valid Funcionario funcionario, BindingResult result,RedirectAttributes attributes, Model model ) {
+		if(result.hasErrors()) {
+			return novo(funcionario);
+		}
+//		try {
+//			//cadastroFuncionarioService.salvar(funcionario);
 //		}
-////		try {
-////			//cadastroFuncionarioService.salvar(funcionario);
-////		}
-////		catch (ItemDuplicadoException e){
-////			result.rejectValue("nome", e.getMessage(),e.getMessage());
-////			return (novo(funcionario));
-////		}
-////		catch(LoginDuplicadoException e) {
-////			result.rejectValue("login", e.getMessage(),e.getMessage());
-////			return (novo(funcionario));
-////		}
-////		catch(SenhaObrigatoriaUsuarioException e){
-////			result.rejectValue("senha", e.getMessage(),e.getMessage());
-////		}
-//		attributes.addFlashAttribute("mensagem", "Funcionário salvo com sucesso!");
-//		
-//		return new ModelAndView("redirect:/usuarios/novo");
-//		
-//	}
+//		catch (ItemDuplicadoException e){
+//			result.rejectValue("nome", e.getMessage(),e.getMessage());
+//			return (novo(funcionario));
+//		}
+//		catch(LoginDuplicadoException e) {
+//			result.rejectValue("login", e.getMessage(),e.getMessage());
+//			return (novo(funcionario));
+//		}
+//		catch(SenhaObrigatoriaUsuarioException e){
+//			result.rejectValue("senha", e.getMessage(),e.getMessage());
+//		}
+		attributes.addFlashAttribute("mensagem", "Funcionário salvo com sucesso!");
+		
+		return new ModelAndView("redirect:/usuarios/novo");
+		
+	}
 //	
 ////	@RequestMapping(value = "/editar", method = RequestMethod.POST)
 ////	public ModelAndView atualizar(@Valid Funcionario funcionario, BindingResult result,RedirectAttributes attributes, Model model ) {
@@ -140,4 +140,4 @@ public class UsuariosController {
 ////	    binder.registerCustomEditor(Date.class, editor);
 ////	}
 ////}
-//}
+}

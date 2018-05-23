@@ -17,7 +17,8 @@
 
 <link rel="apple-touch-icon" href="apple-icon.png">
 <link rel="shortcut icon" href="favicon.ico">
-
+<!-- <link rel="stylesheet" type="text/css" href="../stylesheets/vendors.min.css"
+	th:href="@{/stylesheets/vendors.min.css}" />-->
 <link rel="stylesheet" th:href="@{/layout/css/normalize.css}">
 <link rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/layout/css/font-awesome.min.css}">
@@ -40,38 +41,42 @@
 
 <body>
 	<div th:replace="layout/fragments/MenuLateral :: layout-sidebar"></div>
-		<!-- MENU BAR DA ESQUERDA -->
+	<!-- MENU BAR DA ESQUERDA -->
 
-		<!-- MENUBAR DA DIREITA FIXADA NO TOPO -->
-		<!-- Utilizo isso aqui pra pegar o arquivo barraNavegacao.html a partir do navbar -->
-<!--		<div   th:replace="layout/fragments/BarraNavegacao :: layout-navbar">
+	<!-- MENUBAR DA DIREITA FIXADA NO TOPO -->
+	<!-- Utilizo isso aqui pra pegar o arquivo barraNavegacao.html a partir do navbar -->
+	<!--		<div   th:replace="layout/fragments/BarraNavegacao :: layout-navbar">
 
 		</div>
 		-->
 
 
-		<section class="aw-layout-content  js-content"
-			layout:fragment="conteudo"></section>
-		<!-- FORM PRINCIPAL DE CADASTRO. QUEM CHAMAR ESSE FORM VAI ALTERAR ESSE CONTEUDO -->
+	<section class="aw-layout-content  js-content"
+		layout:fragment="conteudo"></section>
+	<!-- FORM PRINCIPAL DE CADASTRO. QUEM CHAMAR ESSE FORM VAI ALTERAR ESSE CONTEUDO -->
 
 
 
-		<!-- RODAPÉ -->
-		<!--<div th:replace="layout/fragments/Footer :: layout-footer"></div>-->
-		
+	<!-- RODAPÉ -->
+	<!--<div th:replace="layout/fragments/Footer :: layout-footer"></div>-->
+
 	<script th:src="@{/layout/js/vendor/jquery-2.1.4.min.js}"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 	<script th:src="@{/layout/js/plugins.js}"></script>
 	<script th:src="@{/layout/js/main.js}"></script>
+	
+	<script src="../static/javascripts/vendors/jquery.maskMoney.min.js" th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
+	<script src="../static/javascripts/vendors/jquery.mask.min.js" th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
 
-
-	<script th:src="@{/layout/js/lib/chart-js/Chart.bundle.js}"></script>
-	<script th:src="@{/layout/js/dashboard.js}"></script>
-	<script th:src="@{/layout/js/widgets.js}"></script>
+	<!-- <script th:src="@{/layout/js/lib/chart-js/Chart.bundle.js}"></script> -->
+	<!-- <script th:src="@{/layout/js/dashboard.js}"></script> -->
+	<!-- <script th:src="@{/layout/js/widgets.js}"></script> -->
 	<script th:src="@{/layout/js/lib/vector-map/jquery.vmap.js}"></script>
 	<script th:src="@{/layout/js/lib/vector-map/jquery.vmap.min.js}"></script>
 	<script th:src="@{/layout/js/lib/vector-map/jquery.vmap.sampledata.js}"></script>
+	<script src="../static/javascripts/erp.js"
+		th:src="@{/javascripts/erp.js}"></script>
 	<script
 		th:src="@{/layout/js/lib/vector-map/country/jquery.vmap.world.js}"></script>
 	<!--    <script>

@@ -1,6 +1,7 @@
-var Brewer = Brewer ||{}
+var Erp = Erp ||{}
+var $ = jQuery;
 
-Brewer.MaskMoney = (function(){
+Erp.MaskMoney = (function(){
 	function MaskMoney(){
 		this.decimal =  $('.js-decimal');
 		this.plain = $('.js-plain');
@@ -12,7 +13,7 @@ Brewer.MaskMoney = (function(){
 	return MaskMoney;
 }());
 
-Brewer.MaskPhoneNumber = (function() {
+Erp.MaskPhoneNumber = (function() {
 	
 	function MaskPhoneNumber() {
 		this.inputPhoneNumber = $('.js-phone-number');
@@ -36,7 +37,7 @@ Brewer.MaskPhoneNumber = (function() {
 	
 }());
 
-Brewer.MaskCpf = (function(){
+Erp.MaskCpf = (function(){
 
 	function MaskCpf(){
 		this.inputCpf = $('.js-cpf');
@@ -49,16 +50,49 @@ Brewer.MaskCpf = (function(){
 	return MaskCpf;
 }());
 
+Erp.MaskCnpj = (function(){
+
+	function MaskCnpj(){
+		this.inputCnpj = $('.js-cnpj');
+	}
+	MaskCnpj.prototype.enable = function(){
+		this.inputCnpj.mask('000.000.000/0000-00', {reverse: true});
+		
+	}
+	
+	return MaskCnpj;
+}());
+
+Erp.MaskCep = (function() {
+	
+	function MaskCep() {
+		this.inputCep = $('.js-cep');
+	}
+	
+	MaskCep.prototype.enable = function() {
+		this.inputCep.mask('00.000-000');
+	}
+	
+	return MaskCep;
+	
+}());
+
 $(function(){
 
-		var maskMoney = new Brewer.MaskMoney();
+		var maskMoney = new Erp.MaskMoney();
 		maskMoney.enable();
 		
-		var maskPhoneNumber = new Brewer.MaskPhoneNumber();
+		var maskPhoneNumber = new Erp.MaskPhoneNumber();
 		maskPhoneNumber.enable();
 		
-		var maskCpf = new Brewer.MaskCpf();
+		var maskCpf = new Erp.MaskCpf();
 		maskCpf.enable();
+		
+		var maskCep = new Erp.MaskCep();
+		maskCep.enable();
+		
+		var maskCnpj = new Erp.MaskCnpj();
+		maskCnpj.enable();
 		
 		
 });
