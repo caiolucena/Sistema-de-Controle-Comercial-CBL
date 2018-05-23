@@ -20,7 +20,7 @@ import com.cbl.erp.repository.Grupos;
  */
 @Controller
 @RequestMapping("/usuarios")
-public class UsuariosController {
+public class UsuarioController {
 
 //	@Autowired
 //	private CrudUsuarioService cadastroUsuarioService;
