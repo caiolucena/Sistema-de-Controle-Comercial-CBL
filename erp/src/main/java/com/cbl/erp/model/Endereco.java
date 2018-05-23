@@ -9,7 +9,7 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-//@Embeddable
+@Embeddable
 public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;

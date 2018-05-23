@@ -3,13 +3,13 @@ package com.cbl.erp.controller;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cbl.erp.model.Endereco;
 import com.cbl.erp.model.Estabelecimento;
 
 @Controller
@@ -25,7 +25,7 @@ public class EstabelecimentoController {
 	}
 
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
-	public ModelAndView cadastro(@Valid Estabelecimento estabelecimento, BindingResult result,
+	public ModelAndView cadastro(@Valid Estabelecimento estabelecimento,BindingResult result,
 			RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(estabelecimento);
