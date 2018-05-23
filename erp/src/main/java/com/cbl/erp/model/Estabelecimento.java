@@ -3,6 +3,7 @@ package com.cbl.erp.model;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -23,9 +24,13 @@ public class Estabelecimento implements Serializable {
 
 	private String nomeFantasia;
 
+	@NotBlank(message=  "Telefone é obrigatório")
 	private String telefone;
 
+	private String telefoneOpt;
+	
 	@Email(message = "E-mail inválido")
+	@Size(min =1,message=  "Email é obrigatório")
 	private String email;
 
 	
@@ -113,6 +118,14 @@ public class Estabelecimento implements Serializable {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+
+	public String getTelefoneOpt() {
+		return telefoneOpt;
+	}
+
+	public void setTelefoneOpt(String telefoneOpt) {
+		this.telefoneOpt = telefoneOpt;
 	}
 	
 
