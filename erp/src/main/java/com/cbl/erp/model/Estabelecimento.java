@@ -2,6 +2,13 @@ package com.cbl.erp.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -9,11 +16,18 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name ="estabelecimento")
 public class Estabelecimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private Long codigo;
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int codigo;
 
 	@NotBlank(message = "CNPJ é obrigatório")
 	@CNPJ
@@ -22,11 +36,15 @@ public class Estabelecimento implements Serializable {
 	@NotBlank(message = "Nome Empresarial é obrigatório")
 	private String nome;
 
+	@Column(name = "nome_fantasia")
 	private String nomeFantasia;
 
 	@NotBlank(message=  "Telefone é obrigatório")
+	
+	
 	private String telefone;
-
+	
+	@Column(name = "telefone_opt")
 	private String telefoneOpt;
 	
 	@Email(message = "E-mail inválido")
@@ -34,18 +52,12 @@ public class Estabelecimento implements Serializable {
 	private String email;
 
 	
-//	@JsonIgnore
-//	@Embedded
+	@JsonIgnore
+	@Embedded
 	@NotNull(message = "Digite um endereço válido")
 	private Endereco endereco;
 
-	public Long getCodigo() {
-		return codigo;
-	}
 
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
 
 	public String getCnpj() {
 		return cnpj;
@@ -95,11 +107,27 @@ public class Estabelecimento implements Serializable {
 		this.endereco = endereco;
 	}
 
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getTelefoneOpt() {
+		return telefoneOpt;
+	}
+
+	public void setTelefoneOpt(String telefoneOpt) {
+		this.telefoneOpt = telefoneOpt;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + codigo;
 		return result;
 	}
 
@@ -112,20 +140,9 @@ public class Estabelecimento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Estabelecimento other = (Estabelecimento) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
+		if (codigo != other.codigo)
 			return false;
 		return true;
-	}
-
-	public String getTelefoneOpt() {
-		return telefoneOpt;
-	}
-
-	public void setTelefoneOpt(String telefoneOpt) {
-		this.telefoneOpt = telefoneOpt;
 	}
 	
 

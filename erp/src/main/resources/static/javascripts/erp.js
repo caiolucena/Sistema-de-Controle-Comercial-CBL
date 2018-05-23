@@ -50,6 +50,58 @@ Erp.MaskCpf = (function(){
 	return MaskCpf;
 }());
 
+Erp.MaskCfop = (function(){
+
+	function MaskCfop(){
+		this.inputCfop = $('.js-cfop');
+	}
+	MaskCfop.prototype.enable = function(){
+		this.inputCfop.mask('0.000', {reverse: true});
+		
+	}
+	
+	return MaskCfop;
+}());
+
+Erp.MaskNcm = (function(){
+
+	function MaskNcm(){
+		this.inputNcm = $('.js-ncm');
+	}
+	MaskNcm.prototype.enable = function(){
+		this.inputNcm.mask('00000000', {reverse: true});
+		
+	}
+	
+	return MaskNcm;
+}());
+
+Erp.MaskCest = (function(){
+
+	function MaskCest(){
+		this.inputCest = $('.js-cest');
+	}
+	MaskCest.prototype.enable = function(){
+		this.inputCest.mask('0000000', {reverse: true});
+		
+	}
+	
+	return MaskCest;
+}());
+
+Erp.MaskIcms = (function(){
+
+	function MaskIcms(){
+		this.inputIcms = $('.js-icms');
+	}
+	MaskIcms.prototype.enable = function(){
+		this.inputIcms.mask('000', {reverse: true});
+		
+	}
+	
+	return MaskIcms;
+}());
+
 Erp.MaskCnpj = (function(){
 
 	function MaskCnpj(){
@@ -77,6 +129,8 @@ Erp.MaskCep = (function() {
 	
 }());
 
+
+
 $(function(){
 
 		var maskMoney = new Erp.MaskMoney();
@@ -93,6 +147,18 @@ $(function(){
 		
 		var maskCnpj = new Erp.MaskCnpj();
 		maskCnpj.enable();
+		
+		var maskCfop = new Erp.MaskCfop();
+		maskCfop.enable();
+		
+		var maskNcm = new Erp.MaskNcm();
+		maskNcm.enable();
+		
+		var maskCest = new Erp.MaskCest();
+		maskCest.enable();
+		
+		var maskIcms = new Erp.MaskIcms();
+		maskIcms.enable();
 		
 		
 });

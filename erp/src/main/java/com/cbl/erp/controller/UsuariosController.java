@@ -2,6 +2,7 @@ package com.cbl.erp.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cbl.erp.model.Funcionario;
+import com.cbl.erp.model.Usuario;
+import com.cbl.erp.repository.Grupos;
 /**
  * Essa é a classe Controller da classe Usuario, e é responsável por fazer a ponte entre as views referentes a esse objeto e os Models, de acordo com as solicitações realizadas nas rotas.
  * @author EquipeACL
@@ -21,25 +23,25 @@ import com.cbl.erp.model.Funcionario;
 public class UsuariosController {
 
 //	@Autowired
-//	private CrudFuncionarioService cadastroFuncionarioService;
+//	private CrudUsuarioService cadastroUsuarioService;
 //	
 //	@Autowired
 //	private CrudGrupoService cadastroGrupoService;
 //	
 //	@Autowired
-//	private Funcionarios funcionarios;
+//	private Usuarios usuarios;
 //	
-//	@Autowired
-//	private Grupos grupos;
+	@Autowired
+	private Grupos grupos;
 	/**
 	 * Esse método é responsável por adicionar os parâmetros que vão ser exibidos na view renderizada ao acessar a rota usuarios/novo	
-	 * @param funcionario, que é o objeto a ser acessado
+	 * @param usuario, que é o objeto a ser acessado
 	 * @return mv, que é um objeto ModelAndView que contém os parâmetros que foram adicionados para exibir na view.
 	 */
 	@RequestMapping("/novo")
-	public ModelAndView novo( Funcionario funcionario ) { 
-		ModelAndView mv = new ModelAndView("layout/fragments/index");
-		//mv.addObject("grupos",cadastroGrupoService.buscaGrupos());
+	public ModelAndView novo( Usuario usuario ) { 
+		ModelAndView mv = new ModelAndView("usuario/CadastroUsuario");
+		mv.addObject("grupos",grupos.findAll());
 		
 		return mv;
 		
@@ -49,9 +51,9 @@ public class UsuariosController {
 //	public ModelAndView pesquisar(String busca) {
 //		ModelAndView mv = new ModelAndView("usuario/PesquisaUsuario");
 //		if(busca!=null){
-//			mv.addObject("listaUsuarios",cadastroFuncionarioService.buscarPorNome(busca));
+//			mv.addObject("listaUsuarios",cadastroUsuarioService.buscarPorNome(busca));
 //		}else{
-//			mv.addObject("listaUsuarios",funcionarios.findAll());
+//			mv.addObject("listaUsuarios",usuarios.findAll());
 //		}
 //		return mv;
 //	}
@@ -59,59 +61,59 @@ public class UsuariosController {
 //	@RequestMapping("/editar")
 //	ModelAndView editar(String id) {
 //		ModelAndView mv = new ModelAndView("usuario/CadastroUsuario");
-//		mv.addObject("funcionario", funcionarios.findOne(Integer.parseInt(id)));
+//		mv.addObject("usuario", usuarios.findOne(Integer.parseInt(id)));
 //		mv.addObject("grupos",cadastroGrupoService.buscaGrupos());
-//		mv.addObject("listaUsuarios",funcionarios.findAll());
+//		mv.addObject("listaUsuarios",usuarios.findAll());
 //		return mv;
 //	}
 //	
 //	/**
-//	 * Esse é o método que irá acessar a rota funcionarios/novo, porém com uma requisição do tipo POST, que servirá para salvar o objeto passado por parâmetro no banco
-//	 * @param funcionario, que é o objeto que será mapeado no formulário para salvar informações no banco de dados.
+//	 * Esse é o método que irá acessar a rota usuarios/novo, porém com uma requisição do tipo POST, que servirá para salvar o objeto passado por parâmetro no banco
+//	 * @param usuario, que é o objeto que será mapeado no formulário para salvar informações no banco de dados.
 //	 * @param result, que serve para mapear se houve erros de preenchimento do formulário 
 //	 * @param attributes, que serve para fornecer avisos na view (sucesso ou erro)
 //	 * @return new ModelAndView("redirect:/usuarios/novo"), que renderiza a página no endereço usuarios/novo (caso haja sucesso na inserção) 
 //	 */
 	@RequestMapping(value = "/novo", method = RequestMethod.POST)
-	public ModelAndView cadastro(@Valid Funcionario funcionario, BindingResult result,RedirectAttributes attributes, Model model ) {
+	public ModelAndView cadastro(@Valid Usuario usuario, BindingResult result,RedirectAttributes attributes, Model model ) {
 		if(result.hasErrors()) {
-			return novo(funcionario);
+			return novo(usuario);
 		}
 //		try {
-//			//cadastroFuncionarioService.salvar(funcionario);
+//			//cadastroUsuarioService.salvar(usuario);
 //		}
 //		catch (ItemDuplicadoException e){
 //			result.rejectValue("nome", e.getMessage(),e.getMessage());
-//			return (novo(funcionario));
+//			return (novo(usuario));
 //		}
 //		catch(LoginDuplicadoException e) {
 //			result.rejectValue("login", e.getMessage(),e.getMessage());
-//			return (novo(funcionario));
+//			return (novo(usuario));
 //		}
 //		catch(SenhaObrigatoriaUsuarioException e){
 //			result.rejectValue("senha", e.getMessage(),e.getMessage());
 //		}
-		attributes.addFlashAttribute("mensagem", "Funcionário salvo com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Usuário salvo com sucesso!");
 		
-		return new ModelAndView("redirect:/usuarios/novo");
+		return new ModelAndView("redirect:/usuario/CadastroUsuario");
 		
 	}
 //	
 ////	@RequestMapping(value = "/editar", method = RequestMethod.POST)
-////	public ModelAndView atualizar(@Valid Funcionario funcionario, BindingResult result,RedirectAttributes attributes, Model model ) {
+////	public ModelAndView atualizar(@Valid Usuario usuario, BindingResult result,RedirectAttributes attributes, Model model ) {
 ////		if(result.hasErrors()) {
-////			return novo(funcionario);
+////			return novo(usuario);
 ////		}
 ////		try {
-////			cadastroFuncionarioService.atualizar(funcionario);
+////			cadastroUsuarioService.atualizar(usuario);
 ////		}
 ////		catch (ItemDuplicadoException e){
 ////			result.rejectValue("nome", e.getMessage(),e.getMessage());
-////			return (novo(funcionario));
+////			return (novo(usuario));
 ////		}
 ////		catch(LoginDuplicadoException e) {
 ////			result.rejectValue("login", e.getMessage(),e.getMessage());
-////			return (novo(funcionario));
+////			return (novo(usuario));
 ////		}
 ////		catch(SenhaObrigatoriaUsuarioException e){
 ////			result.rejectValue("senha", e.getMessage(),e.getMessage());
@@ -123,10 +125,10 @@ public class UsuariosController {
 ////	}
 ////	
 ////	@RequestMapping(value="/remover",method = RequestMethod.DELETE, consumes = { MediaType.APPLICATION_JSON_VALUE })
-////	public @ResponseBody ResponseEntity<?> remover(@RequestBody Funcionario funcionario,RedirectAttributes attributes){
+////	public @ResponseBody ResponseEntity<?> remover(@RequestBody Usuario usuario,RedirectAttributes attributes){
 ////		try {
 ////			//vai tentar remover no banco
-////			cadastroFuncionarioService.remover(funcionario.getId());
+////			cadastroUsuarioService.remover(s.getId());
 ////		}
 ////		catch(Exception e) {
 ////			return ResponseEntity.badRequest().body(e.getMessage());

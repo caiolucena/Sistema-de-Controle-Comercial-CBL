@@ -3,24 +3,32 @@ package com.cbl.erp.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-//@Entity
-//@Table(name = "grupo")
+@Entity
+@Table(name = "grupo")
 public class Grupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	//@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	private String nome;
 	
 	@NotNull(message = "Selecione pelo menos uma permissao")
-//	@ManyToMany
-//	@JoinTable(name = "grupo_has_permissao",joinColumns = @JoinColumn(name = "grupo_id")
-//												, inverseJoinColumns = @JoinColumn(name = "permissao_id"))
+	@ManyToMany
+	@JoinTable(name = "grupo_has_permissao",joinColumns = @JoinColumn(name = "grupo_id")
+												, inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissoes;
 
 	public int getId() {

@@ -26,6 +26,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.cbl.erp.controller.EstabelecimentoController;
+import com.cbl.erp.converter.GrupoConverter;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 /**
@@ -115,7 +116,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 //		
 //		conversionService.addConverter(new DateToString());
 //		
-//		conversionService.addConverter(new GrupoConverter());
+		conversionService.addConverter(new GrupoConverter());
 		
 		return conversionService;
 	}

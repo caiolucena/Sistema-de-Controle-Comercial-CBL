@@ -1,73 +1,74 @@
 package com.cbl.erp.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-//@Entity
-//@Table(name = "cidade")
-public class Cidade implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
+@Entity
+@Table(name="cidade")
+public class Cidade {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
-	@NotBlank(message = "Nome é obrigatório")
+	@NotNull
+	private int codigo;
+	@NotBlank
 	private String nome;
+	@NotBlank
+	private String uf;
 	
-	@NotNull(message = "Estado é obrigatório")
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "codigo_estado")
-//	@JsonIgnore
-	private Estado estado;
+	/**
+	 * M�todo construtor da classe Cidade
+	 * Construtor vazio (utilizado para criar um objeto do tipo Cidade sem par�metros definidos)
+	 */
+	public Cidade() {
+		
+	}
+	
+	/**
+	 * M�todo construtor da classe Cidade (utilizado para criar um objeto do tipo Cidade com par�metros definidos)
+	 * @param id, id da cidade
+	 * @param codigo, codigo da cidade
+	 * @param nome, nome da cidade
+	 * @param uf, uni�o federativa da cidade
+	 */
 
-	public Long getCodigo() {
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getCodigo() {
 		return codigo;
 	}
-
-	public void setCodigo(Long codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public Estado getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-	
-	public boolean temEstado() {
-		return estado != null;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + id;
 		return result;
 	}
 
@@ -80,12 +81,11 @@ public class Cidade implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cidade other = (Cidade) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
+		if (id != other.getId())
 			return false;
 		return true;
 	}
+	
+	
 
 }

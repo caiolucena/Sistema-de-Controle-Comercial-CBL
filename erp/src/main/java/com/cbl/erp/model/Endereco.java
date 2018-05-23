@@ -6,14 +6,17 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-//@Embeddable
+@Embeddable
 public class Endereco implements Serializable {		
 
 	private static final long serialVersionUID = 1L;
 
+	@Size(min =1,max = 35, message = "Logradouro é obrigatório, tamanho entre 1 e 35 caracteres")
 	private String logradouro;
 	
 	@NotBlank(message = "Número é Obrigatório, Se não houver, digite SN")
@@ -24,11 +27,12 @@ public class Endereco implements Serializable {
 	@NotBlank(message = "CEP é Obrigatório")
 	private String cep;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "codigo_cidade")
+	@ManyToOne
+	@JoinColumn(name = "codigo_cidade")
+	@NotNull(message=" Cidade é obrigatória")
 	private Cidade cidade;
 	
-//	@Transient
+	@Transient
 	private Estado estado;
 
 	public String getLogradouro() {
@@ -77,14 +81,6 @@ public class Endereco implements Serializable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}
-	
-	public String getNomeCidadeSiglaEstado() {
-		if (this.cidade != null) {
-			return this.cidade.getNome() + "/" + this.cidade.getEstado().getSigla();
-		}
-		
-		return null;
 	}
 	
 }

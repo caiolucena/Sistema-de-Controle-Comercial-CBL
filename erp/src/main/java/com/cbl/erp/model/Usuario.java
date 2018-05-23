@@ -3,9 +3,22 @@ package com.cbl.erp.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.cbl.validation.AtributoConfirmacao;
 
@@ -16,60 +29,49 @@ import com.cbl.validation.AtributoConfirmacao;
  * Essa classe � a super classe que os usuarios do sistema herdam seus m�todos e atributos, que s�o comuns a todos.
  * @author EquipeACL
  */
-//@MappedSuperclass
-//@Entity
-//@Table(name = "usuario")
 
-//@MappedSuperclass	
+@Entity
+@Table(name = "usuario")
 @AtributoConfirmacao(atributo = "senha", atributoConfirmacao = "confirmacaoSenha",message = "Senhas não conferem")
 public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	//@Cpf
+	@CPF
 	@NotBlank(message = " CPF é obrigatório")
 	protected String cpf;
 	
 	@NotBlank(message = " O nome é obrigatório")
 	protected String nome;
-	
 
-	
-	
-	//@NotBlank(message = "Matrícula é obrigatória")
-	
-	
-	
-	@NotBlank(message = " RG é obrigatório")
-	protected String rg;
-	
-	@NotBlank(message = " A naturalidade é obrigatória")
-	protected String naturalidade;
-	
-	@NotBlank(message = " O endereço é obrigatório")
-	protected String endereco;
-		
 	@NotBlank(message = " O telefone é obrigatório")
 	protected String telefone;
 	
-	@Size(min = 5, max = 45, message = " O tamanho do email deve estar entre 5 e 20")
+	@Size(min = 5, max = 45, message = " O tamanho do email deve estar entre 5 e 45 caracteres")
 	@NotBlank(message = " O email é obrigatório")
 	protected String email;
 	
-	@NotBlank(message = " A senha é obrigatória")
+	@Size(min = 4,message = " A senha deve possuir no mínimo 3 dígitos")
 	protected String senha;
 	
-	//@Transient
+	@Transient
+	@Size(min = 4, message = " Confirmação de senha deve possuir no mínimo 3 dígitos")
 	protected String confirmacaoSenha;
 	
-	//@Fetch(FetchMode.SELECT)
+	
+	@NotBlank(message = " Nome de usuário é obrigatório")
+	protected String login;
+	
+	
+	@Fetch(FetchMode.SELECT)
 	@Size(min=1,message = "Selecione pelo menos um grupo")
-	//@ManyToMany(fetch=FetchType.EAGER)
-	//@JoinTable(name = "usuario_has_grupo",joinColumns = @JoinColumn(name = "usuario_id")
-	//											, inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name = "usuario_has_grupo",joinColumns = @JoinColumn(name = "usuario_id")
+												, inverseJoinColumns = @JoinColumn(name = "grupo_id"))
 	private List <Grupo> grupos;
 	
 	/**
@@ -91,18 +93,15 @@ public class Usuario implements Serializable {
 	 * @param email, endere�o de email do Usu�rio
 	 * @param senha, senha de acesso ao sistema do Usu�rio
 	 */
-	public Usuario(String cpf, String nome, String rg, String naturalidade, String endereco, String telefone,
-			String email, String senha, String senhaConfirmacao) {
+	public Usuario(String cpf, String nome, String telefone,
+			String email, String senha, String senhaConfirmacao,String login) {
 		setCpf(cpf);
 		setNome(nome);
-		setRg(rg);
-		setNaturalidade(naturalidade);
-		setEndereco(endereco);
 		setTelefone(telefone);
 		setEmail(email);
 		setSenha(senha);
 		setConfirmacaoSenha(senhaConfirmacao);
-		
+		setLogin(login);
 	}
 	
 
@@ -149,24 +148,7 @@ public class Usuario implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getRg() {
-		return rg;
-	}
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
-	public String getNaturalidade() {
-		return naturalidade;
-	}
-	public void setNaturalidade(String naturalidade) {
-		this.naturalidade = naturalidade;
-	}
-	public String getEndereco() {
-		return endereco;
-	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -185,7 +167,6 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 
 	public String getConfirmacaoSenha() {
 		return confirmacaoSenha;
@@ -206,5 +187,14 @@ public class Usuario implements Serializable {
 	public boolean isNovo() {
 		return (Integer) id == null;
 	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
 	
 }

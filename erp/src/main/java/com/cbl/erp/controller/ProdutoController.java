@@ -12,27 +12,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cbl.erp.model.Produto;
 
 @Controller
+@RequestMapping("/produtos")
 public class ProdutoController {
 
 	
-	@RequestMapping("/produto/novo")
+	@RequestMapping("/novo")
 	public String novo(Produto produto) {
-		return "produto/cadastroProduto";
+		return "produto/CadastroProduto";
 	}
 	
-	@RequestMapping(value = "/produto/novo",method = RequestMethod.POST)
+	@RequestMapping(value = "/novo",method = RequestMethod.POST)
 	public String  cadastrar(@Valid Produto produto, BindingResult result, Model model,
-			RedirectAttributes attributes) { //ela pega o nome lá do form
+			RedirectAttributes attributes) { //ela pega o nome lï¿½ do form
 		if(result.hasErrors()) {
 			return novo(produto);
 		}
 		
 		//salvar no banco
 		
-		//ele cria uma sessão provisária e mostra a msg antes de redirecionar
-		//redireciona pra uma url, e não para nome da view
+		//ele cria uma sessï¿½o provisï¿½ria e mostra a msg antes de redirecionar
+		//redireciona pra uma url, e nï¿½o para nome da view
 		attributes.addFlashAttribute("mensagem","Produto salvo com sucesso!");
-		return "redirect:/produto/novo";
+		return "redirect:/produtos/novo";
 	}
 	
 }
