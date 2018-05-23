@@ -2,14 +2,11 @@ package com.cbl.erp.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Embedded;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CNPJ;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Estabelecimento implements Serializable {
 
@@ -32,8 +29,9 @@ public class Estabelecimento implements Serializable {
 	private String email;
 
 	
-	@JsonIgnore
-	@Embedded
+//	@JsonIgnore
+//	@Embedded
+	@NotNull(message = "Digite um endereço válido")
 	private Endereco endereco;
 
 	public Long getCodigo() {
