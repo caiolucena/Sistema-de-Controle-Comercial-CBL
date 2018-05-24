@@ -16,10 +16,10 @@ public class Produto {
 
 	private int id;
 	
-	@NotBlank(message = "Nome é do produto é obrigatório")
+	@NotBlank(message = " A descrição do produto é obrigatória")
 	private String nome;
 	
-	@Size(max = 60, message = "O tamanho da descrição deve conter no máximo 60")
+	@Size(max = 60, message = "As informações adicionais devem conter no máximo 60 caracteres")
 	private String descricao;
 
 	@NotBlank(message = "Código NCM é obrigatório")

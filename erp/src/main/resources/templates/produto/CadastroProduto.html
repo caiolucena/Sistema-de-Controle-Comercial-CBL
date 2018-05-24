@@ -53,8 +53,9 @@
 					<div class="page-header float-right">
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
-								<li class="active"><a target="_blank"
-								th:href="@{/produtos/novo}">Dúvidas  no preenchimento? Clique aqui</a></li>
+								<li class="active"><a href="#" data-toggle="modal"
+									data-target="#modalHelpCadastroProduto">Dúvidas no
+										preenchimento? Clique aqui</a></li>
 							</ol>
 						</div>
 					</div>
@@ -71,7 +72,7 @@
 					<div class="row">
 						<!--o row é pra ficar lado a lado organizado. O row é dividido em 12 pedaços  -->
 						<div class="form-group col-sm-12">
-							<label for="nome">Nome*</label> <input id="nome" type="text"
+							<label for="nome">Descrição*</label> <input id="nome" type="text"
 								autofocus="autofocus" class="form-control"
 								th:classappend="${#fields.hasErrors('*{nome}')}? is-invalid"
 								th:field="*{nome}" tabindex="1"/>
@@ -80,7 +81,7 @@
 
 					<div class="row">
 						<div class="form-group col-sm-12">
-							<label for="descricao">Descrição</label>
+							<label for="descricao">Informações adicionais</label>
 							<textarea id="descricao" class="form-control"
 								placeholder="Se necessário, insira informações adicionais sobre o produto"
 								th:field="*{descricao}"
@@ -170,7 +171,9 @@
 						<button type="button" class="btn btn-danger">Cancelar</button>
 					</div>
 				</form>
+					<div th:replace="modal/produto/HelpCadastroProduto :: modal"></div>
 			</div>
+			
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
 		</div>

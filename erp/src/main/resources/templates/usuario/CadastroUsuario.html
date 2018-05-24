@@ -51,8 +51,9 @@
 					<div class="page-header float-right">
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
-								<li class="active"><a target="_blank"
-								th:href="@{/produtos/novo}">Dúvidas  no preenchimento? Clique aqui</a></li>
+								<li class="active"><a href="#" data-toggle="modal"
+									data-target="#modalHelpCadastroUsuario">Dúvidas no
+										preenchimento? Clique aqui</a></li>
 							</ol>
 						</div>
 					</div>
@@ -141,6 +142,7 @@
 					<button type="button" class="btn btn-danger">Cancelar</button>
 				</form>
 			</div>
+			<div th:replace="modal/usuario/HelpCadastroUsuario :: modal"></div>
 		</div>
 
 	</section>

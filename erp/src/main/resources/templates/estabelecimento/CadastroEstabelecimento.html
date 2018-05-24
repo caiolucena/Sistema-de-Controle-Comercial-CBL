@@ -50,9 +50,12 @@
 					<div class="page-header float-right">
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
-								<li class="active"><a target="_blank"
-									th:href="@{/help/estabelecimento/novo}">Dúvidas no preenchimento?
-										Clique aqui</a></li>
+								<li class="active"><a href="#" data-toggle="modal"
+									data-target="#modalHelpCadastroEstabelecimento">Dúvidas no
+										preenchimento? Clique aqui</a> 
+									<!-- <button type="button" class="btn btn-secondary mb-1"
+										data-toggle="modal" data-target="#modalHelpCadastroEstabelecimento">
+										Scrolling</button></li> -->
 							</ol>
 						</div>
 					</div>
@@ -163,9 +166,12 @@
 						<a th:href="@{/index}" class="btn btn-danger">Cancelar</a>
 					</div>
 				</form>
+				<div
+					th:replace="modal/estabelecimento/HelpCadastroEstabelecimento :: modal"></div>
 			</div>
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
+
 		</div>
 		<!-- /#right-panel -->
 
@@ -173,6 +179,5 @@
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
-
 </body>
 </html>
