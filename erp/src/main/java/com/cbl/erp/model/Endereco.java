@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+
 @Embeddable
 public class Endereco implements Serializable {		
 
@@ -34,6 +35,9 @@ public class Endereco implements Serializable {
 	
 	@Transient
 	private Estado estado;
+
+	public Endereco() {
+	}
 
 	public String getLogradouro() {
 		return logradouro;

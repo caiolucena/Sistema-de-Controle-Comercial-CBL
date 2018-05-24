@@ -24,10 +24,9 @@ public class Estabelecimento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codigo;
+	private int id;
 
 	@NotBlank(message = "CNPJ é obrigatório")
 	@CNPJ
@@ -57,6 +56,10 @@ public class Estabelecimento implements Serializable {
 	@NotNull(message = "Digite um endereço válido")
 	private Endereco endereco;
 
+
+	public Estabelecimento() {
+
+	}
 
 
 	public String getCnpj() {
@@ -107,12 +110,12 @@ public class Estabelecimento implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public int getCodigo() {
-		return codigo;
+	public int getId() {
+		return id;
 	}
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTelefoneOpt() {
@@ -127,7 +130,7 @@ public class Estabelecimento implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codigo;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -140,7 +143,7 @@ public class Estabelecimento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Estabelecimento other = (Estabelecimento) obj;
-		if (codigo != other.codigo)
+		if (id != other.id)
 			return false;
 		return true;
 	}
