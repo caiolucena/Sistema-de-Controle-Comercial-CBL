@@ -36,7 +36,7 @@ public class Produto {
 	private String cfop;
 	
 	@NotNull(message = " Informe a quantidade de produtos no seu estoque")
-	private int estoque;
+	private Integer estoque;
 	
 	@NotNull(message = " Informe o preço do produto")
 	@DecimalMin(value = "0.01",message = "O valor da cerveja deve ser maior do que R$ 0,01")
@@ -99,11 +99,11 @@ public class Produto {
 		this.cfop = cfop;
 	}
 
-	public int getEstoque() {
+	public Integer getEstoque() {
 		return estoque;
 	}
 
-	public void setEstoque(int estoque) {
+	public void setEstoque(Integer estoque) {
 		this.estoque = estoque;
 	}
 

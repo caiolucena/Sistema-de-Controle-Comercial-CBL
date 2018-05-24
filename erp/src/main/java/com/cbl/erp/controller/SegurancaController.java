@@ -10,4 +10,10 @@ public class SegurancaController {
 		return "index";
 	}
 	
+	
+	//NA HORA DE FAZER O LOGIN
+	// DÁ UM ESTABELECIMENTOS.FINDONE
+	//SE NAO VIER NENHUM
+	// VAI PRA TELA DE CADASTRO
+	//SE VIER ALGUM VAI PRO INDEX
 }

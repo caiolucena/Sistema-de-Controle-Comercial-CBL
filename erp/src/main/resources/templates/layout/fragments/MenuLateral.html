@@ -24,7 +24,7 @@
 					<li class="active"><a th:href="@{/index}"> <i
 							class="menu-icon fa fa-dashboard"></i>Página Inicial
 					</a></li>
-					<h3 class="menu-title">Cadastros</h3>
+					<h3 class="menu-title">Cadastro</h3>
 					<!-- /.menu-title -->
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -38,88 +38,92 @@
 								href="ui-buttons.html">Editar Cadastro</a></li>
 						</ul></li>
 					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-table"></i>Usuários
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="fa fa-table"></i><a
-								th:href="@{/usuarios/novo}">Cadastrar Funcionário</a></li>
-							<li><i class="fa fa-table"></i><a href="tables-data.html">Buscar
-									Funcionários </a></li>
-							<li><i class="fa fa-table"></i><a href="tables-data.html">Editar
-									Funcionários </a></li>
-
-						</ul></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle " data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-th"></i>Produtos
+							class="menu-icon fa fa-product-hunt"></i>Produtos
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-th"></i><a
+							<li><i class="menu-icon fa fa-plus"></i><a
 								th:href="@{/produtos/novo}">Cadastrar Produto</a></li>
-							<li><i class="menu-icon fa fa-th"></i><a
+							<li><i class="menu-icon fa fa-search"></i><a
 								href="forms-advanced.html">Buscar Produtos</a></li>
-							<li><i class="menu-icon fa fa-th"></i><a
+							<li><i class="menu-icon fa fa-pencil-square-o"></i><a
 								href="forms-advanced.html">Editar Produtos</a></li>
 						</ul></li>
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-users"></i>Clientes
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="menu-icon  fa fa-plus"></i><a
+								th:href="@{/usuarios/novo}">Cadastrar Cliente</a></li>
+							<li><i class="menu-icon  fa fa-search"></i><a
+								href="tables-data.html">Buscar Clientes </a></li>
+							<li><i class="menu-icon  fa fa-pencil-square-o"></i><a
+								href="tables-data.html">Editar Clientes </a></li>
+						</ul></li>
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-user"></i>Usuários
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="menu-icon  fa fa-plus"></i><a
+								th:href="@{/usuarios/novo}">Cadastrar Usuário</a></li>
+							<li><i class="menu-icon  fa fa-search"></i><a
+								href="tables-data.html">Buscar Usuários </a></li>
+							<li><i class="menu-icon  fa fa-pencil-square-o"></i><a
+								href="tables-data.html">Editar Usuários </a></li>
+						</ul></li>
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-truck"></i>Fornecedores
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="menu-icon  fa fa-plus"></i><a
+								th:href="@{/usuarios/novo}">Cadastrar Fornecedor</a></li>
+							<li><i class="menu-icon  fa fa-search"></i><a
+								href="tables-data.html">Buscar Fornecedores </a></li>
+							<li><i class="menu-icon  fa fa-pencil-square-o"></i><a
+								href="tables-data.html">Editar Fornecedores </a></li>
+						</ul></li>
 
-					<h3 class="menu-title">Vendas</h3>
+
+					<h3 class="menu-title">Financeiro</h3>
 					<!-- /.menu-title -->
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-usd"></i>Venda
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="menu-icon  fa fa-money"></i><a
+								th:href="@{/usuarios/novo}">Realizar Venda</a></li>
+							<li><i class="menu-icon  fa fa-repeat"></i><a
+								href="tables-data.html">Realizar 2ª via</a></li>
+							<li><i class="menu-icon  fa fa-ban"></i><a
+								href="tables-data.html">Cancelar Venda</a></li>
+						</ul></li>
+					
+					
 
-					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-tasks"></i>Icons
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-fort-awesome"></i><a
-								href="font-fontawesome.html">Font Awesome</a></li>
-							<li><i class="menu-icon ti-themify-logo"></i><a
-								href="font-themify.html">Themefy Icons</a></li>
-						</ul></li>
-					<li><a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets
-					</a></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-bar-chart"></i>Charts
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-line-chart"></i><a
-								href="charts-chartjs.html">Chart JS</a></li>
-							<li><i class="menu-icon fa fa-area-chart"></i><a
-								href="charts-flot.html">Flot Chart</a></li>
-							<li><i class="menu-icon fa fa-pie-chart"></i><a
-								href="charts-peity.html">Peity Chart</a></li>
-						</ul></li>
 
-					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-area-chart"></i>Maps
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-map-o"></i><a
-								href="maps-gmap.html">Google Maps</a></li>
-							<li><i class="menu-icon fa fa-street-view"></i><a
-								href="maps-vector.html">Vector Maps</a></li>
-						</ul></li>
-					<h3 class="menu-title">Extras</h3>
+					<h3 class="menu-title">Utilitários</h3>
 					<!-- /.menu-title -->
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-glass"></i>Pages
+							class="menu-icon fa fa-info-circle"></i>Ajuda
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-sign-in"></i><a
-								href="page-login.html">Login</a></li>
-							<li><i class="menu-icon fa fa-sign-in"></i><a
-								href="page-register.html">Register</a></li>
-							<li><i class="menu-icon fa fa-paper-plane"></i><a
-								href="pages-forget.html">Forget Pass</a></li>
+							<li><i class="menu-icon fa fa-question-circle"></i><a
+								href="page-login.html">Help</a></li>
+							<li><i class="menu-icon fa fa-exclamation-circle"></i><a
+								href="page-register.html">Erros Comuns</a></li>
+							<li><i class="menu-icon fa fa-book"></i><a
+								href="pages-forget.html">Manual</a></li>
 						</ul></li>
 				</ul>
 			</div>
