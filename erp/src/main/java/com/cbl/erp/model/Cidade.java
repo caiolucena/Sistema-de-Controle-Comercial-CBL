@@ -7,20 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 @Entity
 @Table(name="cidade")
 public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull(message = " Selecione uma Cidade")
 	private int id;
 	
-	@NotNull
 	private int codigo;
-	@NotBlank
+	
+	
 	private String nome;
-	@NotBlank
+	
 	private String uf;
 	
 	/**

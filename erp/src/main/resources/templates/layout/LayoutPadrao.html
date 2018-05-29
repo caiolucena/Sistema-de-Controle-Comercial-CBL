@@ -65,9 +65,11 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 	<script th:src="@{/layout/js/plugins.js}"></script>
 	<script th:src="@{/layout/js/main.js}"></script>
-	
-	<script src="../static/javascripts/vendors/jquery.maskMoney.min.js" th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
-	<script src="../static/javascripts/vendors/jquery.mask.min.js" th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
+
+	<script src="../static/javascripts/vendors/jquery.maskMoney.min.js"
+		th:src="@{/javascripts/vendors/jquery.maskMoney.min.js}"></script>
+	<script src="../static/javascripts/vendors/jquery.mask.min.js"
+		th:src="@{/javascripts/vendors/jquery.mask.min.js}"></script>
 
 	<!-- <script th:src="@{/layout/js/lib/chart-js/Chart.bundle.js}"></script> -->
 	<!-- <script th:src="@{/layout/js/dashboard.js}"></script> -->
@@ -79,6 +81,9 @@
 		th:src="@{/javascripts/erp.js}"></script>
 	<script
 		th:src="@{/layout/js/lib/vector-map/country/jquery.vmap.world.js}"></script>
+
+	<script src="../static/javascripts/index.js"
+		th:src="@{/javascripts/index.js}"></script>
 	<!--    <script>
         ( function ( $ ) {
             "use strict";
@@ -98,6 +103,7 @@
         } )( jQuery );
     </script>
 -->
+
 </body>
 
 <th:block layout:fragment="javascript-extra"></th:block>

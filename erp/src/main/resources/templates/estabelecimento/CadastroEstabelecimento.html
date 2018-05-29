@@ -52,8 +52,7 @@
 							<ol class="breadcrumb text-right">
 								<li class="active"><a href="#" data-toggle="modal"
 									data-target="#modalHelpCadastroEstabelecimento">Dúvidas no
-										preenchimento? Clique aqui</a> 
-									<!-- <button type="button" class="btn btn-secondary mb-1"
+										preenchimento? Clique aqui</a> <!-- <button type="button" class="btn btn-secondary mb-1"
 										data-toggle="modal" data-target="#modalHelpCadastroEstabelecimento">
 										Scrolling</button></li> -->
 							</ol>
@@ -136,13 +135,24 @@
 
 
 					<div class=row>
-						<div class="col-sm-2 form-group">
-							<label for="estado">Estado*</label> <input id="estado" type="tel"
-								class="form-control" />
+						<div class="form-group col-sm-2">
+							<label for="uf" class="control-label">UF</label> <select
+								th:onchange="|selecionouEstado(this.value,'@{/cidades}')|"
+								id="uf" class="form-control">
+								<option value="uf">Selecione a UF</option>
+								<option th:each="estado: ${estados}" th:value="${estado.sigla}"
+									th:text="${estado.sigla}"></option>
+							</select>
 						</div>
-						<div class="col-sm-2 form-group">
-							<label for="cidade">Cidade</label> <input id="cidade" type="text"
-								class="form-control " />
+						<div class="form-group col-sm-3">
+							<label for="cidade" class="control-label">Cidade</label> <select
+								id="cidade" th:field="*{endereco.cidade.id}"
+								class="form-control"
+								th:classappend="${#fields.hasErrors('*{endereco.cidade.id}')}? is-invalid">
+								<option value="0">Selecione uma UF</option>
+								<option th:each="cidade: ${cidades}" th:value="${cidade.id}"
+									th:text="${cidade.nome}"></option>
+							</select>
 						</div>
 						<div class="col-sm-4 form-group">
 							<label for="email">Email</label> <input id="email" type="email"

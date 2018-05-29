@@ -22,31 +22,6 @@ function selecionouEstado(sigla,url){
 	}
 	
 }
-function selecionouArea(area,url){
-	$.ajax({
-		url:url,
-		method:'POST',
-		contentType:'application/json',
-		data: JSON.stringify({id:area}),
-		error:erroArea,
-		success:selecionarTemas
-	});
-	
-	function selecionarTemas(temas){
-		var comboTema = $("#tema");
-		comboTema.html('<option value ='+0+'>Selecione o tema</option>');
-		
-		for ( var i in temas) {
-			comboTema.append('<option value ='+temas[i].id+'>'+temas[i].nome+'</option>');			
-		}
-		
-	}
-	function erroArea(){
-		console.log('Erro em carregar os temas!')
-	}
-	
-}
-
 
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {

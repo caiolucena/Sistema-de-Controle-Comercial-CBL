@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -30,7 +30,7 @@ public class Endereco implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_cidade")
-	@NotNull(message=" Cidade é obrigatória")
+	@Valid
 	private Cidade cidade;
 	
 	@Transient

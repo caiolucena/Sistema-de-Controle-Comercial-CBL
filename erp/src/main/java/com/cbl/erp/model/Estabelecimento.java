@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -39,8 +39,6 @@ public class Estabelecimento implements Serializable {
 	private String nomeFantasia;
 
 	@NotBlank(message=  "Telefone é obrigatório")
-	
-	
 	private String telefone;
 	
 	@Column(name = "telefone_opt")
@@ -53,7 +51,7 @@ public class Estabelecimento implements Serializable {
 	
 	@JsonIgnore
 	@Embedded
-	@NotNull(message = "Digite um endereço válido")
+	@Valid
 	private Endereco endereco;
 
 
