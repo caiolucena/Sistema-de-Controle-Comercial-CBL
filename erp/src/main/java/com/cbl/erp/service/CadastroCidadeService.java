@@ -83,4 +83,9 @@ public class CadastroCidadeService {
 		return false;
 	}
 
+	public List<Cidade> buscarPorId(int id) {
+		// TODO Auto-generated method stub
+		return manager.createQuery("select e from Cidade e where e.estado.id = '"+id+"'",Cidade.class).getResultList();
+	}
+
 }

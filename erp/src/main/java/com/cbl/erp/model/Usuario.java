@@ -48,12 +48,6 @@ public class Usuario implements Serializable {
 	@NotBlank(message = " O nome é obrigatório")
 	protected String nome;
 
-	@NotBlank(message = " O telefone é obrigatório")
-	protected String telefone;
-	
-	@Size(min = 5, max = 45, message = " O tamanho do email deve estar entre 5 e 45 caracteres")
-	@NotBlank(message = " O email é obrigatório")
-	protected String email;
 	
 	@Size(min = 4,message = " A senha deve possuir no mínimo 3 dígitos")
 	protected String senha;
@@ -97,8 +91,6 @@ public class Usuario implements Serializable {
 			String email, String senha, String senhaConfirmacao,String login) {
 		setCpf(cpf);
 		setNome(nome);
-		setTelefone(telefone);
-		setEmail(email);
 		setSenha(senha);
 		setConfirmacaoSenha(senhaConfirmacao);
 		setLogin(login);
@@ -149,18 +141,6 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getSenha() {
 		return senha;
 	}

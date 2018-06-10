@@ -34,8 +34,8 @@ public class CidadesController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> buscar(@RequestBody Estado estado){
-		
-		List<Cidade> retorno = cidadeService.buscarPorUf(estado.getSigla());
+		System.out.println(estado.getId());
+		List<Cidade> retorno = cidadeService.buscarPorId(estado.getId());
 		
 		return ResponseEntity.ok(retorno);
 	} 

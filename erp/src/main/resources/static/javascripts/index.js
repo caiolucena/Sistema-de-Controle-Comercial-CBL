@@ -1,9 +1,9 @@
-function selecionouEstado(sigla,url){
+function selecionouEstado(id,url){
 	$.ajax({
 		url:url,
 		method:'POST',
 		contentType:'application/json',
-		data: JSON.stringify({sigla:sigla}),
+		data: JSON.stringify({id:id}),
 		error:erroEstado,
 		success:selecionarCidade
 	});
@@ -19,6 +19,107 @@ function selecionouEstado(sigla,url){
 	}
 	function erroEstado(){
 		console.log('Erro em carregar as cidades!')
+	}
+	
+}
+function selecionouIcms(id,url){
+	$.ajax({
+		url:url,
+		method:'POST',
+		contentType:'application/json',
+		data: JSON.stringify({id:id}),
+		error:erroIcms,
+		success:attListaCfop
+	});
+	
+	function attListaCfop(cfops){
+		var comboCfop = $("#cfop");
+		var icmsDesc = $("#icmsDesc");
+
+		
+		
+		comboCfop.html('<option value ='+0+'>Selecione o CFOP</option>');
+		console.log("Deu certo");
+		console.log(cfops);
+		icmsDesc.val(cfops[0].icmsDescricao);
+		for ( var i in cfops) {
+			comboCfop.append('<option value ='+cfops[i].id+'>'+cfops[i].codigo+'</option>');
+			console.log(cfops[i].codigo);
+		}
+		
+	}
+	function erroIcms(){
+		console.log('Erro em carregar a descrição do ICMS!')
+	}
+	
+}
+
+function selecionouCfop(id,url){
+	$.ajax({
+		url:url,
+		method:'POST',
+		contentType:'application/json',
+		data: JSON.stringify({id:id}),
+		error:erroCfop,
+		success:alterarDescricao
+	});
+	
+	function alterarDescricao(cfop){
+		var cfopDesc = $("#cfopDesc");
+		cfopDesc.val(cfop.descricao);
+		
+	}
+	function erroCfop(){
+		console.log('Erro em carregar a descrição do CFOP!')
+	}
+	
+}
+
+function selecionouNcm(id,url){
+	$.ajax({
+		url:url,
+		method:'POST',
+		contentType:'application/json',
+		data: JSON.stringify({id:id}),
+		error:erroNcm,
+		success:alterarDescricao
+	});
+	
+	function alterarDescricao(ncm){
+		var ncmDesc = $("#ncmDesc");
+		
+		ncmDesc.val(ncm.descricao);
+		
+	}
+	function erroNcm(){
+		console.log('Erro em carregar a descrição do CFOP!')
+	}
+	
+}
+
+function atualizaCfop(id,url){
+	$.ajax({
+		url:url,
+		method:'POST',
+		contentType:'application/json',
+		data: JSON.stringify({id:id}),
+		error:erroCfop,
+		success:attListaCfop
+	});
+	
+	function attListaCfop(cfops){
+		var comboCfop = $("#cfop");
+		comboCfop.html('<option value ='+0+'>Selecione o CFOP</option>');
+		console.log("Deu certo");
+		
+		for ( var i in cfops) {
+			comboCfop.append('<option value ='+cfops[i].id+'>'+cfops[i].codigo+'</option>');
+			console.log(cfops[i].codigo);
+		}
+		
+	}
+	function erroCfop(){
+		console.log('Erro em carregar os CFOPS!')
 	}
 	
 }

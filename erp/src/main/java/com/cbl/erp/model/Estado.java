@@ -16,7 +16,10 @@ public class Estado {
 	
 	@NotBlank
 	private String sigla;
-
+	
+	private String nome;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -32,6 +35,15 @@ public class Estado {
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 	
 }
 

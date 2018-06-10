@@ -139,8 +139,8 @@
 							<label for="uf" class="control-label">UF</label> <select
 								th:onchange="|selecionouEstado(this.value,'@{/cidades}')|"
 								id="uf" class="form-control">
-								<option value="uf">Selecione a UF</option>
-								<option th:each="estado: ${estados}" th:value="${estado.sigla}"
+								<option value="0">Selecione a UF</option>
+								<option th:each="estado: ${estados}" th:value="${estado.id}"
 									th:text="${estado.sigla}"></option>
 							</select>
 						</div>

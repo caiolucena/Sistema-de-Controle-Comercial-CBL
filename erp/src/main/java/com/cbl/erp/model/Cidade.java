@@ -1,26 +1,34 @@
 package com.cbl.erp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="cidade")
 public class Cidade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull(message = " Selecione uma Cidade")
+	@Min(value =1,message = " Selecione uma Cidade")
 	private int id;
 	
-	private int codigo;
-	
-	
+
 	private String nome;
 	
-	private String uf;
+	@NotNull(message = "Estado é obrigatório")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "estado_id")
+	@JsonIgnore
+	private Estado estado;
 	
 	/**
 	 * M�todo construtor da classe Cidade
@@ -44,23 +52,21 @@ public class Cidade {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getUf() {
-		return uf;
+
+	
+	public Estado getEstado() {
+		return estado;
 	}
-	public void setUf(String uf) {
-		this.uf = uf;
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override

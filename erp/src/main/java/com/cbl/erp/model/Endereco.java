@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
 	private String cep;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_cidade")
+	@JoinColumn(name = "cidade_id")
 	@Valid
 	private Cidade cidade;
 	

@@ -24,16 +24,13 @@
 						<a id="menuToggle" class="menutoggle pull-left"><i
 							class="fa fa fa-tasks"></i></a>
 						<div class="header-left">
-							<div>
-							</div>
+							<div></div>
 
 							<div></div>
 						</div>
 					</div>
 
-					<div class="col-sm-5">
-
-					</div>
+					<div class="col-sm-5"></div>
 				</div>
 
 			</header>
@@ -75,7 +72,7 @@
 							<label for="nome">Descrição*</label> <input id="nome" type="text"
 								autofocus="autofocus" class="form-control"
 								th:classappend="${#fields.hasErrors('*{nome}')}? is-invalid"
-								th:field="*{nome}" tabindex="1"/>
+								th:field="*{nome}" tabindex="1" />
 						</div>
 					</div>
 
@@ -85,7 +82,8 @@
 							<textarea id="descricao" class="form-control"
 								placeholder="Se necessário, insira informações adicionais sobre o produto"
 								th:field="*{descricao}"
-								th:classappend="${#fields.hasErrors('*{descricao}')}? is-invalid"tabindex="2"></textarea>
+								th:classappend="${#fields.hasErrors('*{descricao}')}? is-invalid"
+								tabindex="2"></textarea>
 						</div>
 					</div>
 					<div class="row">
@@ -93,7 +91,8 @@
 							<div class="form-group">
 								<label for="preco">Preço*</label> <input id="preco" type="text"
 									class="form-control js-decimal" th:field="*{preco}"
-									th:classappend="${#fields.hasErrors('*{preco}')}? is-invalid"tabindex="3" />
+									th:classappend="${#fields.hasErrors('*{preco}')}? is-invalid"
+									tabindex="3" />
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -101,61 +100,80 @@
 								<label for="cstDesc">Estoque</label> <input id="cstDesc"
 									type="text" class="form-control js-plain"
 									placeholder="Quantidade no estoque" th:field="*{estoque}"
-									th:classappend="${#fields.hasErrors('*{estoque}')}? is-invalid" tabindex="4"/>
+									th:classappend="${#fields.hasErrors('*{estoque}')}? is-invalid"
+									tabindex="4" />
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-2">
-							<div class="form-group">
-								<label for="icms">ICMS*</label> <input id="icms" type="text" tabindex="5"
-									class="form-control js-icms" th:field="*{icms}" th:classappend="${#fields.hasErrors('*{icms}')}? is-invalid" />
-							</div>
+						<div class="form-group col-sm-3">
+						<!-- th:onchange="|selecionouIcms(this.value,'@{/codigos/cfop/atualiza}')|"-->
+							<label for="icms" class="control-label">ICMS*</label> <select
+							
+								th:onchange="|selecionouIcms(this.value,'@{/codigos/cfop/atualiza}')|"
+								
+								id="icms" th:field="*{cfop.icms.id}" class="form-control"
+								th:classappend="${#fields.hasErrors('*{cfop.icms.id}')}? is-invalid">
+
+								<option value="0">Selecione um ICMS</option>
+								<option th:each="icms: ${icmss}" th:value="${icms.id}"
+									th:text="${icms.codigo}"></option>
+							</select>
 						</div>
-						<div class="col-sm-10">
+						<div class="col-sm-9">
 							<div class="form-group">
-								<label for="cstDesc">Descrição da Situação Tributária do ICMS do produto</label> <input
-									id="cstDesc" type="text" class="form-control"  
-									placeholder="Descrição do CST" readonly />
+								<label for="icmsDesc">Descrição da Situação Tributária do
+									ICMS do produto</label> <input id="icmsDesc" type="text" th:field="*{cfop.icms.descricao}"
+									class="form-control" placeholder="Descrição do CST" readonly value ="descricao"/>
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-sm-2">
-							<div class="form-group">
-								<label for="cfop">CFOP*</label> <input id="cfop" type="text" tabindex="6"
-									class="form-control js-cfop" th:field="*{cfop}" th:classappend="${#fields.hasErrors('*{cfop}')}? is-invalid" />
-							</div>
+						<div class="form-group col-sm-3">
+							<label for="cfop" class="control-label">CFOP*</label> <select
+							th:onchange="|selecionouCfop(this.value,'@{/codigos/cfop}')|"
+								id="cfop" th:field="*{cfop.id}" class="form-control"
+								th:classappend="${#fields.hasErrors('*{cfop.id}')}? is-invalid">
+								<option value="0">Selecione um CFOP</option>
+								<option th:each="cfop: ${cfops}" th:value="${cfop.id}"
+									th:text="${cfop.codigo}"></option>
+							</select>
 						</div>
-						<div class="col-sm-10">
+						<div class="col-sm-9">
 							<div class="form-group">
 								<label for="cfopDesc">Descrição do CFOP</label> <input
-									id="cfopDesc" type="text" class="form-control" 
+									id="cfopDesc" type="text" class="form-control" th:field="*{cfop.descricao}"
 									placeholder="Descrição do CFOP" readonly />
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-sm-2">
-							<div class="form-group">
-								<label for="ncm">NCM*</label> <input id="ncm" type="text" tabindex="7"
-									class="form-control js-ncm" th:field="*{ncm}" th:classappend="${#fields.hasErrors('*{ncm}')}? is-invalid" />
-							</div>
+						<div class="form-group col-sm-3">
+							<label for="ncm" class="control-label">NCM*</label> <select
+							th:onchange="|selecionouNcm(this.value,'@{/codigos/ncm}')|"
+								id="ncm" th:field="*{ncm.id}" class="form-control"
+								th:classappend="${#fields.hasErrors('*{ncm.id}')}? is-invalid">
+								<option value="0">Selecione um NCM</option>
+								<option th:each="ncm: ${ncms}" th:value="${ncm.id}"
+									th:text="${ncm.codigo}"></option>
+							</select>
 						</div>
-						<div class="col-sm-10">
+						<div class="col-sm-9">
 							<div class="form-group">
-								<label for="ncmDesc">Descrição do NCM</label> <input
-									id="ncmpDesc" type="text" class="form-control"  
+								<label for="ncmDesc">Descrição do NCM</label> <input th:field="*{ncm.descricao}"
+									id="ncmDesc" type="text" class="form-control"
 									placeholder="Descrição do NCM" readonly />
 							</div>
 						</div>
 					</div>
-					<div class="row">
+
+					<!-- <div class="row">
 						<div class="col-sm-2">
 							<div class="form-group">
-								<label for="cest">CEST</label> <input id="cest" type="text" tabindex="8"
-									class="form-control js-cest" th:field="*{cest}" th:classappend="${#fields.hasErrors('*{cest}')}? is-invalid" />
+								<label for="cest">CEST</label> <input id="cest" type="text"
+									tabindex="8" class="form-control js-cest" th:field="*{cest}"
+									th:classappend="${#fields.hasErrors('*{cest}')}? is-invalid" />
 							</div>
 						</div>
 						<div class="col-sm-10">
@@ -166,14 +184,15 @@
 							</div>
 						</div>
 					</div>
+					 -->
 					<div class="form-group">
 						<button class="btn  btn-primary" type="submit" tabindex="9">Salvar</button>
 						<button type="button" class="btn btn-danger">Cancelar</button>
 					</div>
 				</form>
-					<div th:replace="modal/produto/HelpCadastroProduto :: modal"></div>
+				<div th:replace="modal/produto/HelpCadastroProduto :: modal"></div>
 			</div>
-			
+
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
 		</div>
