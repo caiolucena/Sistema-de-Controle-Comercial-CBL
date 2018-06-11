@@ -25,7 +25,7 @@ public class Cidade {
 	private String nome;
 	
 	@NotNull(message = "Estado é obrigatório")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "estado_id")
 	@JsonIgnore
 	private Estado estado;
