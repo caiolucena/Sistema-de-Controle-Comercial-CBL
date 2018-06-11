@@ -23,7 +23,7 @@ USE `erp` ;
 DROP TABLE IF EXISTS `erp`.`estado` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`estado` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `nome` VARCHAR(50) NOT NULL,
   `sigla` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -55,7 +55,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`estabelecimento` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`estabelecimento` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `cnpj` VARCHAR(19) NOT NULL,
   `nome` VARCHAR(60) NOT NULL,
   `nome_fantasia` VARCHAR(60) NULL,
@@ -191,7 +191,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`usuario` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `cpf` VARCHAR(15) NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
   `login` VARCHAR(45) NOT NULL,
@@ -218,7 +218,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`usuario_has_grupo` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`usuario_has_grupo` (
-  `usuario_id` INT NOT NULL,
+  `usuario_id` INT NOT NULL ,
   `grupo_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `grupo_id`),
   INDEX `fk_usuario_has_grupo_grupo1_idx` (`grupo_id` ASC),
@@ -278,7 +278,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`cliente` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`cliente` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `cpf` VARCHAR(15) NULL,
   `nome` VARCHAR(45) NULL,
   `telefone` VARCHAR(20) NULL,
@@ -304,8 +304,8 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`venda` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`venda` (
-  `id` INT NOT NULL,
-  `data_criacao` DATETIME NOT NULL,
+  `id` INT NOT NULL auto_increment,
+  `data_criacao` DATE NOT NULL,
   `valor_total` DECIMAL(10,2) NOT NULL,
   `usuario_id` INT NOT NULL,
   `cliente_id` INT NOT NULL,
@@ -331,7 +331,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `erp`.`item_venda` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`item_venda` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `quantidade` INT NOT NULL,
   `valor_unitario` DECIMAL(10,2) NULL,
   `venda_id` INT NOT NULL,
@@ -412,6 +412,9 @@ INSERT INTO `cfop`  (`id`, `codigo`, `descricao`,`icms_id`) VALUES
 
 INSERT INTO `ncm` VALUES (1, '99910000', 'ENCOMENDAS POSTAIS');
 INSERT INTO `ncm` VALUES (2, '99920000', 'AMOSTRAS');
+
+#insert into venda values (2,20151010,100,1,1);
+#insert into venda values (2,20181220,999,1,1);
 
 
 
