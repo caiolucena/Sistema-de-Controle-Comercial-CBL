@@ -39,7 +39,7 @@ public class Cfop {
 		this.descricao = descricao;
 	}
 	@Valid
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "icms_id")
 	@JsonIgnore
 	private Icms icms;

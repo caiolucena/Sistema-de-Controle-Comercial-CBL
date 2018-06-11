@@ -1,12 +1,13 @@
 package com.cbl.erp.model;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,17 +28,17 @@ public class Venda {
 	private int id;
 
 	@Column(name = "data_criacao")
-	private LocalDateTime dataCriacao;
+	private LocalDate dataCriacao;
 
 	@Column(name = "valor_total")
 	private BigDecimal valorTotal = BigDecimal.ZERO;
 
-	@ManyToOne
 	@JoinColumn(name = "cliente_id")
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Cliente cliente;
 
-	@ManyToOne
 	@JoinColumn(name = "usuario_id")
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
 
 
@@ -52,11 +53,11 @@ public class Venda {
 		this.id = id;
 	}
 
-	public LocalDateTime getDataCriacao() {
+	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(LocalDateTime dataCriacao) {
+	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 

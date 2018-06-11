@@ -1,19 +1,27 @@
 package com.cbl.erp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cbl.erp.model.Produto;
+import com.cbl.erp.model.codigos.Cfop;
 import com.cbl.erp.repository.Cfops;
 import com.cbl.erp.repository.Icmss;
 import com.cbl.erp.repository.Ncms;
+import com.cbl.erp.repository.Produtos;
 import com.cbl.erp.service.CrudProdutoService;
 import com.cbl.erp.service.exception.ItemDuplicadoException;
 
@@ -30,6 +38,9 @@ public class ProdutoController {
 	
 	@Autowired
 	CrudProdutoService crudprodutoService;
+	
+	@Autowired
+	Produtos produtos;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
@@ -58,7 +69,7 @@ public class ProdutoController {
 			System.out.println(produto.getCfop().getIcms().getId());
 			crudprodutoService.salvar(produto);
 		} catch (ItemDuplicadoException e) {
-			result.rejectValue("titulo", e.getMessage(), e.getMessage());
+			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return(novo(produto));
 		}
 		
@@ -66,4 +77,21 @@ public class ProdutoController {
 		return new ModelAndView("redirect:/produtos/novo");
 	}
 	
+	@RequestMapping(path="/busca", method=RequestMethod.GET)
+	public ModelAndView retornarTodos(){
+		ModelAndView mv = new ModelAndView("produto/ProcurarProduto");
+		mv.addObject("produtos", produtos.findAll());
+		return mv;
+	}
+	
+	
+//	@RequestMapping(value= "/busca",method = RequestMethod.GET, consumes = { MediaType.APPLICATION_JSON_VALUE })
+//	public List<Produto> retornarTodos(){
+//
+//		List<Produto> retorno = produtos.findAll();
+//		
+//		return retorno;	
+//	} 
+//	
+//	
 }

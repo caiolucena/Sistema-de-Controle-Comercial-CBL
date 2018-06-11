@@ -36,7 +36,7 @@ public class CfopController {
 		return ResponseEntity.ok(retorno);	
 	} 
 	
-	@RequestMapping(value= "atualiza",method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value= "/atualiza",method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> atualizar(@RequestBody Icms icms){
 		System.out.println(icms.getId());
 		List<Cfop> retorno = cfopService.buscarPorIcms(icms.getId());

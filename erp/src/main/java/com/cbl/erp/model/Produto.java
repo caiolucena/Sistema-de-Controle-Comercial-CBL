@@ -39,13 +39,13 @@ public class Produto {
 	private String descricao;
 
 	@Valid
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ncm_id")
 	@JsonIgnore
 	private Ncm ncm;
 
 	@Valid
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cfop_id")
 	@JsonIgnore
 	private Cfop cfop;

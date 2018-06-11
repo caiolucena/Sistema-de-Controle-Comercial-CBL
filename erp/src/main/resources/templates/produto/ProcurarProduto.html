@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+
+
+<head>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+<style>
+.center {
+	text-align: center;
+}
+</style>
+<title>Produtos Cadastrados</title>
+</head>
+
+<body>
+	<section>
+		<!-- Right Panel -->
+
+		<div id="right-panel" class="right-panel" layout:fragment="conteudo">
+
+			<!-- Header-->
+			<header id="header" class="header">
+
+				<div class="header-menu">
+
+					<div class="col-sm-7">
+						<a id="menuToggle" class="menutoggle pull-left"><i
+							class="fa fa fa-tasks"></i></a>
+						<div class="header-left">
+							<div></div>
+
+							<div></div>
+						</div>
+					</div>
+
+					<div class="col-sm-5"></div>
+				</div>
+
+			</header>
+			<!-- /header -->
+			<!-- Header-->
+
+			<!-- até aqui tem q ter em todos -->
+			<div class="breadcrumbs">
+				<div class="col-sm-4">
+					<div class="page-header float-left">
+						<div class="page-title">
+							<h1>Busca de Produtos</h1>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<div class="page-header float-right">
+						<div class="page-title">
+							<ol class="breadcrumb text-right">
+								<li class="active"><a href="#" data-toggle="modal"
+									data-target="#modalHelpCadastroProduto">Dúvidas no
+										preenchimento? Clique aqui</a></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<table id="table-listar-datatable"
+				class="table table-hover table-condensed table-striped table-bordered">
+
+				<!-- Header Table -->
+				<thead>
+					<tr>
+						<th style="width: 5%" class="center">Id</th>
+						<th style="width: 35%" class="center">Nome</th>
+						<th style="width: 15" class="center">Preço (R$)</th>
+						<th style="width: 10%" class="center">Estoque</th>
+						<th style="width: 10%" class="center">ICMS</th>
+						<th style="width: 10%" class="center">CFOP</th>
+						<th style="width: 15%" class="center">NCM</th>
+					</tr>
+				</thead>
+				<!-- Footer Table -->
+				<tbody>
+					<tr th:each="produto: ${produtos}" data-id="${produto.id}">
+						<td th:text="${produto.id}" class="center"
+							th:value="${produto.id}"></td>
+						<td th:text="${produto.nome}" class="center"></td>
+						<td th:text="${produto.preco}" class="js-decimal center"></td>
+						<td th:text="${produto.estoque}" class="js-plain center"></td>
+						<td th:text="${produto.cfop.icms.codigo}" class="center"></td>
+						<td th:text="${produto.cfop.codigo}" class="center"></td>
+						<td th:text="${produto.ncm.codigo}" class="center"></td>
+
+					</tr>
+				</tbody>
+
+			</table>
+
+
+			<!-- aqui acaba oq muda de um pro outro -->
+			<!-- .content -->
+		
+		</div>
+		<!-- /#right-panel -->
+
+	</section>
+	<!-- /#right-panel -->
+
+	<!-- Right Panel -->
+
+</body>
+</html>

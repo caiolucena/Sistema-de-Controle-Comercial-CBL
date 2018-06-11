@@ -1,6 +1,5 @@
 var Erp = Erp ||{}
 var $ = jQuery;
-
 Erp.MaskMoney = (function(){
 	function MaskMoney(){
 		this.decimal =  $('.js-decimal');
@@ -44,6 +43,18 @@ Erp.MaskCpf = (function(){
 	}
 	MaskCpf.prototype.enable = function(){
 		this.inputCpf.mask('000.000.000-00', {reverse: true});
+		
+	}
+	
+	return MaskCpf;
+}());
+Erp.MaskData = (function(){
+
+	function MaskCpf(){
+		this.inputData = $('.js-data');
+	}
+	MaskCpf.prototype.enable = function(){
+		this.inputData.mask('00/00/0000', {reverse: true});
 		
 	}
 	
@@ -159,6 +170,9 @@ $(function(){
 		
 		var maskIcms = new Erp.MaskIcms();
 		maskIcms.enable();
+		
+		var maskData = new Erp.MaskData();
+		maskData.enable();
 		
 		
 });
