@@ -3,11 +3,11 @@ package com.cbl.erp.config.init;
 
 import javax.servlet.Filter;
 
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.cbl.erp.config.JPAConfig;
+import com.cbl.erp.config.SecurityConfig;
 import com.cbl.erp.config.ServiceConfig;
 import com.cbl.erp.config.WebConfig;
 
@@ -24,7 +24,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		//return new Class<?>[] { H2Config.class, ServiceConfig.class };
-		return new Class<?>[] { JPAConfig.class, ServiceConfig.class};
+		return new Class<?>[] { JPAConfig.class, ServiceConfig.class,SecurityConfig.class};
 	}
 
 	/**

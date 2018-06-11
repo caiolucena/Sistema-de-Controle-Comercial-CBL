@@ -49,11 +49,11 @@ public class Usuario implements Serializable {
 	protected String nome;
 
 	
-	@Size(min = 4,message = " A senha deve possuir no mínimo 3 dígitos")
+	@Size(min = 3,message = " A senha deve possuir no mínimo 3 dígitos")
 	protected String senha;
 	
 	@Transient
-	@Size(min = 4, message = " Confirmação de senha deve possuir no mínimo 3 dígitos")
+	@Size(min = 3, message = " Confirmação de senha deve possuir no mínimo 3 dígitos")
 	protected String confirmacaoSenha;
 	
 	

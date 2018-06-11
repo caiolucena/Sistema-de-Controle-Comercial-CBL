@@ -97,7 +97,7 @@
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
-								<label for="cstDesc">Estoque</label> <input id="cstDesc"
+								<label for="cstDesc">Estoque*</label> <input id="cstDesc"
 									type="text" class="form-control js-plain"
 									placeholder="Quantidade no estoque" th:field="*{estoque}"
 									th:classappend="${#fields.hasErrors('*{estoque}')}? is-invalid"
@@ -106,12 +106,10 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-sm-2">
-						<!-- th:onchange="|selecionouIcms(this.value,'@{/codigos/cfop/atualiza}')|"-->
+						<div class="form-group col-sm-3">
+							<!-- th:onchange="|selecionouIcms(this.value,'@{/codigos/cfop/atualiza}')|"-->
 							<label for="icms" class="control-label">ICMS*</label> <select
-							
 								th:onchange="|selecionouIcms(this.value,'@{/codigos/cfop/atualiza}')|"
-								
 								id="icms" th:field="*{cfop.icms.id}" class="form-control"
 								th:classappend="${#fields.hasErrors('*{cfop.icms.id}')}? is-invalid">
 
@@ -120,19 +118,23 @@
 									th:text="${icms.codigo}"></option>
 							</select>
 						</div>
-						<div class="col-sm-10">
+					</div>
+					<div class="row">
+
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="icmsDesc">Descrição da Situação Tributária do
-									ICMS do produto</label> <input id="icmsDesc" type="text" th:field="*{cfop.icms.descricao}"
-									class="form-control" placeholder="Descrição do CST" readonly value ="descricao"/>
+								<label for="icmsDesc">Descrição da Situação Tributária
+									do ICMS do produto</label> <input id="icmsDesc" type="text"
+									th:field="*{cfop.icms.descricao}" class="form-control"
+									placeholder="Descrição do CST" readonly value="descricao" />
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="form-group col-sm-2">
+						<div class="form-group col-sm-3">
 							<label for="cfop" class="control-label">CFOP*</label> <select
-							th:onchange="|selecionouCfop(this.value,'@{/codigos/cfop}')|"
+								th:onchange="|selecionouCfop(this.value,'@{/codigos/cfop}')|"
 								id="cfop" th:field="*{cfop.id}" class="form-control"
 								th:classappend="${#fields.hasErrors('*{cfop.id}')}? is-invalid">
 								<option value="0">Selecione o CFOP</option>
@@ -140,18 +142,21 @@
 									th:text="${cfop.codigo}"></option>
 							</select>
 						</div>
-						<div class="col-sm-10">
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="cfopDesc">Descrição do CFOP</label> <input
-									id="cfopDesc" type="text" class="form-control" th:field="*{cfop.descricao}"
-									placeholder="Descrição do CFOP" readonly />
+									id="cfopDesc" type="text" class="form-control"
+									th:field="*{cfop.descricao}" placeholder="Descrição do CFOP"
+									readonly />
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group col-sm-2">
+						<div class="form-group col-sm-3">
 							<label for="ncm" class="control-label">NCM*</label> <select
-							th:onchange="|selecionouNcm(this.value,'@{/codigos/ncm}')|"
+								th:onchange="|selecionouNcm(this.value,'@{/codigos/ncm}')|"
 								id="ncm" th:field="*{ncm.id}" class="form-control"
 								th:classappend="${#fields.hasErrors('*{ncm.id}')}? is-invalid">
 								<option value="0">Selecione o NCM</option>
@@ -159,11 +164,13 @@
 									th:text="${ncm.codigo}"></option>
 							</select>
 						</div>
-						<div class="col-sm-10">
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="ncmDesc">Descrição do NCM</label> <input th:field="*{ncm.descricao}"
-									id="ncmDesc" type="text" class="form-control"
-									placeholder="Descrição do NCM" readonly />
+								<label for="ncmDesc">Descrição do NCM</label> <input
+									th:field="*{ncm.descricao}" id="ncmDesc" type="text"
+									class="form-control" placeholder="Descrição do NCM" readonly />
 							</div>
 						</div>
 					</div>

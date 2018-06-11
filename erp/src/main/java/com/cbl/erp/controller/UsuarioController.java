@@ -14,6 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cbl.erp.model.Usuario;
 import com.cbl.erp.repository.Grupos;
 import com.cbl.erp.repository.Usuarios;
+import com.cbl.erp.service.CadastroGrupoService;
+import com.cbl.erp.service.CadastroUsuarioService;
+import com.cbl.erp.service.exception.ItemDuplicadoException;
+import com.cbl.erp.service.exception.LoginDuplicadoException;
+import com.cbl.erp.service.exception.SenhaObrigatoriaUsuarioException;
 
 /**
  * Essa é a classe Controller da classe Usuario, e é responsável por fazer a
@@ -27,12 +32,12 @@ import com.cbl.erp.repository.Usuarios;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-	// @Autowired
-	// private CrudUsuarioService cadastroUsuarioService;
-	//
-	// @Autowired
-	// private CrudGrupoService cadastroGrupoService;
-	//
+	 @Autowired
+	 private CadastroUsuarioService cadastroUsuarioService;
+	
+	 @Autowired
+	 private CadastroGrupoService cadastroGrupoService;
+	
 	 @Autowired
 	 private Usuarios usuarios;
 	//
@@ -51,7 +56,7 @@ public class UsuarioController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
 		ModelAndView mv = new ModelAndView("usuario/CadastroUsuario");
-		mv.addObject("grupos", grupos.findAll());
+		mv.addObject("grupos", cadastroGrupoService.buscaGrupos());
 
 		return mv;
 
@@ -95,23 +100,23 @@ public class UsuarioController {
 		if (result.hasErrors()) {
 			return novo(usuario);
 		}
-		// try {
-		// //cadastroUsuarioService.salvar(usuario);
-		// }
-		// catch (ItemDuplicadoException e){
-		// result.rejectValue("nome", e.getMessage(),e.getMessage());
-		// return (novo(usuario));
-		// }
-		// catch(LoginDuplicadoException e) {
-		// result.rejectValue("login", e.getMessage(),e.getMessage());
-		// return (novo(usuario));
-		// }
-		// catch(SenhaObrigatoriaUsuarioException e){
-		// result.rejectValue("senha", e.getMessage(),e.getMessage());
-		// }
+		 try {
+		 cadastroUsuarioService.salvar(usuario);
+		 }
+		 catch (ItemDuplicadoException e){
+		 result.rejectValue("cpf", e.getMessage(),e.getMessage());
+		 return (novo(usuario));
+		 }
+		 catch(LoginDuplicadoException e) {
+		 result.rejectValue("login", e.getMessage(),e.getMessage());
+		 return (novo(usuario));
+		 }
+		 catch(SenhaObrigatoriaUsuarioException e){
+		 result.rejectValue("senha", e.getMessage(),e.getMessage());
+		 }
 		attributes.addFlashAttribute("mensagem", "Usuário salvo com sucesso!");
 
-		return new ModelAndView("redirect:/usuario/CadastroUsuario");
+		return new ModelAndView("redirect:/usuarios/novo");
 
 	}
 	//

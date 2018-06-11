@@ -92,7 +92,7 @@
 						<td th:text="${usuario.nome}" class="center"></td>
 						<td th:text="${usuario.login}" class="center"></td>
 						<!-- <td th:each="grupo: ${usuario.grupos}" th:text = "${grupo.nome}" class="center"></td> -->
-						<td th:text="${usuario.grupos[0].nome}" class="center"></td>
+						<td class="center"><label th:each= "grupo: ${usuario.grupos}" th:text="|${grupo.nome}; |" ></label></td>
 					</tr>
 				</tbody>
 
