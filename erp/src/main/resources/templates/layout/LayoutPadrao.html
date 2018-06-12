@@ -20,21 +20,29 @@
 <link rel="shortcut icon" href="favicon.ico">
 <!-- <link rel="stylesheet" type="text/css" href="../stylesheets/vendors.min.css"
 	th:href="@{/stylesheets/vendors.min.css}" />-->
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/normalize.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/bootstrap.min.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/font-awesome.min.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/themify-icons.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/flag-icon.min.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/layout/css/cs-skin-elastic.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/normalize.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/bootstrap.min.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/font-awesome.min.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/themify-icons.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/flag-icon.min.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/css/cs-skin-elastic.css}">
 <!-- <link rel="stylesheet" th:href="@{/layout/css/bootstrap-select.less"> -->
-<link type="text/css" rel="stylesheet" th:href="@{/layout/scss/style.css}">
-<link type="text/css" rel="stylesheet" th:href="@{/stylesheets/style.css}">
-<link type="text/css" th:href="@{/layout/css/lib/vector-map/jqvmap.min.css}"
-	rel="stylesheet">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/layout/scss/style.css}">
+<link type="text/css" rel="stylesheet"
+	th:href="@{/stylesheets/style.css}">
+<link type="text/css"
+	th:href="@{/layout/css/lib/vector-map/jqvmap.min.css}" rel="stylesheet">
 
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
-	rel='stylesheet' type='text/css'>
+	rel='stylesheet' type="text/css">
 
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js}"></script> -->
 
@@ -62,7 +70,7 @@
 	<!-- RODAPÉ -->
 	<!--<div th:replace="layout/fragments/Footer :: layout-footer"></div>-->
 
-	<script th:src="@{/javascripts/vendors/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/javascripts/vendors/jquery.min.js}"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
 	<script th:src="@{/layout/js/plugins.js}"></script>
@@ -108,60 +116,7 @@
 	<script src="../static/javascripts/erp.js"
 		th:src="@{/javascripts/erp.js}"></script>
 
-
-	<!-- <script>
-		$(document).ready(function() {
-			$('#table-listar-datatable').DataTable({
-				"language" : {
-					"lengthMenu" : "Mostrando _MENU_ registros por página",
-					"zeroRecords" : "Nada encontrado",
-					"info" : "Mostrando página _PAGE_ de _PAGES_",
-					"infoEmpty" : "Nenhum registro disponível",
-					"infoFiltered" : "(filtrado de _MAX_ registros no total)",
-					sSearch : "Procurar:",
-					sUrl : "",
-					oPaginate : {
-						sFirst : "Primeiro",
-						sPrevious : "Anterior",
-						sNext : "Seguinte",
-						sLast : "Último",
-					}
-				},
-				"dom" : "<'btns-table-top'lrBf>tip",
-				"buttons" : [ {
-					"extend" : "excelHtml5",
-					"text" : "<i class='fas fa-file-excel'></i> Excel",
-					"titleAttr" : "Excel"
-				}, {
-					"extend" : "pdfHtml5",
-					"text" : "<i class='fas fa-file-pdf'></i> PDF",
-					"titleAttr" : "PDF"
-				} ]
-			});
-		});
-	</script>
-	 -->
-
-
-	<!--    <script>
-        ( function ( $ ) {
-            "use strict";
-
-            jQuery( '#vmap' ).vectorMap( {
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: [ '#1de9b6', '#03a9f5' ],
-                normalizeFunction: 'polynomial'
-            } );
-        } )( jQuery );
-    </script>
--->
+	<script src="../static/javascripts/cliente.pesquisa-rapida.js" th:src="@{/javascripts/cliente.pesquisa-rapida.js}"></script>
 
 </body>
 

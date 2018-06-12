@@ -1,13 +1,20 @@
 package com.cbl.erp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,10 +37,10 @@ public class ClienteController {
 
 	@Autowired
 	CrudClienteService crudClienteService;
-	
+
 	@Autowired
 	Clientes clientes;
-	
+
 	@RequestMapping("/novo")
 	public ModelAndView novo(Cliente cliente) {
 		ModelAndView mv = new ModelAndView("cliente/CadastroCliente");
@@ -44,27 +51,43 @@ public class ClienteController {
 	}
 
 	@PostMapping("/novo")
-	public ModelAndView cadastro(@Valid Cliente cliente, BindingResult result,
-			RedirectAttributes attributes) {
+	public ModelAndView cadastro(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(cliente);
 		}
 		try {
 			crudClienteService.salvar(cliente);
 			attributes.addFlashAttribute("mensagem", "Cliente salvo com sucesso!");
-		}
-		catch(ItemDuplicadoException e){
-			result.rejectValue("cpf", e.getMessage(),e.getMessage());
+		} catch (ItemDuplicadoException e) {
+			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 		}
 
 		return new ModelAndView("redirect:/clientes/novo");
 
 	}
-	
+
 	@RequestMapping(path = "/busca", method = RequestMethod.GET)
 	public ModelAndView retornarTodos() {
 		ModelAndView mv = new ModelAndView("cliente/ProcurarCliente");
 		mv.addObject("clientes", clientes.findAll());
 		return mv;
 	}
+
+	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public @ResponseBody List<Cliente> pesquisar(String nome) {
+		validarTamanhoNome(nome);
+		return clientes.findByNomeStartingWithIgnoreCase(nome);
+	}
+
+	private void validarTamanhoNome(String nome) {
+		if (StringUtils.isEmpty(nome) || nome.length() < 3) {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<Void> tratarIllegalArgumentException(IllegalArgumentException e) {
+		return ResponseEntity.badRequest().build();
+	}
+
 }

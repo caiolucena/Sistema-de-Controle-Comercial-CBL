@@ -1,6 +1,8 @@
 package com.cbl.erp.model;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -41,7 +44,21 @@ public class Venda {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
 
+	@Transient
+	private String uuid;
 
+	@Transient
+	private LocalDate dataEntrega;
+
+	@Transient
+	private LocalTime horarioEntrega;
+	
+	private String observacao;
+	
+
+	@Column(name = "valor_frete")
+	private BigDecimal valorFrete;
+	
 	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemVenda> itens = new ArrayList<>();
 
@@ -61,7 +78,6 @@ public class Venda {
 		this.dataCriacao = dataCriacao;
 	}
 
-	
 	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
@@ -70,7 +86,6 @@ public class Venda {
 		this.valorTotal = valorTotal;
 	}
 
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -99,6 +114,47 @@ public class Venda {
 		this.itens = itens;
 		this.itens.forEach(i -> i.setVenda(this));
 	}
+	
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public LocalDate getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(LocalDate dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+
+	public LocalTime getHorarioEntrega() {
+		return horarioEntrega;
+	}
+
+	public void setHorarioEntrega(LocalTime horarioEntrega) {
+		this.horarioEntrega = horarioEntrega;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public BigDecimal getValorFrete() {
+		return valorFrete;
+	}
+
+	public void setValorFrete(BigDecimal valorFrete) {
+		this.valorFrete = valorFrete;
+	}
 
 	@Override
 	public int hashCode() {
@@ -121,7 +177,5 @@ public class Venda {
 			return false;
 		return true;
 	}
-	
-
 
 }
