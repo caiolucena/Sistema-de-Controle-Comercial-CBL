@@ -70,39 +70,61 @@
 			</div>
 
 
-			<table id="table-listar-datatable"
-				class="table table-hover table-condensed table-striped table-bordered">
+			<div class="content mt-3">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<strong class="card-title">Clientes Cadastrados</strong>
+								</div>
+								<div class="card-body">
 
-				<!-- Header Table -->
-				<thead>
-					<tr>
-						<th style="width: 5%" class="center">Id</th>
-						<th style="width: 15%" class="center">Cpf</th>
-						<th style="width: 25%" class="center">Nome</th>
-						<th style="width: 15%" class="center">Telefone</th>
-						<th style="width: 10%" class="center">CEP</th>
-						<th style="width: 5%" class="center">Número</th>
-						<th style="width: 20%" class="center">Cidade</th>
-						<th style="width: 5%" class="center">Estado</th>
-					</tr>
-				</thead>
-				<!-- Footer Table -->
-				<tbody>
-					<tr th:each="cliente: ${clientes}" data-id="${cliente.id}">
-						<td th:text="${cliente.id}" class="center"
-							th:value="${cliente.id}"></td>
-						<td th:text="${cliente.cpf}" class="center"></td>
-						<td th:text="${cliente.nome}" class="center"></td>
-						<!-- <td th:each="grupo: ${cliente.grupos}" th:text = "${grupo.nome}" class="center"></td> -->
-						<td th:text="${cliente.telefone}" class="center js-phone-number"></td>
-						<td th:text="${cliente.endereco.cep}" class="center js-cep"></td>
-						<td th:text="${cliente.endereco.numero}" class="center"></td>
-						<td th:text="${cliente.endereco.cidade.nome}" class="center"></td>
-						<td th:text="${cliente.endereco.cidade.estado.sigla}" class="center"></td>
-					</tr>
-				</tbody>
+									<div id="bootstrap-data-table_wrapper"
+										class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+										<table id="bootstrap-data-table"
+											class="table table-hover table-condensed table-striped table-bordered dataTables_wrapper dt-bootstrap4 no-footer dataTable">
 
-			</table>
+											<!-- Header Table -->
+											<thead>
+												<tr>
+													<th style="width: 5%" class="center">Id</th>
+													<th style="width: 15%" class="center">Cpf</th>
+													<th style="width: 25%" class="center">Nome</th>
+													<th style="width: 15%" class="center">Telefone</th>
+													<th style="width: 10%" class="center">CEP</th>
+													<th style="width: 5%" class="center">Número</th>
+													<th style="width: 20%" class="center">Cidade</th>
+													<th style="width: 5%" class="center">Estado</th>
+												</tr>
+											</thead>
+											<!-- Footer Table -->
+											<tbody>
+												<tr th:each="cliente: ${clientes}" data-id="${cliente.id}">
+													<td th:text="${cliente.id}" class="center"
+														th:value="${cliente.id}"></td>
+													<td th:text="${cliente.cpf}" class="center"></td>
+													<td th:text="${cliente.nome}" class="center"></td>
+													<!-- <td th:each="grupo: ${cliente.grupos}" th:text = "${grupo.nome}" class="center"></td> -->
+													<td th:text="${cliente.telefone}"
+														class="center js-phone-number"></td>
+													<td th:text="${cliente.endereco.cep}" class="center js-cep"></td>
+													<td th:text="${cliente.endereco.numero}" class="center"></td>
+													<td th:text="${cliente.endereco.cidade.nome}"
+														class="center"></td>
+													<td th:text="${cliente.endereco.cidade.estado.sigla}"
+														class="center"></td>
+												</tr>
+											</tbody>
+
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<!-- aqui acaba oq muda de um pro outro -->
@@ -110,7 +132,6 @@
 
 		</div>
 		<!-- /#right-panel -->
-
 	</section>
 	<!-- /#right-panel -->
 

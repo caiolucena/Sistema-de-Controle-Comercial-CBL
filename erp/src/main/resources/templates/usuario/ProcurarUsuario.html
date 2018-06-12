@@ -70,41 +70,61 @@
 			</div>
 
 
-			<table id="table-listar-datatable"
-				class="table table-hover table-condensed table-striped table-bordered">
+			<div class="content mt-3">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<strong class="card-title">Usuários Cadastrados</strong>
+								</div>
+								<div class="card-body">
 
-				<!-- Header Table -->
-				<thead>
-					<tr>
-						<th style="width: 5%" class="center">Id</th>
-						<th style="width: 15%" class="center">Cpf</th>
-						<th style="width: 20%" class="center">Nome</th>
-						<th style="width: 10%" class="center">Login</th>
-						<th style="width: 50%" class="center">Grupos</th>
-					</tr>
-				</thead>
-				<!-- Footer Table -->
-				<tbody>
-					<tr th:each="usuario: ${usuarios}" data-id="${usuario.id}">
-						<td th:text="${usuario.id}" class="center"
-							th:value="${usuario.id}"></td>
-						<td th:text="${usuario.cpf}" class="center"></td>
-						<td th:text="${usuario.nome}" class="center"></td>
-						<td th:text="${usuario.login}" class="center"></td>
-						<!-- <td th:each="grupo: ${usuario.grupos}" th:text = "${grupo.nome}" class="center"></td> -->
-						<td class="center"><label th:each= "grupo: ${usuario.grupos}" th:text="|${grupo.id}: ${grupo.nome};|" ></label></td>
-					</tr>
-				</tbody>
+									<div id="bootstrap-data-table_wrapper"
+										class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+										<table id="bootstrap-data-table"
+											class="table table-hover table-condensed table-striped table-bordered dataTables_wrapper dt-bootstrap4 no-footer dataTable">
 
-			</table>
+											<!-- Header Table -->
+											<thead>
+												<tr>
+													<th style="width: 5%" class="center">Id</th>
+													<th style="width: 15%" class="center">Cpf</th>
+													<th style="width: 20%" class="center">Nome</th>
+													<th style="width: 10%" class="center">Login</th>
+													<th style="width: 50%" class="center">Grupos</th>
+												</tr>
+											</thead>
+											<!-- Footer Table -->
+											<tbody>
+												<tr th:each="usuario: ${usuarios}" data-id="${usuario.id}">
+													<td th:text="${usuario.id}" class="center"
+														th:value="${usuario.id}"></td>
+													<td th:text="${usuario.cpf}" class="center"></td>
+													<td th:text="${usuario.nome}" class="center"></td>
+													<td th:text="${usuario.login}" class="center"></td>
+													<!-- <td th:each="grupo: ${usuario.grupos}" th:text = "${grupo.nome}" class="center"></td> -->
+													<td class="center"><label
+														th:each="grupo: ${usuario.grupos}"
+														th:text="|${grupo.id}: ${grupo.nome};|"></label></td>
+												</tr>
+											</tbody>
+
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
-		
+
 		</div>
 		<!-- /#right-panel -->
-
 	</section>
 	<!-- /#right-panel -->
 

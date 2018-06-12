@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 var aplicarDataTable = function() {
 	
-	var table = $('#table-listar-datatable').DataTable({
+	var table = $('#bootstrap-data-table').DataTable({
         "language": {
     		sProcessing: "Processando...",
     		sLengthMenu: "Mostrar _MENU_ registros",

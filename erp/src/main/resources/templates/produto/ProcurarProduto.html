@@ -68,47 +68,63 @@
 					</div>
 				</div>
 			</div>
+			<div class="content mt-3">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<strong class="card-title">Produtos Cadastrados</strong>
+								</div>
+								<div class="card-body">
 
+									<div id="bootstrap-data-table_wrapper"
+										class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+										<table id="bootstrap-data-table"
+											class="table table-hover table-condensed table-striped table-bordered dataTables_wrapper dt-bootstrap4 no-footer dataTable">
 
-			<table id="table-listar-datatable"
-				class="table table-hover table-condensed table-striped table-bordered">
+											<!-- Header Table -->
+											<thead>
+												<tr>
+													<th style="width: 5%" class="center">Id</th>
+													<th style="width: 35%" class="center">Nome</th>
+													<th style="width: 15" class="center">Preço (R$)</th>
+													<th style="width: 10%" class="center">Estoque</th>
+													<th style="width: 10%" class="center">ICMS</th>
+													<th style="width: 10%" class="center">CFOP</th>
+													<th style="width: 15%" class="center">NCM</th>
+												</tr>
+											</thead>
+											<!-- Footer Table -->
+											<tbody>
+												<tr th:each="produto: ${produtos}" data-id="${produto.id}">
+													<td th:text="${produto.id}" class="center"
+														th:value="${produto.id}"></td>
+													<td th:text="${produto.nome}" class="center"></td>
+													<td th:text="${produto.preco}" class="js-decimal center"></td>
+													<td th:text="${produto.estoque}" class="js-plain center"></td>
+													<td th:text="${produto.cfop.icms.codigo}" class="center"></td>
+													<td th:text="${produto.cfop.codigo}" class="center"></td>
+													<td th:text="${produto.ncm.codigo}" class="center"></td>
 
-				<!-- Header Table -->
-				<thead>
-					<tr>
-						<th style="width: 5%" class="center">Id</th>
-						<th style="width: 35%" class="center">Nome</th>
-						<th style="width: 15" class="center">Preço (R$)</th>
-						<th style="width: 10%" class="center">Estoque</th>
-						<th style="width: 10%" class="center">ICMS</th>
-						<th style="width: 10%" class="center">CFOP</th>
-						<th style="width: 15%" class="center">NCM</th>
-					</tr>
-				</thead>
-				<!-- Footer Table -->
-				<tbody>
-					<tr th:each="produto: ${produtos}" data-id="${produto.id}">
-						<td th:text="${produto.id}" class="center"
-							th:value="${produto.id}"></td>
-						<td th:text="${produto.nome}" class="center"></td>
-						<td th:text="${produto.preco}" class="js-decimal center"></td>
-						<td th:text="${produto.estoque}" class="js-plain center"></td>
-						<td th:text="${produto.cfop.icms.codigo}" class="center"></td>
-						<td th:text="${produto.cfop.codigo}" class="center"></td>
-						<td th:text="${produto.ncm.codigo}" class="center"></td>
+												</tr>
+											</tbody>
 
-					</tr>
-				</tbody>
-
-			</table>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
-		
+
 		</div>
 		<!-- /#right-panel -->
-
 	</section>
 	<!-- /#right-panel -->
 

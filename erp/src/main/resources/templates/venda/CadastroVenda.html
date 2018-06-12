@@ -117,7 +117,7 @@
 							<div class="input-group">
 								<input id="nomeCliente" type="text" readonly="readonly"
 									class="form-control"
-									placeholder="Clique na lupa para pesquisar o cliente" /> <span
+									placeholder="Clique na lupa para pesquisar" /> <span
 									class="input-group-btn">
 									<button class="btn  btn-default  js-tooltip" type="button"
 										title="Pesquisa avançada" data-toggle="modal"
@@ -172,7 +172,7 @@
 							<div class="bw-tabela-cervejas">
 								<div class="bw-tabela-cervejas__vazio">
 									<i class="fa fa-shopping-cart"></i> <span>Você ainda não
-										adicionou nenhuma produto.</span>
+										adicionou nenhum produto.</span>
 								</div>
 							</div>
 						</div>
@@ -228,7 +228,8 @@
 	</section>
 
 	<th:block layout:fragment="javascript-extra">
-
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:scr="@{/javascripts/clientePesquisaRapida.js}"></script>
 		<script>
 			$(function() {
 				$('.js-abas-venda a').click(function(e) {
