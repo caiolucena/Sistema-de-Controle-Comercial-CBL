@@ -15,7 +15,7 @@ Erp.PesquisaRapidaCliente = (function() {
 			method : 'GET',
 			contentType : 'application/json',
 			data : {
-				nome : 'ca'
+				nome : 'cai'
 			},
 			success : onPesquisaConcluida.bind(this)
 		});
