@@ -6,7 +6,7 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
+SET global time_zone = "-03:00";
 -- -----------------------------------------------------
 -- Schema erp
 -- -----------------------------------------------------
@@ -305,8 +305,13 @@ DROP TABLE IF EXISTS `erp`.`venda` ;
 
 CREATE TABLE IF NOT EXISTS `erp`.`venda` (
   `id` INT NOT NULL auto_increment,
-  `data_criacao` DATE NOT NULL,
-  `valor_total` DECIMAL(10,2) NOT NULL,
+     `data_criacao` DATETIME NOT NULL,
+     `valor_frete` DECIMAL(10,2),
+     `valor_desconto` DECIMAL(10,2),
+     `valor_total` DECIMAL(10,2) NOT NULL,
+     `status` VARCHAR(30) NOT NULL,
+     `observacao` VARCHAR(200),
+     `data_hora_entrega` DATETIME,
   `usuario_id` INT NOT NULL,
   `cliente_id` INT NOT NULL,
   PRIMARY KEY (`id`, `cliente_id`),
