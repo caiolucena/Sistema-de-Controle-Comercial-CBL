@@ -6,18 +6,17 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cbl.erp.dto.ProdutoDTO;
 import com.cbl.erp.model.Produto;
-import com.cbl.erp.model.codigos.Cfop;
 import com.cbl.erp.repository.Cfops;
 import com.cbl.erp.repository.Icmss;
 import com.cbl.erp.repository.Ncms;
@@ -94,4 +93,10 @@ public class ProdutoController {
 //	} 
 //	
 //	
+	
+	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<ProdutoDTO> pesquisar(String nome){
+		return produtos.porNome(nome);
+		
+	}
 }

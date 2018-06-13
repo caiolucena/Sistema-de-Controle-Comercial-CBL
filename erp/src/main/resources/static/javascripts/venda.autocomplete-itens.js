@@ -1,49 +1,39 @@
-var Erp = Erp || {};
+Erp = Erp || {};
 
 Erp.Autocomplete = (function() {
-	
+
 	function Autocomplete() {
-		this.skuOuNomeInput = $('.js-sku-nome-cerveja-input');
-		var htmlTemplateAutocomplete = $('#template-autocomplete-cerveja').html();
+		this.nomeInput = $('.js-nome-produto-input');
+		var htmlTemplateAutocomplete = $('#template-autocomplete-produto').html();
 		this.template = Handlebars.compile(htmlTemplateAutocomplete);
-		this.emitter = $({});
-		this.on = this.emitter.on.bind(this.emitter);
 	}
-	
+
 	Autocomplete.prototype.iniciar = function() {
 		var options = {
-			url: function(skuOuNome) {
-				return this.skuOuNomeInput.data('url') + '?skuOuNome=' + skuOuNome;
-			}.bind(this),
-			getValue: 'nome',
-			minCharNumber: 3,
-			requestDelay: 300,
-			ajaxSettings: {
-				contentType: 'application/json'
+			url : function(nome) {
+				return '/erp/produtos?nome=' + nome;
 			},
-			template: {
-				type: 'custom',
-				method: template.bind(this)
+			getValue : 'nome',
+			requestDelay : 300,
+			ajaxSettings : {
+				contentType : 'application/json'
 			},
-			list: {
-				onChooseEvent: onItemSelecionado.bind(this)
+			template : {
+				type : 'custom',
+				method : function(nome,produto){
+					return this.template(produto);
+				}.bind(this)
 			}
 		};
-		
-		this.skuOuNomeInput.easyAutocomplete(options);
+
+		this.nomeInput.easyAutocomplete(options);
 	}
-	
-	function onItemSelecionado() {
-		this.emitter.trigger('item-selecionado', this.skuOuNomeInput.getSelectedItemData());
-		this.skuOuNomeInput.val('');
-		this.skuOuNomeInput.focus();
-	}
-	
-	function template(nome, cerveja) {
-		cerveja.valorFormatado = Erp.formatarMoeda(cerveja.valor);
-		return this.template(cerveja);
-	}
-	
+
 	return Autocomplete
-	
+
 }());
+
+$(function() {
+	var autocomplete = new Erp.Autocomplete();
+	autocomplete.iniciar();
+})
