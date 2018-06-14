@@ -57,4 +57,9 @@ public class CadastroUsuarioService {
 				.getResultList();
 	}
 	
+	@Transactional
+	public List<Usuario> buscaUsuarios() {
+		return manager.createQuery("select a from Usuario a where a.login !='caio'",Usuario.class).getResultList();
+	}
+	
 }

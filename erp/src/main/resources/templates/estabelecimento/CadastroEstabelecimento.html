@@ -30,7 +30,16 @@
 						</div>
 					</div>
 
-					<div class="col-sm-5"></div>
+					<div class="col-sm-5 float-right">
+							<ul>
+								<li style="list-style-type: none" class = "float-right">
+									<p class="navbar-text"
+										th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+									<a class="nav-link float-right " th:href="@{/logout}"><i
+										class="fa fa-sign-out"></i>Sair</a>
+								</li>
+							</ul>
+					</div>
 				</div>
 
 			</header>

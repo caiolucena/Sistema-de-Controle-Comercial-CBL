@@ -2,7 +2,9 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="'layout/LayoutPadrao'">
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 
 <head>
@@ -40,8 +42,18 @@
 						</div>
 					</div>
 
-					<div class="col-sm-5"></div>
+					<div class="col-sm-5 float-right">
+						<ul>
+							<li style="list-style-type: none" class="float-right">
+								<p class="navbar-text"
+									th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+								<a class="nav-link float-right " th:href="@{/logout}"><i
+									class="fa fa-sign-out"></i>Sair</a>
+							</li>
+						</ul>
+					</div>
 				</div>
+
 
 			</header>
 			<!-- /header -->
@@ -90,9 +102,11 @@
 												<tr>
 													<th style="width: 5%" class="center">Id</th>
 													<th style="width: 15%" class="center">Cpf</th>
-													<th style="width: 20%" class="center">Nome</th>
+													<th style="width: 17%" class="center">Nome</th>
 													<th style="width: 10%" class="center">Login</th>
-													<th style="width: 50%" class="center">Grupos</th>
+													<th style="width: 40%" class="center">Grupos</th>
+													<th style="width: 13%" class="center"
+														sec:authorize-url="/usuarios/deletar">Opções</th>
 												</tr>
 											</thead>
 											<!-- Footer Table -->
@@ -107,6 +121,11 @@
 													<td class="center"><label
 														th:each="grupo: ${usuario.grupos}"
 														th:text="|${grupo.id}- ${grupo.nome};|"></label></td>
+													<td class="text-center"><a
+														class="btn  btn-link  btn-xs" title="Editar"> <i
+															class="fa fa-pencil"></i>
+													</a> <a class="btn  btn-link  btn-xs" title="Excluir"> <i
+															class="fa fa-trash-o"></i></a></td>
 												</tr>
 											</tbody>
 

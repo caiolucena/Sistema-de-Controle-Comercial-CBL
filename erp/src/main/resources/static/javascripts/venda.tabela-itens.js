@@ -24,7 +24,25 @@ Erp.TabelaItens = (function() {
 	function onItemAdicionadoNoServidor(html){
 		
 		this.tabelaProdutosContainer.html(html);
+		$('.js-tabela-produto-quantidade-item').on('keypress',onQuantidadeItemAlterado.bind(this));
 		
+	}
+	function onQuantidadeItemAlterado(evento){
+		var input = $(evento.target);
+		var quantidade = input.val();
+		console.log('novaQuantidade',quantidade);
+		
+		var idProduto = input.data('codigo-produto');
+		console.log('idProduto',idProduto);
+		
+		var resposta = $.ajax({
+			url: 'item/'+ idProduto,
+			method: 'PUT',
+			data:{
+				quantidade: quantidade
+			}
+		});
+		resposta.done(onItemAdicionadoNoServidor.bind(this));
 	}
 	
 	return TabelaItens;

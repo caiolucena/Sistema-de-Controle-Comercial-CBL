@@ -16,6 +16,7 @@ import com.cbl.erp.repository.Grupos;
 import com.cbl.erp.repository.Usuarios;
 import com.cbl.erp.service.CadastroGrupoService;
 import com.cbl.erp.service.CadastroUsuarioService;
+import com.cbl.erp.service.CrudCfopService;
 import com.cbl.erp.service.exception.ItemDuplicadoException;
 import com.cbl.erp.service.exception.LoginDuplicadoException;
 import com.cbl.erp.service.exception.SenhaObrigatoriaUsuarioException;
@@ -172,7 +173,7 @@ public class UsuarioController {
 	@RequestMapping(path = "/busca", method = RequestMethod.GET)
 	public ModelAndView retornarTodos() {
 		ModelAndView mv = new ModelAndView("usuario/ProcurarUsuario");
-		mv.addObject("usuarios", usuarios.findAll());
+		mv.addObject("usuarios", cadastroUsuarioService.buscaUsuarios());
 		return mv;
 	}
 }

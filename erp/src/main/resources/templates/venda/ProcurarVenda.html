@@ -2,7 +2,9 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="'layout/LayoutPadrao'">
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 
 <head>
@@ -40,8 +42,18 @@
 						</div>
 					</div>
 
-					<div class="col-sm-5"></div>
+					<div class="col-sm-5 float-right">
+						<ul>
+							<li style="list-style-type: none" class="float-right">
+								<p class="navbar-text"
+									th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+								<a class="nav-link float-right " th:href="@{/logout}"><i
+									class="fa fa-sign-out"></i>Sair</a>
+							</li>
+						</ul>
+					</div>
 				</div>
+
 
 			</header>
 			<!-- /header -->
@@ -89,10 +101,12 @@
 											<thead>
 												<tr>
 													<th style="width: 10%" class="center">Id</th>
-													<th style="width: 20%" class="center">Data</th>
-													<th style="width: 15" class="center">Valor total (R$)</th>
+													<th style="width: 27%" class="center">Data</th>
+													<th style="width: 12" class="center">Valor total (R$)</th>
 													<th style="width: 20%" class="center">Vendedor</th>
-													<th style="width: 35%" class="center">Cliente</th>
+													<th style="width: 28%" class="center">Cliente</th>
+													<th style="width: 13%" class="center"
+														sec:authorize-url="/vendas/deletar">Opções</th>
 
 												</tr>
 											</thead>
@@ -105,6 +119,11 @@
 													<td th:text="${venda.valorTotal}" class="js-decimal center"></td>
 													<td th:text="${venda.usuario.nome}" class="center"></td>
 													<td th:text="${venda.cliente.nome}" class="center"></td>
+													<td class="text-center" sec:authorize-url="/vendas/deletar"><a
+														class="btn  btn-link  btn-xs" title="Editar"> <i
+															class="fa fa-pencil"></i>
+													</a> <a class="btn  btn-link  btn-xs" title="Excluir"> <i
+															class="fa fa-trash-o"></i></a></td>
 												</tr>
 											</tbody>
 

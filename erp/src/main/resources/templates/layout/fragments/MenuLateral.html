@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
 	<aside id="left-panel" class="left-panel" th:fragment="layout-sidebar">
@@ -35,7 +37,7 @@
 							<li><i class="fa fa-file-text-o"></i><a
 								th:href="@{/estabelecimento/novo}">Visualizar Cadastro</a></li>
 							<li><i class="fa fa-pencil-square-o"></i><a
-								href="ui-buttons.html">Editar Cadastro</a></li>
+								href="ui-buttons.html" sec:authorize-url="/estabelecimento/editar">Editar Cadastro</a></li>
 						</ul></li>
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle " data-toggle="dropdown"
@@ -44,9 +46,9 @@
 					</a>
 						<ul class="sub-menu children dropdown-menu">
 							<li><i class="menu-icon fa fa-plus"></i><a
-								th:href="@{/produtos/novo}">Novo Produto</a></li>
+								th:href="@{/produtos/novo}" sec:authorize-url="/produtos/novo">Novo Produto</a></li>
 							<li><i class="menu-icon fa fa-search"></i><a
-								th:href="@{/produtos/busca}">Buscar Produto</a></li>				
+								th:href="@{/produtos/busca}">Buscar Produto</a></li>
 						</ul></li>
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -55,11 +57,12 @@
 					</a>
 						<ul class="sub-menu children dropdown-menu">
 							<li><i class="menu-icon  fa fa-plus"></i><a
-								th:href="@{/clientes/novo}">Novo Cliente</a></li>
+								th:href="@{/clientes/novo}" sec:authorize-url="/clientes/novo">Novo
+									Cliente</a></li>
 							<li><i class="menu-icon  fa fa-search"></i><a
 								th:href="@{/clientes/busca}">Buscar Cliente</a></li>
 						</ul></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
+					<li class="menu-item-has-children dropdown" sec:authorize-url="/usuarios/novo" ><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-user"></i>Usuários
@@ -76,7 +79,7 @@
 							class="menu-icon fa fa-truck"></i>Fornecedores
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon  fa fa-plus"></i><a
+							<li><i class="menu-icon  fa fa-plus" sec:authorize-url="/fornecedor/novo"></i><a
 								th:href="@{/fornecedores/novo}">Novo Fornecedor</a></li>
 							<li><i class="menu-icon  fa fa-search"></i><a
 								th:href="@{/fornecedores/busca}">Buscar Fornecedor</a></li>
