@@ -27,6 +27,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.cbl.erp.controller.EstabelecimentoController;
 import com.cbl.erp.converter.GrupoConverter;
+import com.cbl.erp.session.TabelaItensVenda;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 /**
@@ -35,7 +36,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
  *
  */
 @Configuration
-@ComponentScan(basePackageClasses = { EstabelecimentoController.class })
+@ComponentScan(basePackageClasses = { EstabelecimentoController.class, TabelaItensVenda.class})
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 	

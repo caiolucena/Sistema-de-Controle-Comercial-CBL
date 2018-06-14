@@ -32,6 +32,11 @@
 	th:href="@{/layout/css/flag-icon.min.css}">
 <link type="text/css" rel="stylesheet"
 	th:href="@{/layout/css/cs-skin-elastic.css}">
+
+<link rel="stylesheet"
+	th:href="@{/stylesheets/easy-autocomplete.min.css}" />
+<link rel="stylesheet"
+	th:href="@{/stylesheets/easy-autocomplete.themes.min.css}" />
 <!-- <link rel="stylesheet" th:href="@{/layout/css/bootstrap-select.less"> -->
 <link type="text/css" rel="stylesheet"
 	th:href="@{/layout/scss/style.css}">
@@ -111,12 +116,18 @@
 	<script
 		src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 
+
+
+	<script src="../static/javascripts/vendors/numeral.min.js"
+		th:src="@{/javascripts/vendors/numeral.min.js}"></script>
+
+	<script src="../static/javascripts/vendors/pt-br.min.js"
+		th:src="@{/javascripts/vendors/pt-br.min.js}"></script>
+
 	<script src="../static/javascripts/datatable2.js"
 		th:src="@{/javascripts/datatable2.js}"></script>
 	<script src="../static/javascripts/erp.js"
 		th:src="@{/javascripts/erp.js}"></script>
-
-
 </body>
 
 <th:block layout:fragment="javascript-extra"></th:block>

@@ -2,44 +2,29 @@ Erp.TabelaItens = (function() {
 	
 	function TabelaItens(autocomplete) {
 		this.autocomplete = autocomplete;
-		this.tabelaCervejasContainer = $('.js-tabela-cervejas-container');
+		this.tabelaProdutosContainer = $('.js-tabela-produtos-container');
 	}
 	
 	TabelaItens.prototype.iniciar = function() {
-		this.autocomplete.on('item-selecionado', onItemSelecionado.bind(this));
+		this.autocomplete.on('item-selecionado',onItemSelecionado.bind(this));
 	}
 	
-	function onItemSelecionado(evento, item) {
+	
+	function onItemSelecionado(evento,item){
 		var resposta = $.ajax({
-			url: 'item',
+			url:'item',
 			method: 'POST',
-			data: {
-				codigoCerveja: item.codigo
+			data:{
+				idProduto: item.id
 			}
 		});
-		
-		resposta.done(onItemAtualizadoNoServidor.bind(this));
+		resposta.done(onItemAdicionadoNoServidor.bind(this));
 	}
 	
-	function onItemAtualizadoNoServidor(html) {
-		this.tabelaCervejasContainer.html(html);
-		$('.js-tabela-cerveja-quantidade-item').on('change', onQuantidadeItemAlterado.bind(this));
-	}
-	
-	function onQuantidadeItemAlterado(evento) {
-		var input = $(evento.target);
-		var quantidade = input.val();
-		var codigoCerveja = input.data('codigo-cerveja');
+	function onItemAdicionadoNoServidor(html){
 		
-		var resposta = $.ajax({
-			url: 'item/' + codigoCerveja,
-			method: 'PUT',
-			data: {
-				quantidade: quantidade
-			}
-		});
+		this.tabelaProdutosContainer.html(html);
 		
-		resposta.done(onItemAtualizadoNoServidor.bind(this));
 	}
 	
 	return TabelaItens;

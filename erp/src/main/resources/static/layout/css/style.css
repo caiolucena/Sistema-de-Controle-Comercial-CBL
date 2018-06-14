@@ -12,6 +12,9 @@
 --------------------------------------------------------- */
 .bg-flat-color-1 {
   background: #20a8d8; }
+.eac-item{
+	border: 1px solid black;
+}
 
 .bg-flat-color-2 {
   background: #63c2de; }
