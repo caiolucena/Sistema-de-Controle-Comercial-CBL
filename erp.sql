@@ -391,9 +391,30 @@ INSERT INTO cidade (nome, estado_id) VALUES ('Campinas', 6);
 INSERT INTO cidade (nome, estado_id) VALUES ('Santos', 6);
 INSERT INTO `grupo` VALUES (1,'Administrador'),(2,'Gerente'),(3,'Vendedor'),(4,'Estoquista');
 
-INSERT INTO `permissao` VALUES (1,'CADASTRAR_USUARIO'),(2,'CADASTRAR_ALUNO'),(3,'CADASTRAR_ACERVO'),(4,'DELETAR_USUARIO'),(5,'DELETAR_ACERVO'),(6,'DELETAR_ALUNO'),(7,'PESQUISAR_USUARIO'),(8,'PESQUISAR_ACERVO'),(9,'PESQUISAR_ALUNO'),(10,'EDITAR_USUARIO'),(11,'EDITAR_ACERVO'),(12,'EDITAR_ALUNO'),(13,'CADASTRAR_EMPRESTIMO'),(14,'DELETAR_EMPRESTIMO'),(15,'EDITAR_EMPRESTIMO'),(16,'QUITAR_EMPRESTIMO');
+#permissões do admin 1-8
+INSERT INTO `permissao` VALUES (1,'CADASTRAR_USUARIO'),(2,'EDITAR_USUARIO'),(3,'DELETAR_USUARIO'),(4,'CADASTRAR_CLIENTE'),(5,'EDITAR_CLIENTE'),(6,'DELETAR_CLIENTE'),(7,'CADASTRAR_ESTABELECIMENTO'),(8,'EDITAR_ESTABELECIMENTO');
 
-INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(2,2),(2,3),(2,5),(2,6),(2,7),(2,8),(2,9),(2,11),(2,12),(2,13),(2,14),(2,15),(2,16),(3,6),(3,7);
+#permissões do estoquista 9-14
+INSERT INTO `permissao` VALUES (9,'CADASTRAR_PRODUTO'),(10,'EDITAR_PRODUTO'),(11,'DELETAR_PRODUTO'),(12,'CADASTRAR_FORNECEDOR'),(13,'EDITAR_FORNECEDOR'),(14,'DELETAR_FORNECEDOR');
+
+#permissões do vendedor 15-18
+INSERT INTO `permissao` VALUES (15,'CADASTRAR_VENDA'),(16,'EDITAR_VENDA'),(17,'DELETAR_VENDA'),(18,'BUSCAR_VENDA');
+
+#Permissões do gerente
+INSERT INTO `permissao` VALUES (19,'BUSCAR_USUARIO');
+
+#ADMIN
+INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),(1,18),(1,19);
+
+#GERENTE
+INSERT INTO `grupo_has_permissao` VALUES (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,8),(2,19);
+
+#VENDEDOR
+INSERT INTO `grupo_has_permissao` VALUES (3,15),(3,16),(3,17),(3,18);
+
+#ESTOQUISTA
+INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11),(4,12),(4,13),(4,14),(4,15);
+
 
 INSERT INTO `usuario` VALUES (1,'097.035.854-77','Caio Lucena','caio','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
 
