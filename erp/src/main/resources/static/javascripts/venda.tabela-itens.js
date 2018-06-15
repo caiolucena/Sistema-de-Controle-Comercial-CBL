@@ -3,6 +3,8 @@ Erp.TabelaItens = (function() {
 	function TabelaItens(autocomplete) {
 		this.autocomplete = autocomplete;
 		this.tabelaProdutosContainer = $('.js-tabela-produtos-container');
+		this.emitter = $({});
+		this.on = this.emitter.on.bind(this.emitter);
 	}
 	
 	TabelaItens.prototype.iniciar = function() {
@@ -24,15 +26,21 @@ Erp.TabelaItens = (function() {
 	function onItemAdicionadoNoServidor(html){
 		
 		this.tabelaProdutosContainer.html(html);
-		$('.js-tabela-produto-quantidade-item').on('keypress',onQuantidadeItemAlterado.bind(this));
+		$('.js-tabela-produto-quantidade-item').on('change',onQuantidadeItemAlterado.bind(this));
 		
 	}
 	function onQuantidadeItemAlterado(evento){
 		var input = $(evento.target);
 		var quantidade = input.val();
+		
 		console.log('novaQuantidade',quantidade);
 		
-		var idProduto = input.data('codigo-produto');
+		if (quantidade <= 0) {
+			input.val(1);
+			quantidade = 1;
+		}
+		
+		var idProduto = input.data('codigo-cerveja');
 		console.log('idProduto',idProduto);
 		
 		var resposta = $.ajax({

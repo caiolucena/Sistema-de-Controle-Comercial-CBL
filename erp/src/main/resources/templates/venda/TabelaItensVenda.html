@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:data= "http://www.thymeleaf.org/extras/data">
+	xmlns:data="http://www.thymeleaf.org/extras/data">
 
 <div class="bw-tabela-item" th:each="item: ${itens}">
 	<div class="bw-tabela-item__coluna  bw-tabela-item__coluna--foto">
-		<img
-			th:src="@{/images/logo.png}"
-			class="img-responsive" />
+		<img th:src="@{/images/logo.png}" class="img-responsive" />
 	</div>
-	
+
 	<div class="bw-tabela-item__coluna bw-tabela-item__coluna--detalhes">
 		<span class="bw-tabela-cerveja-nome" th:value="${item.produto.id}"
 			th:text="${item.produto.nome}"></span>
@@ -17,7 +15,9 @@
 	<div class="bw-tabela-item__coluna bw-tabela-item__coluna--valores">
 		<div class="bw-tabela-cerveja-valor-pequeno">
 			<input type="text" maxlength="3"
-				class="bw-tabela-cerveja-campo-quantidade js-tabela-produto-quantidade-item js-plain" th:value="${item.quantidade}" data:codigo-produto="${item.produto.id}" /> <span>x
+				class="bw-tabela-cerveja-campo-quantidade js-tabela-produto-quantidade-item js-plain centro"
+				th:value="${item.quantidade}"
+				data:codigo-cerveja="${item.produto.codigo}" /> <span>x
 				R$[[${{item.valorUnitario}}]]</span>
 			<div class="bw-tabela-cerveja-valor-grande">
 				R$[[${{item.valorTotal}}]]</div>
