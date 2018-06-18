@@ -29,6 +29,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import com.cbl.erp.controller.EstabelecimentoController;
 import com.cbl.erp.converter.GrupoConverter;
 import com.cbl.erp.session.TabelaItensVenda;
+import com.github.mxab.thymeleaf.extras.dataattribute.dialect.DataAttributeDialect;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 /**
@@ -72,6 +73,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		engine.setTemplateResolver(templateResolver());
 		engine.addDialect(new LayoutDialect());
 		engine.addDialect(new SpringSecurityDialect());
+		engine.addDialect(new DataAttributeDialect());
 		return engine;
 	}
 	

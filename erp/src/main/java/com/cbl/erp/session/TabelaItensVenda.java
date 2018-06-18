@@ -27,12 +27,11 @@ public class TabelaItensVenda {
 	public void adicionarItem(Produto produto, Integer quantidade) {
 		Optional<ItemVenda> itemVendaOptional = buscarItemPorProduto(produto);
 		
-		ItemVenda itemVenda = null;
+		ItemVenda itemVenda = new ItemVenda();
 		if (itemVendaOptional.isPresent()) {
 			itemVenda = itemVendaOptional.get();
 			itemVenda.setQuantidade(itemVenda.getQuantidade() + quantidade);
 		} else {
-			itemVenda = new ItemVenda();
 			itemVenda.setProduto(produto);
 			itemVenda.setQuantidade(quantidade);
 			itemVenda.setValorUnitario(produto.getPreco());

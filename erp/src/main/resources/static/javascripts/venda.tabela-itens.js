@@ -20,43 +20,34 @@ Erp.TabelaItens = (function() {
 				idProduto: item.id
 			}
 		});
-		resposta.done(onItemAdicionadoNoServidor.bind(this));
+		resposta.done(onItemAtualizadoNoServidor.bind(this));
 	}
 	
-	function onItemAdicionadoNoServidor(html){
+	function onItemAtualizadoNoServidor(html){
 		
 		this.tabelaProdutosContainer.html(html);
-		$('.js-tabela-produto-quantidade-item').on('change',onQuantidadeItemAlterado.bind(this));
+		$('.js-tabela-produto-quantidade-item').on('keypress',onQuantidadeItemAlterado.bind(this));
 		
 	}
-	function onQuantidadeItemAlterado(evento){
+	function onQuantidadeItemAlterado(evento) {
 		var input = $(evento.target);
 		var quantidade = input.val();
-		
-		console.log('novaQuantidade',quantidade);
-		
-		if (quantidade <= 0) {
-			input.val(1);
-			quantidade = 1;
-		}
-		
-		var idProduto = input.data('codigo-cerveja');
-		console.log('idProduto',idProduto);
+		var codigoCerveja = input.data('codigo-cerveja');
 		
 		var resposta = $.ajax({
-			url: 'item/'+ idProduto,
-			method: 'PUT',
+			url: 'item/' + codigoCerveja,
+			method: 'POST',
 			data:{
-				quantidade: quantidade
+				'quantidade': quantidade
 			}
 		});
-		resposta.done(onItemAdicionadoNoServidor.bind(this));
+		
+		resposta.done(onItemAtualizadoNoServidor.bind(this));
 	}
 	
 	return TabelaItens;
 	
 }());
-
 $(function() {
 	
 	var autocomplete = new Erp.Autocomplete();

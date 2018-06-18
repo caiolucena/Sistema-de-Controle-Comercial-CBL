@@ -37,8 +37,7 @@ public class VendaController {
 	public ModelAndView retornarTodos() {
 		ModelAndView mv = new ModelAndView("venda/ProcurarVenda");
 
-		mv.addObject("vendas", vendas.findAll());
-		System.out.println(vendas.findAll().get(0).getId());
+		mv.addObject("vendas", vendas.findAll());		
 		return mv;
 	}
 
@@ -53,11 +52,11 @@ public class VendaController {
 		return mv;
 	}
 
-	@PutMapping("/item/{idProduto}")
-	public ModelAndView alterarQuantidadeItem(@PathVariable int idProduto, Integer quantidade) {
-
+	@RequestMapping(value = "/item/{idProduto}", method = RequestMethod.POST)
+	public ModelAndView alterarQuantidadeItem(@PathVariable int idProduto, String quantidade) {
 		Produto produto = produtos.findOne(idProduto);
-		tabelaItensVenda.adicionarItem(produto, quantidade);
+		System.out.println("Quantidade vinda do ajax: "+ quantidade);
+		tabelaItensVenda.adicionarItem(produto, Integer.parseInt(quantidade));
 		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
 
 		mv.addObject("itens", tabelaItensVenda.getItens());
