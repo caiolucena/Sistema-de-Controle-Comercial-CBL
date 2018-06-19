@@ -33,6 +33,8 @@ public class ItemVenda {
 	@JoinColumn(name = "venda_id")
 	private Venda venda;
 
+
+
 	public int getId() {
 		return id;
 	}

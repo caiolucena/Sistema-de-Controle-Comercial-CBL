@@ -23,7 +23,6 @@ public class SegurancaController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@AuthenticationPrincipal User user){
 		if(user != null) {
-			System.out.println(user.getPassword());
 			return "redirect:/index";
 		}
 		return "Login";

@@ -299,6 +299,10 @@
 	font-size: 1.3em;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 @media ( min-width : 768px) { /* screen-sm-min */
 	.bw-tabela-item__painel-exclusao {
 		width: 40%;

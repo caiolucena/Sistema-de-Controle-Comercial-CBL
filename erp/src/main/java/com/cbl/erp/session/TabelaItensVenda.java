@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -16,21 +17,18 @@ import com.cbl.erp.model.Produto;
 public class TabelaItensVenda {
 
 	private List<ItemVenda> itens = new ArrayList<>();
-	
+
 	public BigDecimal getValorTotal() {
-		return itens.stream()
-				.map(ItemVenda::getValorTotal)
-				.reduce(BigDecimal::add)
-				.orElse(BigDecimal.ZERO);
+		return itens.stream().map(ItemVenda::getValorTotal).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
 	}
-	
+
 	public void adicionarItem(Produto produto, Integer quantidade) {
 		Optional<ItemVenda> itemVendaOptional = buscarItemPorProduto(produto);
-		
+
 		ItemVenda itemVenda = new ItemVenda();
 		if (itemVendaOptional.isPresent()) {
 			itemVenda = itemVendaOptional.get();
-			itemVenda.setQuantidade(itemVenda.getQuantidade() + quantidade);
+			itemVenda.setQuantidade(quantidade);
 		} else {
 			itemVenda.setProduto(produto);
 			itemVenda.setQuantidade(quantidade);
@@ -38,12 +36,20 @@ public class TabelaItensVenda {
 			itens.add(0, itemVenda);
 		}
 	}
-	
+
+	public void excluirItem(Produto produto) {
+		int indice = IntStream.range(0,itens.size())
+				.filter(i -> itens.get(i).getProduto().equals(produto))
+				.findAny().getAsInt();
+		itens.remove(indice);
+		
+	}
+
 	public void alterarQuantidadeItens(Produto produto, Integer quantidade) {
 		ItemVenda itemVenda = buscarItemPorProduto(produto).get();
 		itemVenda.setQuantidade(quantidade);
 	}
-	
+
 	public int total() {
 		return itens.size();
 	}
@@ -51,13 +57,9 @@ public class TabelaItensVenda {
 	public List<ItemVenda> getItens() {
 		return itens;
 	}
-	
+
 	private Optional<ItemVenda> buscarItemPorProduto(Produto produto) {
-		return itens.stream()
-				.filter(i -> i.getProduto().equals(produto))
-				.findAny();
+		return itens.stream().filter(i -> i.getProduto().equals(produto)).findAny();
 	}
-	
-	
-	
+
 }
