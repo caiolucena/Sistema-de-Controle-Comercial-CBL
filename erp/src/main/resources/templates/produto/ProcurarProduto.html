@@ -121,9 +121,11 @@
 													<td th:text="${produto.ncm.codigo}" class="center"></td>
 													<td class="text-center"
 														sec:authorize-url="/produtos/deletar"><a
-														class="btn  btn-link  btn-xs js-tooltip" title="Editar">
-															<i class="fa fa-pencil"></i>
-													</a> <a class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn"
+														class="btn  btn-link  btn-xs js-tooltip" title="Editar"
+														th:href="@{/produtos/{id}(id = ${produto.id})}"> <i
+															class="fa fa-pencil"></i>
+													</a> <a
+														class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn"
 														title="Excluir" href="#"
 														data:url="@{/produtos/{id}(id=${produto.id})}"
 														data:objeto="${produto.nome}"> <i

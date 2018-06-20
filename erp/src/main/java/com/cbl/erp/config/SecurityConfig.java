@@ -33,12 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers("/usuarios/novo").hasAuthority("CADASTRAR_USUARIO")
-			.antMatchers("/usuarios/editar").hasAuthority("EDITAR_USUARIO")
 			.antMatchers("/usuarios/deletar").hasAuthority("DELETAR_USUARIO")
 			.antMatchers("/usuarios/busca").hasAuthority("BUSCAR_USUARIO")
 			
 			.antMatchers("/clientes/novo").hasAuthority("CADASTRAR_CLIENTE")
-			.antMatchers("/clientes/editar").hasAuthority("EDITAR_CLIENTE")
 			.antMatchers("/clientes/deletar").hasAuthority("DELETAR_CLIENTE")
 			
 			.antMatchers("/produtos/novo").hasAuthority("CADASTRAR_PRODUTO")
@@ -46,14 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/produtos/deletar").hasAuthority("DELETAR_PRODUTO")
 			
 			.antMatchers("/vendas/novo").hasAuthority("CADASTRAR_VENDA")
-			.antMatchers("/vendas/editar").hasAuthority("EDITAR_VENDA")
 			.antMatchers("/vendas/deletar").hasAuthority("DELETAR_VENDA")
 			
-			.antMatchers("/fornecedor/novo").hasAuthority("CADASTRAR_FORNECEDOR")
-			.antMatchers("/fornecedor/editar").hasAuthority("EDITAR_FORNECEDOR")
-			.antMatchers("/fornecedor/deletar").hasAuthority("DELETAR_FORNECEDOR")
 			
 			.antMatchers("/estabelecimento/editar").hasAuthority("EDITAR_ESTABELECIMENTO")
+			.antMatchers("/estabelecimento/novo").hasAuthority("CADASTRAR_ESTABELECIMENTO")
+			.antMatchers("/estabelecimento/visualizar").hasAuthority("VISUALIZAR_ESTABELECIMENTO")
 			.anyRequest().authenticated()
 			
 			.and()

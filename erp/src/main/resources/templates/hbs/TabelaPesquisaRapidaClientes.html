@@ -1,10 +1,12 @@
-<script id="tabela-pesquisa-rapida-cliente" type="text/x-handlebars-template">
+<script id="tabela-pesquisa-rapida-cliente"
+	type="text/x-handlebars-template">
 <div class="table-responsive  bw-tabela-simples" style="margin-top: 15px">
 	<table class="table  table-hover">
 		<thead>
 			<tr>
 				<th  style="width: 50%" class="center">Nome</th>
-				<th  style="width: 50%" class="center">Telefone</th>
+				<th  style="width: 25%" class="center">Telefone</th>
+				<th  style="width: 25%" class="center">Cep</th>
 			</tr>
 		</thead>
 				
@@ -14,6 +16,7 @@
 					<tr data-id = "{{id}}" data-nome = "{{nome}}" class = "js-cliente-pesquisa-rapida pointer" >
 						<td>{{nome}}</td>
 						<td>{{telefone}}</td>
+						<td>{{endereco.cep}}</td>
  					</tr>
 				{{/each}}
 			{{else}}

@@ -1,4 +1,4 @@
-Erp = Erp || {};
+var Erp = Erp || {};
 
 Erp.DialogoExcluir = (function() {
 	

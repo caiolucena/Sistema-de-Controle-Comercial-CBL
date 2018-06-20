@@ -2,72 +2,45 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <body>
-	<div class="modal fade" id="modalHelpCadastroEstabelecimento"
-		tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel"
-		aria-hidden="true" th:fragment="modal">
+	<div class="modal fade" id="modalHelpCadastroCliente" tabindex="-1"
+		role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true"
+		th:fragment="modal">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="scrollmodalLabel">Scrolling Long
-						Content Modal</h5>
+					<h5 class="modal-title" id="scrollmodalLabel">Cadastrando um
+						Cliente</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>
-						AQUI VAI FICAR O HELP BEM BACANA AJUDANDO NO CADASTRO DO
-						ESTABELECIMENTO Cras mattis consectetur purus sit amet fermentum.
-						Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi
-						leo risus, porta ac consectetur ac, vestibulum at eros. <br>
-						Praesent commodo cursus magna, vel scelerisque nisl consectetur
-						et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
-						auctor.<br> Aenean lacinia bibendum nulla sed consectetur.
-						Praesent commodo cursus magna, vel scelerisque nisl consectetur
-						et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor
-						fringilla.<br> Cras mattis consectetur purus sit amet
-						fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-						quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.<br> Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-						faucibus dolor auctor.<br> Aenean lacinia bibendum nulla sed
-						consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.<br> Cras mattis consectetur purus sit
-						amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-						eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.<br> Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-						faucibus dolor auctor.<br> Aenean lacinia bibendum nulla sed
-						consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.<br> Cras mattis consectetur purus sit
-						amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-						eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.<br> Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-						faucibus dolor auctor.<br> Aenean lacinia bibendum nulla sed
-						consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.<br> Cras mattis consectetur purus sit
-						amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-						eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.<br> Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-						faucibus dolor auctor.<br> Aenean lacinia bibendum nulla sed
-						consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.<br> Cras mattis consectetur purus sit
-						amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas
-						eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at
-						eros.<br> Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum
-						faucibus dolor auctor.<br> Aenean lacinia bibendum nulla sed
-						consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-						consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
-						metus auctor fringilla.
-					</p>
+					<div id="expCliente">
+						<p style="color: black">Uma das principais tarefas realizadas
+							neste sistema é o cadastro de clientes. Aqui seguem informações
+							importantes sobre o cadastro além de um vídeo exemplificando um
+							cadastro sendo feito.</p>
+						<ul style="padding-left: 10px">
+							<li style="padding-left: 10px">Apenas usuários com acesso de Gerente 
+							ou de Vendedor conseguem cadastrar Clientes</li>
+							<li style="padding-left: 10px">Os campos obrigatórios são
+								indicados com *(asterisco)</li>
+							<li style="padding-left: 10px">Nosso sistema possui
+								Validação de CPF, além de inputs personalizados de Telefone,
+								data e CEP, por exemplo.</li>
+							<li style="padding-left: 10px">Nosso sistema não permite o
+								cadastro de Clientes com o mesmo CPF</li>
+							<li style="padding-left: 10px">Quando uma UF é selecionada,
+								serão disponibilizadas as cidades correspondentes no campo de
+								cidades</li>
+						</ul>
+						<p style="color: black">Exemplo:</p>
+						<video width="700" height="480" controls>
+							<source th:src="@{/videos/CadastroCliente.mp4}" type="video/mp4">
+						</video>
+
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>

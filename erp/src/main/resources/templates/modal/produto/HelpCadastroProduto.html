@@ -2,87 +2,62 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <body>
-	<div class="modal fade" id="modalHelpCadastroProduto" tabindex="-1" role="dialog"
-		aria-labelledby="scrollmodalLabel" aria-hidden="true" th:fragment = "modal">
+	<div class="modal fade" id="modalHelpCadastroProduto" tabindex="-1"
+		role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true"
+		th:fragment="modal">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="scrollmodalLabel">Scrolling Long
-						Content Modal</h5>
+					<h5 class="modal-title" id="scrollmodalLabel">Cadastrando um
+						Produto</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>
-					AQUI VAI FICAR O HELP BEM BACANA AJUDANDO NO CADASTRO DO PRODUTO
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros. <br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
+					<div id="expUsuario">
+						<p style="color: black">Cadastros de produtos bem feitos
+							ajudam a evitar erros futuros causados por incompatibilidade nos
+							códigos informados.</p>
+						<p style="color: black">No nosso sistema, estes erros são
+							minimizados, pois não permitimos que códigos não relacionados
+							sejam cadastrados no mesmo produto</p>
+						<p style="color: black">Ressaltamos que, qualquer dúvida
+							quevocê tiver relacionada à códigos fiscais, pode ser tirada pelo
+							nosso suporte ou por seu contador</p>
+						<p style="color: black">Em seguida, indicaremos links
+							importantes para que você tenha melhores informações sobre os
+							códigos necessários no cadastro do produto</p>
 
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
+						<p style="color: black; font-weight: bold">Códigos Fiscais</p>
+						<ul style="padding-left: 10px">
+							<li style="padding-left: 10px"><a style ="color: blue" target="_blank"
+								href="http://www.ccentral.com.br/web/documentos/CST-CSOSN.pdf">CST
+									- CSON </a></li>
+							<li style="padding-left: 10px"><a style ="color: blue"
+								href="http://contadores.cnt.br/cfop.html" target="_blank">CFOP - Código
+									Fiscal de Operações e de Prestações das Entradas de Mercadorias
+									e Bens e da Aquisição de Serviços</a></li>
+							<li style="padding-left: 10px"><a style ="color: blue" target="_blank"
+								href="https://www.contabilizei.com.br/contabilidade-online/ncm/">NCM
+									- Nomenclatura Comum do Mercosul</a></li>
+						</ul>
 
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
+					</div>
+					<p style="color: black">Exemplo:</p>
+					<video width="700" height="480" controls>
+						<source th:src="@{/videos/CadastroCliente.mp4}" type="video/mp4">
+					</video>
 
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.
-					</p>
-				</div>
-				<div class="modal-footer">
-<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

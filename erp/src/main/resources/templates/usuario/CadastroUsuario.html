@@ -29,14 +29,14 @@
 					</div>
 
 					<div class="col-sm-5 float-right">
-							<ul>
-								<li style="list-style-type: none" class = "float-right">
-									<p class="navbar-text"
-										th:text="${#authentication.principal.usuario.nome}">Usuario</p>
-									<a class="nav-link float-right " th:href="@{/logout}"><i
-										class="fa fa-sign-out"></i>Sair</a>
-								</li>
-							</ul>
+						<ul>
+							<li style="list-style-type: none" class="float-right">
+								<p class="navbar-text"
+									th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+								<a class="nav-link float-right " th:href="@{/logout}"><i
+									class="fa fa-sign-out"></i>Sair</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -50,7 +50,10 @@
 				<div class="col-sm-4">
 					<div class="page-header float-left">
 						<div class="page-title">
-							<h1>Cadastro de Usuário</h1>
+							<h1 th:if="${usuario.novo}">Cadastro de Usuário</h1>
+							<h1 th:unless="${usuario.novo}"
+								th:text="|Edição do Usuário: ${usuario.nome}|">Edição de
+								Usuário</h1>
 						</div>
 					</div>
 				</div>
@@ -73,7 +76,10 @@
 
 				<form method="POST"
 					class="form-vertical  js-form-loading content mt-3"
-					th:object="${usuario}">
+					th:object="${usuario}"
+					th:action = "${usuario.novo}? @{/usuarios/novo} : @{/usuarios/{id}(id=${usuario.id})}">
+
+					<input type="hidden" th:field="*{id}" />
 
 					<th:block th:include="fragments/MensagensErroValidacao"></th:block>
 					<!-- Linha do Nome -->
@@ -131,7 +137,7 @@
 					</div>
 
 					<button type="submit" class="btn  btn-primary">Salvar</button>
-					<button type="button" class="btn btn-danger">Cancelar</button>
+					<a th:href="@{/index}" class="btn btn-danger">Cancelar</a>
 				</form>
 			</div>
 			<div th:replace="modal/usuario/HelpCadastroUsuario :: modal"></div>

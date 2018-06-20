@@ -31,7 +31,7 @@ public class Cliente implements Serializable {
 	private String nome;
 
 	@NotBlank(message = "CPF/CNPJ é obrigatório")
-	@CPF(message = " Cpf inválido")
+	@CPF(message = " CPF inválido")
 	private String cpf;
 
 	private String telefone;
@@ -39,7 +39,6 @@ public class Cliente implements Serializable {
 	@Email(message = "E-mail inválido")
 	private String email;
 
-	@JsonIgnore
 	@Embedded
 	private Endereco endereco;
 
@@ -98,7 +97,9 @@ public class Cliente implements Serializable {
 		this.cpf = cpf;
 	}
 
-	
+	public boolean isNovo() {
+		return id <1;
+	}
 	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;

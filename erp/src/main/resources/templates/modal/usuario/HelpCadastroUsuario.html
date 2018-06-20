@@ -2,81 +2,72 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <body>
-	<div class="modal fade" id="modalHelpCadastroUsuario" tabindex="-1" role="dialog"
-		aria-labelledby="scrollmodalLabel" aria-hidden="true" th:fragment = "modal">
+	<div class="modal fade" id="modalHelpCadastroUsuario" tabindex="-1"
+		role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true"
+		th:fragment="modal">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="scrollmodalLabel">Scrolling Long
-						Content Modal</h5>
+					<h5 class="modal-title" id="scrollmodalLabel">Cadastrando um Usuário</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p>
-					AQUI VAI FICAR O HELP BEM BACANA AJUDANDO NO CADASTRO DO USUARIO
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros. <br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
+					<div id="expUsuario">
+						<p style="color: black">O Cadastro de Usuário é primordial
+							para que o Gerente tenha um controle melhor sobre sua equipe.
+							Nosso sistema possui níveis de acesso que serão explicados em seguida.</p>
+						<ul style="padding-left: 10px">
+							<li style="padding-left: 10px">Apenas usuários com acesso de
+								Gerente conseguem cadastrar Usuários</li>
+							<li style="padding-left: 10px">Os campos obrigatórios são
+								indicados com *(asterisco)</li>
+							<li style="padding-left: 10px">Nosso sistema possui
+								Validação de CPF</li>
+							<li style="padding-left: 10px">Nosso sistema não permite o
+								cadastro de Usuários com o mesmo CPF</li>
+						</ul>
+						<div>
+							<p style="color: black; font-weight: bold">Níveis de Acesso</p>
+							<div>
+								<p style="color: black; font-weight: bold">Gerente:</p>
+								<ul style="padding-left: 10px">
+									<li style="padding-left: 10px">Cadastrar,buscar Editar e
+										Remover Usuários</li>
+									<li style="padding-left: 10px">Visualizar e Editar o
+										cadastro do Estabelecimento</li>
+									<li style="padding-left: 10px">Cadastrar, buscar, Editar e
+										Remover Clientes</li>
+								</ul>
+							</div>
+							<div>
+								<p style="color: black; font-weight: bold">Vendedor:</p>
+								<ul style="padding-left: 10px">
+									<li style="padding-left: 10px">Cadastrar e buscar Produtos</li>
+									<li style="padding-left: 10px">Visualizar o cadastro do
+										Estabelecimento</li>
+									<li style="padding-left: 10px">Cadastrar e buscar Clientes</li>
+									<li style="padding-left: 10px">Realizar e Remover Vendas</li>
+								</ul>
+							</div>
+							<div>
+								<p style="color: black; font-weight: bold">Estoquista:</p>
+								<ul style="padding-left: 10px">
+									<li style="padding-left: 10px">Cadastrar,buscar Editar e
+										Remover Produtos</li>
+									<li style="padding-left: 10px">Visualizar o cadastro do
+										Estabelecimento</li>
+								</ul>
+							</div>
+						</div>
+						<p style="color: black">Exemplo:</p>
+						<video width="700" height="480" controls>
+							<source th:src="@{/videos/CadastroCliente.mp4}" type="video/mp4">
+						</video>
 
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.<br>
-
-						Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-						dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-						ac consectetur ac, vestibulum at eros.<br> Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Vivamus
-						sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.<br>
-
-						Aenean lacinia bibendum nulla sed consectetur. Praesent commodo
-						cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
-						dui. Donec ullamcorper nulla non metus auctor fringilla.
-					</p>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>

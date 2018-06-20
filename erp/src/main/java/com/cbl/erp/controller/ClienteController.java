@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,7 @@ import com.cbl.erp.repository.Cidades;
 import com.cbl.erp.repository.Clientes;
 import com.cbl.erp.repository.Estados;
 import com.cbl.erp.service.CrudClienteService;
+import com.cbl.erp.service.exception.ImpossivelExcluirEntidadeException;
 import com.cbl.erp.service.exception.ItemDuplicadoException;
 
 @Controller
@@ -41,7 +44,7 @@ public class ClienteController {
 	@Autowired
 	Clientes clientes;
 
-	@RequestMapping("/novo")
+	@GetMapping("/novo")
 	public ModelAndView novo(Cliente cliente) {
 		ModelAndView mv = new ModelAndView("cliente/CadastroCliente");
 		mv.addObject("cidades", cidades.findAll());
@@ -50,18 +53,25 @@ public class ClienteController {
 
 	}
 
-	@PostMapping("/novo")
+	@RequestMapping(value= {"novo","{\\d+}"},method = RequestMethod.POST)
 	public ModelAndView cadastro(@Valid Cliente cliente, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(cliente);
 		}
+		String mensagem;
+		if(cliente.isNovo()) {
+			mensagem = "Cliente salvo com sucesso!";
+		}
+		else {
+			mensagem = "Cliente atualizado com sucesso!";
+		}
 		try {
 			crudClienteService.salvar(cliente);
-			attributes.addFlashAttribute("mensagem", "Cliente salvo com sucesso!");
+			
 		} catch (ItemDuplicadoException e) {
 			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 		}
-
+		attributes.addFlashAttribute("mensagem", mensagem);
 		return new ModelAndView("redirect:/clientes/novo");
 
 	}
@@ -84,12 +94,29 @@ public class ClienteController {
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<Void> tratarIllegalArgumentException(IllegalArgumentException e) {
 		return ResponseEntity.badRequest().build();
 	}
-	
+
+	@DeleteMapping("/{id}")
+	public @ResponseBody ResponseEntity<?> excluir(@PathVariable int id) {
+		try {
+			Cliente cliente = clientes.findOne(id);
+			crudClienteService.excluir(cliente);
+		} catch (ImpossivelExcluirEntidadeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
+	}
+
+	@GetMapping("/{id}")
+	public ModelAndView editar(@PathVariable int id) {
+		Cliente cliente = clientes.findOne(id);
+		ModelAndView mv = novo(cliente);
+		mv.addObject(cliente);
+		return mv;
+	}
+
 }
-
-

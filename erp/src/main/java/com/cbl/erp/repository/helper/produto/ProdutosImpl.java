@@ -19,7 +19,7 @@ public class ProdutosImpl implements ProdutosQueries {
 		String jpql = "select new com.cbl.erp.dto.ProdutoDTO(id,nome,preco) "
 						+ "from Produto where lower(nome) like lower(:nome)";
 		List<ProdutoDTO> produtosFiltrados = manager.createQuery(jpql, ProdutoDTO.class)
-				.setParameter("nome",nome +"%")
+				.setParameter("nome","%"+nome +"%")
 				.getResultList();
 		return produtosFiltrados;
 	}

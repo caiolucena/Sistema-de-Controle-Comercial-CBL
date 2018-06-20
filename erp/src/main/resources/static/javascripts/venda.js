@@ -37,8 +37,7 @@ Erp.Venda = (function() {
 	}
 	
 	function onValoresAlterados() {
-		var valorTotal = this.valorTotalItens + this.valorFrete - this.valorDesconto;
-		console.log(valorTotal);
+		var valorTotal = numeral(this.valorTotalItens) + numeral(this.valorFrete) - numeral(this.valorDesconto);
 		this.valorTotalBox.html(Erp.formatarMoeda(valorTotal));
 		
 		this.valorTotalBoxContainer.toggleClass('negativo', valorTotal < 0);

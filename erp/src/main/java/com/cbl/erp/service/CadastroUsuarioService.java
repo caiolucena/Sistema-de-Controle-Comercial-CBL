@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cbl.erp.model.Usuario;
+import com.cbl.erp.model.Usuario;
 import com.cbl.erp.repository.Usuarios;
+import com.cbl.erp.service.exception.ImpossivelExcluirEntidadeException;
 import com.cbl.erp.service.exception.ItemDuplicadoException;
 import com.cbl.erp.service.exception.LoginDuplicadoException;
 
@@ -31,12 +34,13 @@ public class CadastroUsuarioService {
 	@Transactional
 	public Usuario salvar (Usuario usuario) {
 		Optional <Usuario> usuarioOptional = usuarios.findByCpfIgnoreCase(usuario.getCpf());
-		if(usuarioOptional.isPresent()){
+		
+		if(usuarioOptional.isPresent() && !usuarioOptional.get().equals(usuario)){
 			throw new ItemDuplicadoException(" CPF já Cadastrado!");
 		}
 		
 		usuarioOptional = usuarios.findByLoginIgnoreCase(usuario.getLogin());
-		if(usuarioOptional.isPresent()) {
+		if(usuarioOptional.isPresent() && !usuarioOptional.get().equals(usuario)) {
 			throw new LoginDuplicadoException(" Já há um usuário cadastrado com este Login!");
 		}
 	
@@ -60,6 +64,17 @@ public class CadastroUsuarioService {
 	@Transactional
 	public List<Usuario> buscaUsuarios() {
 		return manager.createQuery("select a from Usuario a where a.login !='caio'",Usuario.class).getResultList();
+	}
+
+	@Transactional
+	public void excluir(Usuario usuario) {
+		try {
+			usuarios.delete(usuario);
+			usuarios.flush();
+			
+		} catch (PersistenceException e) {
+			throw new ImpossivelExcluirEntidadeException("Impossível apagar usuario. Já foi usado em alguma venda.");
+		}
 	}
 	
 }

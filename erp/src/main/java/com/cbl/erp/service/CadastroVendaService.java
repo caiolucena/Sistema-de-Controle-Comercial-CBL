@@ -4,13 +4,17 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import javax.persistence.PersistenceException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cbl.erp.model.ItemVenda;
 import com.cbl.erp.model.Venda;
+import com.cbl.erp.model.Venda;
 import com.cbl.erp.repository.Vendas;
+import com.cbl.erp.service.exception.ImpossivelExcluirEntidadeException;
 
 @Service
 public class CadastroVendaService {
@@ -45,5 +49,15 @@ public class CadastroVendaService {
 				.add(Optional.ofNullable(valorFrete).orElse(BigDecimal.ZERO))
 				.subtract(Optional.ofNullable(valorDesconto).orElse(BigDecimal.ZERO));
 		return valorTotal;
+	}
+	@Transactional
+	public void excluir(Venda venda) {
+		try {
+			vendas.delete(venda);
+			vendas.flush();
+			
+		} catch (PersistenceException e) {
+			throw new ImpossivelExcluirEntidadeException("Impossível apagar venda");
+		}
 	}
 }

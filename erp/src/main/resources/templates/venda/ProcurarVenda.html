@@ -101,11 +101,11 @@
 											<thead>
 												<tr>
 													<th style="width: 10%" class="center">Id</th>
-													<th style="width: 27%" class="center">Data</th>
+													<th style="width: 25%" class="center">Data e Hora da Venda</th>
 													<th style="width: 12" class="center">Valor total (R$)</th>
-													<th style="width: 20%" class="center">Vendedor</th>
+													<th style="width: 15%" class="center">Vendedor</th>
 													<th style="width: 28%" class="center">Cliente</th>
-													<th style="width: 13%" class="center"
+													<th style="width: 10%" class="center"
 														sec:authorize-url="/vendas/deletar">Opções</th>
 
 												</tr>
@@ -115,15 +115,21 @@
 												<tr th:each="venda: ${vendas}" data-id="${vendas.id}">
 													<td th:text="${venda.id}" class="center"
 														th:value="${venda.id}"></td>
-													<td th:text="${venda.dataCriacao}" class="center"></td>
+													<td th:text="${{venda.dataCriacao}}" class="center"></td>
 													<td th:text="${venda.valorTotal}" class="js-decimal center"></td>
 													<td th:text="${venda.usuario.nome}" class="center"></td>
 													<td th:text="${venda.cliente.nome}" class="center"></td>
-													<td class="text-center" sec:authorize-url="/vendas/deletar"><a
-														class="btn  btn-link  btn-xs" title="Editar"> <i
+													<td class="text-center" sec:authorize-url="/vendas/deletar">
+														<!--  <a
+														class="btn  btn-link  btn-xs" title="Editar"
+														th:href="@{/vendas/{id}(id = ${venda.id})}"> <i
 															class="fa fa-pencil"></i>
-													</a> <a class="btn  btn-link  btn-xs" title="Excluir"> <i
-															class="fa fa-trash-o"></i></a></td>
+													</a>--> <a
+														class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn"
+														title="Excluir" href="#"
+														data:url="@{/vendas/{id}(id=${venda.id})}"
+														data:objeto="${venda.id}"> <i class="fa fa-trash-o"></i></a>
+													</td>
 												</tr>
 											</tbody>
 

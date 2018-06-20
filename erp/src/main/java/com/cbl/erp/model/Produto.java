@@ -22,8 +22,6 @@ import com.cbl.erp.model.codigos.Cfop;
 import com.cbl.erp.model.codigos.Ncm;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -31,10 +29,10 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@NotBlank(message = " A descrição do produto é obrigatória")
 	private String nome;
-	
+
 	@Size(max = 60, message = "As informações adicionais devem conter no máximo 60 caracteres")
 	private String descricao;
 
@@ -49,13 +47,13 @@ public class Produto {
 	@JoinColumn(name = "cfop_id")
 	@JsonIgnore
 	private Cfop cfop;
-	
+
 	@NotNull(message = " Informe a quantidade de produtos no seu estoque")
 	private Integer estoque;
-	
+
 	@NotNull(message = " Informe o preço do produto")
-	@DecimalMin(value = "0.01",message = "O valor da cerveja deve ser maior do que R$ 0,01")
-	@DecimalMax(value = "99999.99",message = "O valor da cerveja deve ser menor do que R$ 99.999,99")
+	@DecimalMin(value = "0.01", message = "O valor da cerveja deve ser maior do que R$ 0,01")
+	@DecimalMax(value = "99999.99", message = "O valor da cerveja deve ser menor do que R$ 99.999,99")
 	private BigDecimal preco;
 
 	public int getId() {
@@ -86,6 +84,10 @@ public class Produto {
 		return estoque;
 	}
 
+	public boolean isNovo() {
+		return id == 0;
+	}
+
 	public void setEstoque(Integer estoque) {
 		this.estoque = estoque;
 	}
@@ -98,8 +100,6 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	
-	
 	public Ncm getNcm() {
 		return ncm;
 	}
@@ -137,8 +137,5 @@ public class Produto {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }

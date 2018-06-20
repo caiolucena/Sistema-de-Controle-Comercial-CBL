@@ -17,7 +17,7 @@
 				</button>
 				<a class="navbar-brand" href="./"><img
 					th:src="@{/layout/images/logo.png}" alt="Logo"></a> <a
-					class="navbar-brand hidden" href="./"><img
+					class="navbar-brand hidden"><img
 					th:src="@{/layout/images/logo2.png}" alt="Logo"></a>
 			</div>
 
@@ -28,16 +28,22 @@
 					</a></li>
 					<h3 class="menu-title">Cadastro</h3>
 					<!-- /.menu-title -->
-					<li class="menu-item-has-children dropdown"><a href="#"
+					<li class="menu-item-has-children dropdown"
+						sec:authorize-url="/estabelecimento/visualizar"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-building"></i>Meu Estabelecimento
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="fa fa-file-text-o"></i><a
-								th:href="@{/estabelecimento/novo}">Visualizar Cadastro</a></li>
-							<li><i class="fa fa-pencil-square-o"></i><a
-								href="ui-buttons.html" sec:authorize-url="/estabelecimento/editar">Editar Cadastro</a></li>
+							<li sec:authorize-url="/estabelecimento/novo"><i
+								class="fa fa-file-text-o"></i><a
+								th:href="@{/estabelecimento/novo}">Realizar Cadastro</a></li>
+							<li><i class="fa fa-search"></i><a href="ui-buttons.html"
+								sec:authorize-url="/estabelecimento/visualizar">Visualizar
+									Cadastro</a></li>
+							<li sec:authorize-url="/estabelecimento/editar"><i
+								class="fa fa-pencil-square-o"></i><a href="ui-buttons.html">Editar
+									Cadastro</a></li>
 						</ul></li>
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle " data-toggle="dropdown"
@@ -45,24 +51,29 @@
 							class="menu-icon fa fa-product-hunt"></i>Produtos
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-plus"></i><a
-								th:href="@{/produtos/novo}" sec:authorize-url="/produtos/novo">Novo Produto</a></li>
-							<li><i class="menu-icon fa fa-search"></i><a
+							<li sec:authorize-url="/produtos/novo"><i
+								class="menu-icon fa fa-plus"></i><a th:href="@{/produtos/novo}">Novo
+									Produto</a></li>
+							<li sec:authorize-url="/produtos/busca"><i
+								class="menu-icon fa fa-search"></i><a
 								th:href="@{/produtos/busca}">Buscar Produto</a></li>
 						</ul></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
+					<li class="menu-item-has-children dropdown"
+						sec:authorize-url="/clientes/novo"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-address-card-o"></i>Clientes
+							class="menu-icon fa  fa-users"></i>Clientes
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon  fa fa-plus"></i><a
-								th:href="@{/clientes/novo}" sec:authorize-url="/clientes/novo">Novo
+							<li sec:authorize-url="/clientes/novo"><i class="menu-icon  fa fa-plus"></i><a
+								th:href="@{/clientes/novo}" >Novo
 									Cliente</a></li>
-							<li><i class="menu-icon  fa fa-search"></i><a
-								th:href="@{/clientes/busca}">Buscar Cliente</a></li>
+							<li  sec:authorize-url="/clientes/busca"><i class="menu-icon  fa fa-search"></i><a
+								th:href="@{/clientes/busca}">Buscar
+									Cliente</a></li>
 						</ul></li>
-					<li class="menu-item-has-children dropdown" sec:authorize-url="/usuarios/novo" ><a href="#"
+					<li class="menu-item-has-children dropdown"
+						sec:authorize-url="/usuarios/novo"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-user"></i>Usuários
@@ -73,33 +84,12 @@
 							<li><i class="menu-icon  fa fa-search"></i><a
 								th:href="@{/usuarios/busca}">Buscar Usuário</a></li>
 						</ul></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-truck"></i>Fornecedores
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon  fa fa-plus" sec:authorize-url="/fornecedor/novo"></i><a
-								th:href="@{/fornecedores/novo}">Novo Fornecedor</a></li>
-							<li><i class="menu-icon  fa fa-search"></i><a
-								th:href="@{/fornecedores/busca}">Buscar Fornecedor</a></li>
-						</ul></li>
-					<li class="menu-item-has-children dropdown"><a href="#"
-						class="dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-list-ol"></i>Códigos Fiscais
-					</a>
-						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon  fa fa-plus"></i><a
-								th:href="@{/codigos/novo}">Novo Código</a></li>
-							<li><i class="menu-icon  fa fa-search"></i><a
-								href="tables-data.html">Buscar Código</a></li>
-						</ul></li>
 
 
 					<h3 class="menu-title">Financeiro</h3>
 					<!-- /.menu-title -->
-					<li class="menu-item-has-children dropdown"><a href="#"
+					<li class="menu-item-has-children dropdown"
+						sec:authorize-url="/vendas/novo"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-usd"></i>Vendas
@@ -107,13 +97,11 @@
 						<ul class="sub-menu children dropdown-menu">
 							<li><i class="menu-icon  fa fa-money"></i><a
 								th:href="@{/vendas/nova}">Realizar Venda</a></li>
-							<li><i class="menu-icon  fa fa-repeat"></i><a
-								href="tables-data.html">Realizar 2ª via</a></li>
-							<li><i class="menu-icon  fa fa-ban"></i><a
-								href="tables-data.html">Cancelar Venda</a></li>
+							<li><i class="menu-icon  fa fa-search"></i><a
+								th:href="@{/vendas/busca}">Buscar Venda</a></li>
 						</ul></li>
 
-					<li class="menu-item-has-children dropdown"><a href="#"
+					<!-- <li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-file-text-o"></i>Relatórios
@@ -122,8 +110,7 @@
 							<li><i class="menu-icon  fa fa-shopping-bag"></i><a
 								th:href="@{/vendas/busca}">Relatório de Venda</a></li>
 						</ul></li>
-
-
+ -->
 					<h3 class="menu-title">Utilitários</h3>
 					<!-- /.menu-title -->
 					<li class="menu-item-has-children dropdown"><a href="#"

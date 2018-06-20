@@ -119,6 +119,10 @@ public class Usuario implements Serializable {
 		return true;
 	}
 
+	public boolean isNovo() {
+		return id ==0;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -164,9 +168,6 @@ public class Usuario implements Serializable {
 		this.grupos = grupos;
 	}
 	
-	public boolean isNovo() {
-		return (Integer) id == null;
-	}
 
 	public String getLogin() {
 		return login;
