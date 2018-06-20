@@ -138,12 +138,40 @@ Erp.MaskCep = (function() {
 	
 	return MaskCep;
 	
+	
+	
 }());
 
+
+Erp.MaskDate = (function() {
+	
+	function MaskDate() {
+		this.inputDate = $('.js-date');
+	}
+	
+	MaskDate.prototype.enable = function() {
+		this.inputDate.mask('00/00/0000');
+		this.inputDate.datepicker({
+			//orientation: 'bottom',
+			language: 'pt-BR',
+			autoclose: true
+		});
+	}
+	
+	return MaskDate;
+	
+}());
+
+numeral.language('pt-br');
+
 Erp.formatarMoeda = function(valor) {
-	numeral.language('pt-br');
 	return numeral(valor).format('0,0.00');
 }
+
+Erp.recuperarValor = function(valorFormatado) {
+	return numeral().unformat(valorFormatado);
+}
+
 
 $(function(){
 
@@ -173,9 +201,8 @@ $(function(){
 		
 		var maskIcms = new Erp.MaskIcms();
 		maskIcms.enable();
-		
-		var maskData = new Erp.MaskData();
-		maskData.enable();
-		
+
+		var maskDate = new Erp.MaskDate();
+		maskDate.enable();
 		
 });

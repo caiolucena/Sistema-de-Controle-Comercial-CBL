@@ -32,6 +32,10 @@
 <link type="text/css" rel="stylesheet"
 	th:href="@{/layout/css/cs-skin-elastic.css}">
 
+
+<link rel="stylesheet"
+	th:href="@{/stylesheets/bootstrap-datepicker.standalone.min.css}" />
+<link rel="stylesheet" th:href="@{/stylesheets/sweetalert.css}" />
 <link rel="stylesheet"
 	th:href="@{/stylesheets/easy-autocomplete.min.css}" />
 <link rel="stylesheet"
@@ -115,7 +119,9 @@
 	<script
 		src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 
-
+	<script th:src="@{/javascripts/vendors/bootstrap-datepicker.min.js}"></script>
+	<script
+		th:src="@{/javascripts/vendors/bootstrap-datepicker.pt-BR.min.js}"></script>
 
 	<script src="../static/javascripts/vendors/numeral.min.js"
 		th:src="@{/javascripts/vendors/numeral.min.js}"></script>
@@ -125,6 +131,11 @@
 
 	<script src="../static/javascripts/datatable2.js"
 		th:src="@{/javascripts/datatable2.js}"></script>
+	<script src="../static/javascripts/vendors/sweetalert-dev"
+		th:src="@{/javascripts/vendors/sweetalert-dev}"></script>
+	<script src="../static/javascripts/erp.js"
+		th:src="@{/javascripts/erp.dialogo-excluir.js}"></script>
+
 	<script src="../static/javascripts/erp.js"
 		th:src="@{/javascripts/erp.js}"></script>
 </body>

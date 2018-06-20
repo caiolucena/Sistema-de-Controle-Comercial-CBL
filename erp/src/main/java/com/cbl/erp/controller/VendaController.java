@@ -1,7 +1,11 @@
 package com.cbl.erp.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,11 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cbl.erp.model.Produto;
+import com.cbl.erp.model.Venda;
 import com.cbl.erp.repository.Produtos;
 import com.cbl.erp.repository.Vendas;
-import com.cbl.erp.session.TabelaItensVenda;
+import com.cbl.erp.security.UsuarioSistema;
+import com.cbl.erp.service.CadastroVendaService;
+import com.cbl.erp.session.TabelaItensSession;
 
 @Controller
 @RequestMapping("/vendas")
@@ -21,56 +29,81 @@ public class VendaController {
 
 	@Autowired
 	Vendas vendas;
-
+	
+	@Autowired
+	CadastroVendaService cadastroVendaService;
+	
 	@Autowired
 	Produtos produtos;
 
 	@Autowired
-	TabelaItensVenda tabelaItensVenda;
+	TabelaItensSession tabelaItens;
 
 	@GetMapping("/nova")
-	public String nova() {
-		return "venda/CadastroVenda";
+	public ModelAndView nova(Venda venda) {
+		ModelAndView mv = new ModelAndView("venda/CadastroVenda");
+		venda.setUuid(UUID.randomUUID().toString());
+		return mv;
+	}
+	
+	@PostMapping("/nova")
+	public ModelAndView salvar(Venda venda, BindingResult result, RedirectAttributes attributes, @AuthenticationPrincipal UsuarioSistema usuarioSistema) {
+		if (result.hasErrors()) {
+			return nova(venda);
+		}
+		venda.setUsuario(usuarioSistema.getUsuario());
+		venda.adicionarItens(tabelaItens.getItens(venda.getUuid()));
+		
+
+		cadastroVendaService.salvar(venda);
+		attributes.addFlashAttribute("mensagem","Venda salva com sucesso");
+		
+		return new ModelAndView("redirect:/vendas/nova");
 	}
 
 	@RequestMapping(path = "/busca", method = RequestMethod.GET)
 	public ModelAndView retornarTodos() {
 		ModelAndView mv = new ModelAndView("venda/ProcurarVenda");
-
 		mv.addObject("vendas", vendas.findAll());
 		return mv;
 	}
 
 	@PostMapping("/item")
-	public ModelAndView adicionarItem(int idProduto) {
+	public ModelAndView adicionarItem(int idProduto, String uuid) {
 
 		Produto produto = produtos.findOne(idProduto);
-		tabelaItensVenda.adicionarItem(produto, 1);
-		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
+		tabelaItens.adicionarItem(uuid,produto, 1);
 
-		mv.addObject("itens", tabelaItensVenda.getItens());
-		mv.addObject("valorTotal", tabelaItensVenda.getValorTotal());
-		return mv;
+		
+		//
+		return mvTabelaItensVenda(uuid);
 	}
 
 	@RequestMapping(value = "/item/{idProduto}", method = RequestMethod.POST)
-	public ModelAndView alterarQuantidadeItem(@PathVariable int idProduto, String quantidade) {
+	public ModelAndView alterarQuantidadeItem(@PathVariable int idProduto, String quantidade, String uuid) {
 		Produto produto = produtos.findOne(idProduto);
 
-		tabelaItensVenda.adicionarItem(produto, Integer.parseInt(quantidade));
-		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
-		mv.addObject("itens", tabelaItensVenda.getItens());
-		mv.addObject("valorTotal", tabelaItensVenda.getValorTotal());
-		return mv;
+		tabelaItens.alterarQuantidadeItens(uuid, produto, Integer.parseInt(quantidade));
+	
+	
+	//	mv.addObject("valorTotal", tabelaItens.getValorTotal());
+		return mvTabelaItensVenda(uuid);
 	}
 
-	@DeleteMapping("/item/{idProduto}")
-	public ModelAndView excluirItem(@PathVariable int idProduto) {
-		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
+	@DeleteMapping("/item/{uuid}/{idProduto}")
+	public ModelAndView excluirItem(@PathVariable int idProduto,@PathVariable String uuid) {
+		
 		Produto produto = produtos.findOne(idProduto);
-		tabelaItensVenda.excluirItem(produto);
-		mv.addObject("itens", tabelaItensVenda.getItens());
-		mv.addObject("valorTotal", tabelaItensVenda.getValorTotal());
+		tabelaItens.excluirItem(uuid,produto);
+		
+		//mv.addObject("valorTotal", tabelaItens.getValorTotal());
+		return mvTabelaItensVenda(uuid);
+	}
+
+	private ModelAndView mvTabelaItensVenda(String uuid) {
+		ModelAndView mv = new ModelAndView("venda/TabelaItensVenda");
+		mv.addObject("itens", tabelaItens.getItens(uuid));
+		mv.addObject("valorTotal", tabelaItens.getValorTotal(uuid));
 		return mv;
 	}
 

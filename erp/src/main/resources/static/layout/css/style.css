@@ -15,7 +15,9 @@
 .eac-item{
 	border: 1px solid black;
 }
-
+.negativo{
+	color:red;
+}
 .bg-flat-color-2 {
   background: #63c2de; }
 

@@ -78,17 +78,20 @@
 				</div>
 			</div>
 
-
+			<th:block th:include="fragments/MensagemSucesso"></th:block>
 			<div class="container-fluid">
-				<form method="POST" th:action="@{/vendas/nova}">
-
+				<form method="POST" th:action="@{/vendas/nova}" th:object="${venda}">
+					<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+					<input type="hidden" id="uuid" th:field="*{uuid}" />
 					<div class="row">
 						<div class="col-sm-4">
-							<div class="aw-box">
+							<div class="aw-box js-valor-total-box-container">
 								<div class="aw-box__icon">
 									<i class="fa  fa-usd  fa-3x"></i>
 								</div>
-								<div class="aw-box__value ">R$<span class = "js-valor-total-box">0,00 </span></div>
+								<div class="aw-box__value ">
+									R$<span class="js-valor-total-box">0,00 </span>
+								</div>
 								<div class="aw-box__title">Total</div>
 							</div>
 						</div>
@@ -124,7 +127,7 @@
 									class="form-control"
 									placeholder="Clique na lupa para pesquisar" /> <span
 									class="input-group-btn"> <input id="idCliente"
-									type="hidden" />
+									type="hidden" th:field="*{cliente.id}" />
 									<button class="btn  btn-default  js-tooltip" type="button"
 										title="Pesquisa avançada" data-toggle="modal"
 										data-target="#pesquisaRapidaClientes">
@@ -139,7 +142,7 @@
 								frete</label>
 							<div class="input-group">
 								<div class="input-group-addon">R$</div>
-								<input type="text" maxlength="14"
+								<input type="text" maxlength="14" th:field="*{valorFrete}"
 									class="form-control  js-decimal" id="valorFrete" />
 							</div>
 						</div>
@@ -150,7 +153,8 @@
 							<div class="input-group">
 								<div class="input-group-addon">R$</div>
 								<input type="text" maxlength="14"
-									class="form-control  js-decimal" id="valorDesconto" />
+									class="form-control  js-decimal" id="valorDesconto"
+									th:field="*{valorDesconto}" />
 							</div>
 						</div>
 					</div>
@@ -190,14 +194,14 @@
 							<div class="row">
 								<div class="form-group  col-sm-3">
 									<label class="control-label" for="dataEntrega">Data da
-										entrega</label> <input type="text" class="form-control"
-										id="dataEntrega" />
+										entrega</label> <input type="text" class="form-control js-date"
+										id="dataEntrega" th:field ="*{dataEntrega}"/>
 								</div>
 
 								<div class="form-group  col-sm-3">
 									<label class="control-label" for="horarioEntrega">Horário
-										de entrega</label> <input type="text" class="form-control"
-										id="horarioEntrega" />
+										de entrega</label> <input type="text" class="form-control js-hour"
+										id="horarioEntrega" th:field ="*{horarioEntrega}" />
 								</div>
 							</div>
 

@@ -4,6 +4,7 @@ Erp.TabelaItens = (function() {
 		this.autocomplete = autocomplete;
 		this.tabelaProdutosContainer = $('.js-tabela-produtos-container');
 	
+		this.uuid = $('#uuid').val();
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 	}
@@ -18,7 +19,8 @@ Erp.TabelaItens = (function() {
 			url:'item',
 			method: 'POST',
 			data:{
-				idProduto: item.id
+				idProduto: item.id,
+				uuid: this.uuid
 			}
 		});
 		resposta.done(onItemAtualizadoNoServidor.bind(this));
@@ -32,7 +34,7 @@ Erp.TabelaItens = (function() {
 		quantidadeItemInput.on('change',onQuantidadeItemAlterado.bind(this));
 		quantidadeItemInput.maskMoney({precision:0,thousands:''});
 		
-		var tabelaItem = $('.bw-tabela-item');
+		var tabelaItem = $('.js-tabela-item');
 		tabelaItem.on('dblclick',onClick);
 		$('.js-exclusao-item-btn').on('click',onExclusaoItem.bind(this));
 		
@@ -56,7 +58,8 @@ Erp.TabelaItens = (function() {
 			url: 'item/' + codigoCerveja,
 			method: 'POST',
 			data:{
-				'quantidade': quantidade
+				'quantidade': quantidade,
+				uuid: this.uuid
 			}
 		});
 		
@@ -72,7 +75,7 @@ Erp.TabelaItens = (function() {
 		
 		var idProduto = $(evento.target).data('codigo-cerveja');
 		var resposta = $.ajax({
-			url:'item/'+ idProduto,
+			url:'item/'+ this.uuid + '/' + idProduto,
 			method:'DELETE'
 			
 		});

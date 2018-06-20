@@ -5,6 +5,7 @@ Erp.Venda = (function() {
 		this.valorTotalBox = $('.js-valor-total-box');
 		this.valorFreteInput = $('#valorFrete');
 		this.valorDescontoInput = $('#valorDesconto');
+		this.valorTotalBoxContainer = $('.js-valor-total-box-container');
 		
 		this.valorTotalItens = 0;
 		this.valorFrete = 0;
@@ -12,6 +13,8 @@ Erp.Venda = (function() {
 	}
 	
 	Venda.prototype.iniciar = function() {
+		
+		
 		this.tabelaItens.on('tabela-itens-atualizada', onTabelaItensAtualizada.bind(this));
 		this.valorFreteInput.on('keyup', onValorFreteAlterado.bind(this));
 		this.valorDescontoInput.on('keyup', onValorDescontoAlterado.bind(this));
@@ -35,8 +38,10 @@ Erp.Venda = (function() {
 	
 	function onValoresAlterados() {
 		var valorTotal = this.valorTotalItens + this.valorFrete - this.valorDesconto;
+		console.log(valorTotal);
 		this.valorTotalBox.html(Erp.formatarMoeda(valorTotal));
 		
+		this.valorTotalBoxContainer.toggleClass('negativo', valorTotal < 0);
 	}
 	
 	return Venda;

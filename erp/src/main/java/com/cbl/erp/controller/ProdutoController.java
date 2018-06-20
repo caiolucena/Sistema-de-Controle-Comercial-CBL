@@ -6,9 +6,11 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +24,7 @@ import com.cbl.erp.repository.Icmss;
 import com.cbl.erp.repository.Ncms;
 import com.cbl.erp.repository.Produtos;
 import com.cbl.erp.service.CrudProdutoService;
+import com.cbl.erp.service.exception.ImpossivelExcluirEntidadeException;
 import com.cbl.erp.service.exception.ItemDuplicadoException;
 
 @Controller
@@ -93,7 +96,15 @@ public class ProdutoController {
 //	} 
 //	
 //	
-	
+	@DeleteMapping("/{id}")
+	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Produto produto) {
+		try {
+			crudprodutoService.excluir(produto);
+		} catch (ImpossivelExcluirEntidadeException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok().build();
+	}
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<ProdutoDTO> pesquisar(String nome){
 		return produtos.porNome(nome);

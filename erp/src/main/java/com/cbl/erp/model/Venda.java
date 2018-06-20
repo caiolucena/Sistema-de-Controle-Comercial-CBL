@@ -2,6 +2,7 @@ package com.cbl.erp.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Venda {
 	private int id;
 
 	@Column(name = "data_criacao")
-	private LocalDate dataCriacao;
+	private LocalDateTime dataCriacao;
 
 	@Column(name = "valor_total")
 	private BigDecimal valorTotal = BigDecimal.ZERO;
@@ -49,15 +50,22 @@ public class Venda {
 
 	@Transient
 	private LocalDate dataEntrega;
-
+	
 	@Transient
 	private LocalTime horarioEntrega;
+
+	@Column(name = "data_hora_entrega")
+	private LocalDateTime dataHoraEntrega;
 	
 	private String observacao;
 	
 
 	@Column(name = "valor_frete")
 	private BigDecimal valorFrete;
+	
+	
+	@Column(name = "valor_desconto")
+	private BigDecimal valorDesconto;
 	
 	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemVenda> itens = new ArrayList<>();
@@ -70,11 +78,11 @@ public class Venda {
 		this.id = id;
 	}
 
-	public LocalDate getDataCriacao() {
+	public LocalDateTime getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(LocalDate dataCriacao) {
+	public void setDataCriacao(LocalDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
@@ -86,12 +94,37 @@ public class Venda {
 		this.valorTotal = valorTotal;
 	}
 
+	public BigDecimal getValorDesconto() {
+		return valorDesconto;
+	}
+
+	public void setValorDesconto(BigDecimal valorDesconto) {
+		this.valorDesconto = valorDesconto;
+	}
+
+	
+	public LocalDateTime getDataHoraEntrega() {
+		return dataHoraEntrega;
+	}
+
+	public void setDataHoraEntrega(LocalDateTime dataHoraEntrega) {
+		this.dataHoraEntrega = dataHoraEntrega;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public LocalDateTime getDataHorarioEntrega() {
+		return dataHoraEntrega;
+	}
+
+	public void setDataHorarioEntrega(LocalDateTime dataHoraEntrega) {
+		this.dataHoraEntrega = dataHoraEntrega;
 	}
 
 	public Usuario getUsuario() {
@@ -142,6 +175,10 @@ public class Venda {
 
 	public String getObservacao() {
 		return observacao;
+	}
+	
+	public boolean isNova() {
+		return id ==0;
 	}
 
 	public void setObservacao(String observacao) {

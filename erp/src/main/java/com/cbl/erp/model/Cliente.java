@@ -1,7 +1,9 @@
 package com.cbl.erp.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,6 +43,8 @@ public class Cliente implements Serializable {
 	@Embedded
 	private Endereco endereco;
 
+	@Column(name = "data_nascimento")
+	private LocalDate dataNascimento;
 
 
 	public String getNome() {
@@ -92,6 +96,16 @@ public class Cliente implements Serializable {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	
+	
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	@Override

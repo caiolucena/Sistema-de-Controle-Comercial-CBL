@@ -104,7 +104,8 @@
 													<th style="width: 7%" class="center">ICMS</th>
 													<th style="width: 9%" class="center">CFOP</th>
 													<th style="width: 14%" class="center">NCM</th>
-													<th style="width: 13%" class="center" sec:authorize-url="/produtos/deletar">Opções</th>
+													<th style="width: 13%" class="center"
+														sec:authorize-url="/produtos/deletar">Opções</th>
 												</tr>
 											</thead>
 											<!-- Footer Table -->
@@ -118,10 +119,14 @@
 													<td th:text="${produto.cfop.icms.codigo}" class="center"></td>
 													<td th:text="${produto.cfop.codigo}" class="center"></td>
 													<td th:text="${produto.ncm.codigo}" class="center"></td>
-													<td class="text-center" sec:authorize-url="/produtos/deletar"><a
-														class="btn  btn-link  btn-xs" title="Editar"> <i
-															class="fa fa-pencil"></i>
-													</a> <a class="btn  btn-link  btn-xs" title="Excluir"> <i
+													<td class="text-center"
+														sec:authorize-url="/produtos/deletar"><a
+														class="btn  btn-link  btn-xs js-tooltip" title="Editar">
+															<i class="fa fa-pencil"></i>
+													</a> <a class="btn  btn-link  btn-xs js-tooltip js-exclusao-btn"
+														title="Excluir" href="#"
+														data:url="@{/produtos/{id}(id=${produto.id})}"
+														data:objeto="${produto.nome}"> <i
 															class="fa fa-trash-o"></i>
 													</a></td>
 												</tr>

@@ -1,4 +1,4 @@
-package com.cbl.erp.repository;
+ package com.cbl.erp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

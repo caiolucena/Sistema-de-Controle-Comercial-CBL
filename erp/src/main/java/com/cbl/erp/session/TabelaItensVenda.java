@@ -17,6 +17,14 @@ import com.cbl.erp.model.Produto;
 public class TabelaItensVenda {
 
 	private List<ItemVenda> itens = new ArrayList<>();
+	
+	String uuid;
+	
+	
+	
+	public TabelaItensVenda(String uuid) {
+		this.uuid = uuid;
+	}
 
 	public BigDecimal getValorTotal() {
 		return itens.stream().map(ItemVenda::getValorTotal).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
@@ -62,4 +70,43 @@ public class TabelaItensVenda {
 		return itens.stream().filter(i -> i.getProduto().equals(produto)).findAny();
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TabelaItensVenda other = (TabelaItensVenda) obj;
+		if (uuid == null) {
+			if (other.uuid != null)
+				return false;
+		} else if (!uuid.equals(other.uuid))
+			return false;
+		return true;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public void setItens(List<ItemVenda> itens) {
+		this.itens = itens;
+	}
+
+	
+	
 }

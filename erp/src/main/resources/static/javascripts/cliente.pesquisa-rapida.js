@@ -79,7 +79,8 @@ Erp.TabelaClientePesquisaRapida = (function(){
 		var clienteSelecionado = $(evento.currentTarget);
 			$('#nomeCliente').val(clienteSelecionado.data('nome'));
 			$('#idCliente').val(clienteSelecionado.data('id'));
-		
+		console.log($('#idCliente').val());
+		console.log($('#nomeCliente').val());
 		
 	}
 	
