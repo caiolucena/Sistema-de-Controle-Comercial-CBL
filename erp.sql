@@ -400,27 +400,29 @@ INSERT INTO `permissao` VALUES (1,'CADASTRAR_USUARIO'),(2,'EDITAR_USUARIO'),(3,'
 INSERT INTO `permissao` VALUES (9,'CADASTRAR_PRODUTO'),(10,'EDITAR_PRODUTO'),(11,'DELETAR_PRODUTO');
 
 #permissões do vendedor 15-18
-INSERT INTO `permissao` VALUES (15,'CADASTRAR_VENDA'),(17,'DELETAR_VENDA'),(18,'BUSCAR_VENDA');
+INSERT INTO `permissao` VALUES (15,'CADASTRAR_VENDA'),(17,'DELETAR_VENDA'),(18,'BUSCAR_VENDA'),(19,'VISUALIZAR_ESTABELECIMENTO');
 
 #Permissões do gerente
-INSERT INTO `permissao` VALUES (19,'BUSCAR_USUARIO');
+INSERT INTO `permissao` VALUES (20,'BUSCAR_USUARIO');
 
 #ADMIN
-INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,15),(1,17),(1,18),(1,19);
+INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,15),(1,17),(1,18),(1,19),(1,20);
 
 #GERENTE
-INSERT INTO `grupo_has_permissao` VALUES (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,8),(2,19);
+INSERT INTO `grupo_has_permissao` VALUES (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,8),(2,19),(2,20);
 
 #VENDEDOR
-INSERT INTO `grupo_has_permissao` VALUES (3,15),(3,17),(3,18),(3,9);
+INSERT INTO `grupo_has_permissao` VALUES (3,15),(3,17),(3,18),(3,9),(3,19),(3,4),(3,5);
 
 #ESTOQUISTA
-INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11);
+INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11),(4,19);
 
 
 INSERT INTO `usuario` VALUES (1,'097.035.854-77','Caio Lucena','caio','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
 
-INSERT INTO `usuario_has_grupo` VALUES (1,1),(1,2);
+INSERT INTO `usuario_has_grupo` VALUES (1,1),(1,2),(1,3),(1,4);
+
+
 
 INSERT INTO `icms` (`id`, `codigo`, `descricao`) VALUES 
 (1, '102', 'Simples Nacional: 102: Sem permissão de crédito');
@@ -440,7 +442,6 @@ INSERT INTO `cfop`  (`id`, `codigo`, `descricao`,`icms_id`) VALUES
 
 INSERT INTO `ncm` VALUES (1, '99910000', 'ENCOMENDAS POSTAIS');
 INSERT INTO `ncm` VALUES (2, '99920000', 'AMOSTRAS');
-
 #insert into venda values (2,20151010,100,1,1);
 #insert into venda values (2,20181220,999,1,1);
 
