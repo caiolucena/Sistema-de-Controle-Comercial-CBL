@@ -196,6 +196,7 @@ CREATE TABLE IF NOT EXISTS `erp`.`usuario` (
   `nome` VARCHAR(45) NOT NULL,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(120) NULL,
+
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -288,6 +289,7 @@ CREATE TABLE IF NOT EXISTS `erp`.`cliente` (
   `numero` VARCHAR(8) NULL,
   `complemento` VARCHAR(40) NULL,
   `cidade_id` INT NOT NULL,
+   `data_nascimento` DATE,
   PRIMARY KEY (`id`),
   INDEX `fk_cliente_cidade1_idx` (`cidade_id` ASC),
   CONSTRAINT `fk_cliente_cidade1`
@@ -309,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `erp`.`venda` (
      `valor_frete` DECIMAL(10,2),
      `valor_desconto` DECIMAL(10,2),
      `valor_total` DECIMAL(10,2) NOT NULL,
-     `status` VARCHAR(30) NOT NULL,
+     `status` VARCHAR(30),
      `observacao` VARCHAR(200),
      `data_hora_entrega` DATETIME,
   `usuario_id` INT NOT NULL,
@@ -395,25 +397,25 @@ INSERT INTO `grupo` VALUES (1,'Administrador'),(2,'Gerente'),(3,'Vendedor'),(4,'
 INSERT INTO `permissao` VALUES (1,'CADASTRAR_USUARIO'),(2,'EDITAR_USUARIO'),(3,'DELETAR_USUARIO'),(4,'CADASTRAR_CLIENTE'),(5,'EDITAR_CLIENTE'),(6,'DELETAR_CLIENTE'),(7,'CADASTRAR_ESTABELECIMENTO'),(8,'EDITAR_ESTABELECIMENTO');
 
 #permissões do estoquista 9-14
-INSERT INTO `permissao` VALUES (9,'CADASTRAR_PRODUTO'),(10,'EDITAR_PRODUTO'),(11,'DELETAR_PRODUTO'),(12,'CADASTRAR_FORNECEDOR'),(13,'EDITAR_FORNECEDOR'),(14,'DELETAR_FORNECEDOR');
+INSERT INTO `permissao` VALUES (9,'CADASTRAR_PRODUTO'),(10,'EDITAR_PRODUTO'),(11,'DELETAR_PRODUTO');
 
 #permissões do vendedor 15-18
-INSERT INTO `permissao` VALUES (15,'CADASTRAR_VENDA'),(16,'EDITAR_VENDA'),(17,'DELETAR_VENDA'),(18,'BUSCAR_VENDA');
+INSERT INTO `permissao` VALUES (15,'CADASTRAR_VENDA'),(17,'DELETAR_VENDA'),(18,'BUSCAR_VENDA');
 
 #Permissões do gerente
 INSERT INTO `permissao` VALUES (19,'BUSCAR_USUARIO');
 
 #ADMIN
-INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),(1,18),(1,19);
+INSERT INTO `grupo_has_permissao` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,15),(1,17),(1,18),(1,19);
 
 #GERENTE
 INSERT INTO `grupo_has_permissao` VALUES (2,1),(2,2),(2,3),(2,4),(2,5),(2,6),(2,8),(2,19);
 
 #VENDEDOR
-INSERT INTO `grupo_has_permissao` VALUES (3,15),(3,16),(3,17),(3,18);
+INSERT INTO `grupo_has_permissao` VALUES (3,15),(3,17),(3,18),(3,9);
 
 #ESTOQUISTA
-INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11),(4,12),(4,13),(4,14),(4,15);
+INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11);
 
 
 INSERT INTO `usuario` VALUES (1,'097.035.854-77','Caio Lucena','caio','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
@@ -447,5 +449,3 @@ INSERT INTO `ncm` VALUES (2, '99920000', 'AMOSTRAS');
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
