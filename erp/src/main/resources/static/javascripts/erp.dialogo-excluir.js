@@ -24,6 +24,7 @@ Erp.DialogoExcluir = (function() {
 			title: 'Tem certeza?',
 			text: 'Excluir "' + objeto + '"? Você não poderá recuperar depois.',
 			showCancelButton: true,
+			cancelButtonText: 'Cancelar',
 			confirmButtonColor: '#DD6B55',
 			confirmButtonText: 'Sim, exclua agora!',
 			closeOnConfirm: false

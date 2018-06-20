@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:brewer="http://brewer.algaworks.com">
+
+<head>
+<title>Manual - CBL</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/algaworks.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/brewer.css}" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/stylesheets/bootstrap-datepicker.standalone.min.css}" />
+</head>
+
+
+<body>
+	<section>
+		<!-- Right Panel -->
+
+		<div id="right-panel" class="right-panel" layout:fragment="conteudo">
+
+			<!-- Header-->
+			<header id="header" class="header">
+
+				<div class="header-menu">
+
+					<div class="col-sm-7">
+						<a id="menuToggle" class="menutoggle pull-left"><i
+							class="fa fa fa-tasks"></i></a>
+						<div class="header-left">
+							<div></div>
+
+							<div></div>
+						</div>
+					</div>
+
+					<div class="col-sm-5 float-right">
+						<ul>
+							<li style="list-style-type: none" class="float-right">
+								<p class="navbar-text"
+									th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+								<a class="nav-link float-right " th:href="@{/logout}"><i
+									class="fa fa-sign-out"></i>Sair</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+			</header>
+			<!-- /header -->
+			<!-- Header-->
+
+			<!-- até aqui tem q ter em todos -->
+			<div class="breadcrumbs">
+				<div class="col-sm-4">
+					<div class="page-header float-left">
+						<div class="page-title">
+							<h1>Manual</h1>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="container-fluid">
+				<div id="indice" style="padding-right: 10px">
+					<h3>Índice</h3>
+					<div></div>
+					<h4 style="color: black;padding-bottom = 10px">
+						<a href="#proposta">1.Proposta do Software</a>
+					</h4>
+					<div></div>
+					<h4 style="color: black;padding-bottom = 10px">
+						<a href="#requisitos">2.Requisitos do Sistema</a>
+					</h4>
+					<div></div>
+					<h4 style="color: black;padding-bottom = 10px">
+						<a href="#requisitos">3.Realização de Cadastros</a>
+					</h4>
+					<div></div>
+					<h5 style="color: black;padding-bottom = 10px">
+						<a href="#expEstabelecimento">3.1 Cadastro de Estabelecimento</a>
+					</h5>
+					<div></div>
+					<h5 style="color: black;padding-bottom = 10px">
+						<a href="#expCliente">3.2 Cadastro de Cliente</a>
+					</h5>
+					<div></div>
+
+
+
+					<!-- Proposta do Software-->
+
+
+					<!-- Requisitos -->
+
+
+					<!-- Cadastros-->
+					<div>
+						<h4 style="color: black;padding-bottom = 10px">
+							<a href="#requisitos">3.Realização de Cadastros</a>
+						</h4>
+					</div>
+					
+					<div>
+						<h5 style="color: black">
+							<a href="#expEstabelecimento">3.1 Cadastro de Estabelecimento</a>
+						</h5>
+						<!-- Cad Estabelecimento -->
+						<div id="expEstabelecimento" class="padding-bottom = 10px">
+							<p>
+								AQUI VAI FICAR O HELP BEM BACANA AJUDANDO NO CADASTRO DO
+								ESTABELECIMENTO Cras mattis consectetur purus sit amet
+								fermentum. Cras justo odio, dapibus ac facilisis in, egestas
+								eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum
+								at eros. <br> Praesent commodo cursus magna, vel
+								scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+								augue laoreet rutrum faucibus dolor auctor.<br> Aenean
+								lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+								magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
+								Donec ullamcorper nulla non metus auctor fringilla.<br>
+								Cras mattis consectetur purus sit amet fermentum. Cras justo
+								odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+								risus, porta ac consectetur ac, vestibulum at eros.<br>
+								Praesent commodo cursus magna, vel scelerisque nisl consectetur
+								et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+								dolor auctor.<br> Aenean lacinia bibendum nulla sed
+								consectetur. Praesent commodo cursus magna, vel scelerisque nisl
+								consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
+								metus auctor fringilla.<br> Cras mattis consectetur purus
+								sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+								egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+								vestibulum at eros.<br> Praesent commodo cursus magna, vel
+								scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+								augue laoreet rutrum faucibus dolor auctor.<br> Aenean
+								lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+								magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
+								Donec ullamcorper nulla non metus auctor fringilla.<br>
+								Cras mattis consectetur purus sit amet fermentum. Cras justo
+								odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+								risus, porta ac consectetur ac, vestibulum at eros.<br>
+								Praesent commodo cursus magna, vel scelerisque nisl consectetur
+								et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+								dolor auctor.<br> Aenean lacinia bibendum nulla sed
+								consectetur. Praesent commodo cursus magna, vel scelerisque nisl
+								consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
+								metus auctor fringilla.<br> Cras mattis consectetur purus
+								sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+								egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+								vestibulum at eros.<br> Praesent commodo cursus magna, vel
+								scelerisque nisl consectetur et. Vivamus sagittis lacus vel
+								augue laoreet rutrum faucibus dolor auctor.<br> Aenean
+								lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+								magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
+								Donec ullamcorper nulla non metus auctor fringilla.<br>
+								Cras mattis consectetur purus sit amet quam. Morbi leo risus,
+								porta ac consectetur ac, vestibulum at eros.<br> Praesent
+								commodo cursus magna, vel scelerisque nisl consectetur et.
+								Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+								auctor.<br> Aenean lacinia bibendum nulla sed consectetur.
+								Praesent commodo cursus magna, vel scelerisque nisl consectetur
+								et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor
+								fringilla.
+							</p>
+							<a style="float: right" href="#indice">[voltar para o inicio]</a>
+						</div>
+					</div>
+
+
+					<!-- Cadastro de Cliente -->
+					<div>
+						<h5 style="color: black">
+							<a href="#expCliente">3.2 Cadastro de Cliente</a>
+						</h5>
+						<div id="expCliente">
+							<p style="color: black">Uma das principais tarefas realizadas
+								neste sistema é o cadastro de clientes. Aqui seguem informações
+								importantes sobre o cadastro além de um vídeo exemplificando um
+								cadastro sendo feito.</p>
+							<ul style="padding-left: 10px">
+								<li style="padding-left: 10px">Apenas usuários com acesso
+									de Gerente ou de Vendedor conseguem cadastrar Clientes</li>
+								<li style="padding-left: 10px">Os campos obrigatórios são
+									indicados com *(asterisco)</li>
+								<li style="padding-left: 10px">Nosso sistema possui
+									Validação de CPF, além de inputs personalizados de Telefone,
+									data e CEP, por exemplo.</li>
+								<li style="padding-left: 10px">Nosso sistema não permite o
+									cadastro de Clientes com o mesmo CPF</li>
+								<li style="padding-left: 10px">Quando uma UF é selecionada,
+									serão disponibilizadas as cidades correspondentes no campo de
+									cidades</li>
+							</ul>
+							<p style="color: black">Exemplo:</p>
+							<video width="700" height="480" controls>
+								<source th:src="@{/videos/CadastroCliente.mp4}" type="video/mp4">
+							</video>
+							<a style="float: right" href="#indice">[voltar para o inicio]</a>
+						</div>
+					</div>
+
+				</div>
+
+
+				<!-- FIM DO CONTAINER FLUID, DO MANUAL EM SI -->
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

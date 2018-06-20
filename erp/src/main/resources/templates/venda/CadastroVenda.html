@@ -70,7 +70,7 @@
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
 								<li class="active"><a href="#" data-toggle="modal"
-									data-target="#modalHelpCadastroProduto">Dúvidas no
+									data-target="#modalHelpCadastroVenda">Dúvidas no
 										preenchimento? Clique aqui</a></li>
 							</ol>
 						</div>
@@ -230,6 +230,7 @@
 			</th:block>
 			<th:block th:include="hbs/TemplateAutocompleteProduto">
 			</th:block>
+			<div th:replace="modal/venda/HelpCadastroVenda :: modal"></div>
 		</div>
 
 	</section>
@@ -251,5 +252,6 @@
 				});
 			});
 		</script>
+
 	</th:block>
 </html>

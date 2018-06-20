@@ -72,8 +72,8 @@
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
 								<li class="active"><a href="#" data-toggle="modal"
-									data-target="#modalHelpCadastroProduto">Dúvidas no
-										preenchimento? Clique aqui</a></li>
+									data-target="#modalHelpBuscaProduto">Dúvidas na busca?
+										Clique aqui</a></li>
 							</ol>
 						</div>
 					</div>
@@ -99,11 +99,11 @@
 												<tr>
 													<th style="width: 5%" class="center">Id</th>
 													<th style="width: 32%" class="center">Nome</th>
-													<th style="width: 10%" class="center">Preço (R$)</th>
+													<th style="width: 14%" class="center">Preço (R$)</th>
 													<th style="width: 10%" class="center">Estoque</th>
 													<th style="width: 7%" class="center">ICMS</th>
-													<th style="width: 9%" class="center">CFOP</th>
-													<th style="width: 14%" class="center">NCM</th>
+													<th style="width: 7%" class="center">CFOP</th>
+													<th style="width: 12%" class="center">NCM</th>
 													<th style="width: 13%" class="center"
 														sec:authorize-url="/produtos/deletar">Opções</th>
 												</tr>
@@ -114,7 +114,7 @@
 													<td th:text="${produto.id}" class="center"
 														th:value="${produto.id}"></td>
 													<td th:text="${produto.nome}" class="center"></td>
-													<td th:text="${produto.preco}" class="js-decimal center"></td>
+													<td th:text="${produto.preco}" th:value="${produto.preco}" class="js-valor-real center"></td>
 													<td th:text="${produto.estoque}" class="js-plain center"></td>
 													<td th:text="${produto.cfop.icms.codigo}" class="center"></td>
 													<td th:text="${produto.cfop.codigo}" class="center"></td>
@@ -147,6 +147,8 @@
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
 
+			<div th:replace="modal/produto/HelpBuscaProduto :: modal"></div>
+			
 		</div>
 		<!-- /#right-panel -->
 	</section>

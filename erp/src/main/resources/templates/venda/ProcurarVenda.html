@@ -73,7 +73,7 @@
 						<div class="page-title">
 							<ol class="breadcrumb text-right">
 								<li class="active"><a href="#" data-toggle="modal"
-									data-target="#modalHelpRelatorioVendas">Dúvidas no
+									data-target="#modalHelpBuscaVendas">Dúvidas no
 										preenchimento? Clique aqui</a></li>
 							</ol>
 						</div>
@@ -101,7 +101,8 @@
 											<thead>
 												<tr>
 													<th style="width: 10%" class="center">Id</th>
-													<th style="width: 25%" class="center">Data e Hora da Venda</th>
+													<th style="width: 25%" class="center">Data e Hora da
+														Venda</th>
 													<th style="width: 12" class="center">Valor total (R$)</th>
 													<th style="width: 15%" class="center">Vendedor</th>
 													<th style="width: 28%" class="center">Cliente</th>
@@ -145,7 +146,7 @@
 
 			<!-- aqui acaba oq muda de um pro outro -->
 			<!-- .content -->
-
+			<div th:replace="modal/venda/HelpBuscaVenda :: modal"></div>
 		</div>
 		<!-- /#right-panel -->
 	</section>

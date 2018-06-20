@@ -34,7 +34,7 @@ Erp.Autocomplete = (function() {
 	}
 
 	function onItemSelecionado(){
-		
+		this.nomeInput.val('');
 		this.emitter.trigger('item-selecionado',this.nomeInput.getSelectedItemData());
 	}
 	

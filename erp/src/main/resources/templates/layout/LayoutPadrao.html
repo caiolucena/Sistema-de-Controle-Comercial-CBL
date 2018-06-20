@@ -138,6 +138,16 @@
 
 	<script src="../static/javascripts/erp.js"
 		th:src="@{/javascripts/erp.js}"></script>
+
+	<script>
+		var $ = jQuery;
+		$(function(valor) {
+			console.log($('.js-valor-real').val());
+			$('.js-valor-real').val(
+					numeral($('.js-valor-real').val()).format('0,0.00'));
+			console.log($('.js-valor-real').val());
+		});
+	</script>
 </body>
 
 <th:block layout:fragment="javascript-extra"></th:block>

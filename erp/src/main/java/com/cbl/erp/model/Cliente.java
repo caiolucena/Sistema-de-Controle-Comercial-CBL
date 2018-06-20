@@ -10,12 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cliente")
@@ -40,6 +39,7 @@ public class Cliente implements Serializable {
 	private String email;
 
 	@Embedded
+	@Valid
 	private Endereco endereco;
 
 	@Column(name = "data_nascimento")
@@ -53,8 +53,6 @@ public class Cliente implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
 
 
 	public String getTelefone() {

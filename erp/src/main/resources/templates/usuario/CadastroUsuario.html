@@ -128,7 +128,7 @@
 									<div class="checkbox  checkbox-inline">
 										<input type="checkbox" th:value="${grupo.id}"
 											th:field="*{grupos}"
-											th:classappend="${#fields.hasErrors('confirmacaoSenha')}? is-invalid" />
+											th:classappend="${#fields.hasErrors('grupos')}? is-invalid" />
 										<label th:for="${#ids.prev('grupos')}" th:text="${grupo.nome}"></label>
 									</div>
 								</th:block>
