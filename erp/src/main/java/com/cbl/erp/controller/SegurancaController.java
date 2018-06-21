@@ -65,11 +65,19 @@ public class SegurancaController {
 	public ModelAndView paginaInicial() {
 		ModelAndView mv = new ModelAndView("index");
 		
+		String valorEstoque = "R$ "+ produtos.valorItensEstoque().getValor()+"";
+		String vendasNoAno = "R$ " + vendas.valorTotalNoAno() +"";
+		String vendasNoMes = "R$ " + vendas.valorTotalNoMes()+"";
+		
+		valorEstoque = valorEstoque.replace('.', ',');
+		vendasNoMes = vendasNoMes.replace('.', ',');
+		vendasNoAno = vendasNoAno.replace('.', ',');
+		
 		mv.addObject("qntClientes",clientes.count());
 		mv.addObject("qntItens", produtos.count());
-		mv.addObject("vendasNoAno", vendas.valorTotalNoAno());
-		mv.addObject("vendasNoMes", vendas.valorTotalNoMes());
-		mv.addObject("valorEstoque",produtos.valorItensEstoque().getValor());
+		mv.addObject("vendasNoAno", vendasNoAno);
+		mv.addObject("vendasNoMes", vendasNoMes);
+		mv.addObject("valorEstoque",valorEstoque);
 		return mv;
 	}
 	
