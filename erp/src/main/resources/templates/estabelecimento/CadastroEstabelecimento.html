@@ -31,14 +31,14 @@
 					</div>
 
 					<div class="col-sm-5 float-right">
-							<ul>
-								<li style="list-style-type: none" class = "float-right">
-									<p class="navbar-text"
-										th:text="${#authentication.principal.usuario.nome}">Usuario</p>
-									<a class="nav-link float-right " th:href="@{/logout}"><i
-										class="fa fa-sign-out"></i>Sair</a>
-								</li>
-							</ul>
+						<ul>
+							<li style="list-style-type: none" class="float-right">
+								<p class="navbar-text"
+									th:text="${#authentication.principal.usuario.nome}">Usuario</p>
+								<a class="nav-link float-right " th:href="@{/logout}"><i
+									class="fa fa-sign-out"></i>Sair</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -147,7 +147,8 @@
 						<div class="form-group col-sm-2">
 							<label for="uf" class="control-label">UF</label> <select
 								th:onchange="|selecionouEstado(this.value,'@{/cidades}')|"
-								id="uf" class="form-control">
+								id="uf" class="form-control"
+								th:field="*{endereco.cidade.estado.id}">
 								<option value="0">Selecione a UF</option>
 								<option th:each="estado: ${estados}" th:value="${estado.id}"
 									th:text="${estado.sigla}"></option>

@@ -15,10 +15,8 @@
 					aria-expanded="false" aria-label="Toggle navigation">
 					<i class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand" href="./"><img
-					th:src="@{/layout/images/logo.png}" alt="Logo"></a> <a
-					class="navbar-brand hidden"><img
-					th:src="@{/layout/images/logo2.png}" alt="Logo"></a>
+				<a class="navbar-brand"><img
+					th:src="@{/layout/images/logo.png}" alt="Logo"></a>
 			</div>
 
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -28,6 +26,7 @@
 					</a></li>
 					<h3 class="menu-title">Cadastro</h3>
 					<!-- /.menu-title -->
+					<!-- 
 					<li class="menu-item-has-children dropdown"
 						sec:authorize-url="/estabelecimento/visualizar"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown"
@@ -45,6 +44,7 @@
 								class="fa fa-pencil-square-o"></i><a href="ui-buttons.html">Editar
 									Cadastro</a></li>
 						</ul></li>
+						 -->
 					<li class="menu-item-has-children dropdown"><a href="#"
 						class="dropdown-toggle " data-toggle="dropdown"
 						aria-haspopup="true" aria-expanded="false"> <i
@@ -65,12 +65,12 @@
 							class="menu-icon fa  fa-users"></i>Clientes
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li sec:authorize-url="/clientes/novo"><i class="menu-icon  fa fa-plus"></i><a
-								th:href="@{/clientes/novo}" >Novo
+							<li sec:authorize-url="/clientes/novo"><i
+								class="menu-icon  fa fa-plus"></i><a th:href="@{/clientes/novo}">Novo
 									Cliente</a></li>
-							<li  sec:authorize-url="/clientes/busca"><i class="menu-icon  fa fa-search"></i><a
-								th:href="@{/clientes/busca}">Buscar
-									Cliente</a></li>
+							<li sec:authorize-url="/clientes/busca"><i
+								class="menu-icon  fa fa-search"></i><a
+								th:href="@{/clientes/busca}">Buscar Cliente</a></li>
 						</ul></li>
 					<li class="menu-item-has-children dropdown"
 						sec:authorize-url="/usuarios/novo"><a href="#"
@@ -119,12 +119,10 @@
 							class="menu-icon fa fa-info-circle"></i>Ajuda
 					</a>
 						<ul class="sub-menu children dropdown-menu">
-							<li><i class="menu-icon fa fa-question-circle"></i><a
-								href="page-login.html">Help</a></li>
 							<li><i class="menu-icon fa fa-exclamation-circle"></i><a
-								href="page-register.html">Erros Comuns</a></li>
+								th:href="@{/erros}">Erros Comuns (Em breve)</a></li>
 							<li><i class="menu-icon fa fa-book"></i><a
-								href="pages-forget.html">Manual</a></li>
+								th:href="@{/manual}">Manual</a></li>
 						</ul></li>
 				</ul>
 			</div>
