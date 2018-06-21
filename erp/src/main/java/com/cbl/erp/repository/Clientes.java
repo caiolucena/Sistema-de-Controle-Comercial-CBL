@@ -14,4 +14,5 @@ public interface Clientes extends JpaRepository<Cliente, Integer> {
 
 	public Optional<Cliente> findByCpf(String cpf);
 
+	long countByNome(String nome);
 }

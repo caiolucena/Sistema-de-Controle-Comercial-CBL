@@ -1,11 +1,16 @@
 package com.cbl.erp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.cbl.erp.repository.Clientes;
+import com.cbl.erp.repository.Produtos;
 
 /**
  * Essa é a classe Controller da classe Seguranca, e é responsável por fazer a ponte entre as views referentes a esse objeto e os Models, de acordo com as solicitações realizadas nas rotas.
@@ -14,7 +19,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class SegurancaController {
-
+	
+	@Autowired
+	Clientes clientes;
+	
+	@Autowired
+	Produtos produtos;
+	
 	/**
 	 * Esse é o método responsável pela autenticação do login do usuário.
 	 * @param user, que são os dados do login do usuário
@@ -44,8 +55,12 @@ public class SegurancaController {
 	 * @return index, que é a pagina inicial da biblioteca
 	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String paginaInicial() {
-		return "index";
+	public ModelAndView paginaInicial() {
+		ModelAndView mv = new ModelAndView("index");
+		
+		mv.addObject("qntClientes",clientes.count());
+		mv.addObject("qntItens", produtos.count());
+		return mv;
 	}
 	
 }
