@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cbl.erp.repository.Clientes;
 import com.cbl.erp.repository.Produtos;
+import com.cbl.erp.repository.Vendas;
+import com.cbl.erp.service.CrudProdutoService;
 
 /**
  * Essa é a classe Controller da classe Seguranca, e é responsável por fazer a ponte entre as views referentes a esse objeto e os Models, de acordo com as solicitações realizadas nas rotas.
@@ -26,6 +28,11 @@ public class SegurancaController {
 	@Autowired
 	Produtos produtos;
 	
+	@Autowired
+	Vendas vendas;
+	
+	@Autowired
+	CrudProdutoService crudProdutoService;
 	/**
 	 * Esse é o método responsável pela autenticação do login do usuário.
 	 * @param user, que são os dados do login do usuário
@@ -60,6 +67,9 @@ public class SegurancaController {
 		
 		mv.addObject("qntClientes",clientes.count());
 		mv.addObject("qntItens", produtos.count());
+		mv.addObject("vendasNoAno", vendas.valorTotalNoAno());
+		mv.addObject("vendasNoMes", vendas.valorTotalNoMes());
+		mv.addObject("valorEstoque",produtos.valorItensEstoque().getValor());
 		return mv;
 	}
 	

@@ -76,7 +76,7 @@
 							<div class="aw-box__icon">
 								<i class="fa  fa fa-money  fa-3x"></i>
 							</div>
-							<div class="aw-box__value">R$90.542,59</div>
+							<div class="aw-box__value" th:text = "*{valorEstoque}">R$90.542,59</div>
 							<div class="aw-box__title">Valor do estoque</div>
 						</div>
 					</div>
@@ -108,8 +108,8 @@
 							<div class="aw-box__icon">
 								<i class="fa  fa-usd  fa-3x"></i>
 							</div>
-							<div class="aw-box__value">R$3.542,59</div>
-							<div class="aw-box__title">Vendas no ano</div>
+							<div class="aw-box__value" th:text ="*{vendasNoAno}">R$3.542,59</div>
+							<div class="aw-box__title">Valor vendido no ano</div>
 						</div>
 					</div>
 
@@ -118,8 +118,8 @@
 							<div class="aw-box__icon">
 								<i class="fa  fa-signal  fa-3x"></i>
 							</div>
-							<div class="aw-box__value">R$1.233,40</div>
-							<div class="aw-box__title">Vendas no mês</div>
+							<div class="aw-box__value" th:text ="*{vendasNoMes}">R$1.233,40</div>
+							<div class="aw-box__title">Valor vendido no mês</div>
 						</div>
 					</div>
 

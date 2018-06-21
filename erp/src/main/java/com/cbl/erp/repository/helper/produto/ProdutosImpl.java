@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import com.cbl.erp.dto.ProdutoDTO;
+import com.cbl.erp.dto.ValorItensEstoque;
 import com.cbl.erp.repository.helper.ProdutosQueries;
 
 public class ProdutosImpl implements ProdutosQueries {
@@ -24,4 +25,10 @@ public class ProdutosImpl implements ProdutosQueries {
 		return produtosFiltrados;
 	}
 	
+	
+	
+	public ValorItensEstoque valorItensEstoque() {
+		String query = "select new com.cbl.erp.dto.ValorItensEstoque(sum(preco* estoque), sum(estoque)) from Produto";
+		return manager.createQuery(query, ValorItensEstoque.class).getSingleResult();
+	}
 }
