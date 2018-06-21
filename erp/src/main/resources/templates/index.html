@@ -2,7 +2,8 @@
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="'layout/LayoutPadrao'">
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
 <title>CBL - Controle Comercial</title>
@@ -70,7 +71,7 @@
 
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-4" sec:authorize-url="/produtos/novo">
 						<div class="aw-box">
 							<div class="aw-box__icon">
 								<i class="fa  fa fa-money  fa-3x"></i>
@@ -80,7 +81,7 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-4" sec:authorize-url="/produtos/novo">
 						<div class="aw-box">
 							<div class="aw-box__icon">
 								<i class="fa  fa-hashtag  fa-3x"></i>
@@ -90,7 +91,7 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-4" sec:authorize-url="/clientes/novo">
 						<div class="aw-box">
 							<div class="aw-box__icon">
 								<i class="fa  fa-users  fa-3x"></i>
@@ -101,7 +102,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row" sec:authorize-url="/usuarios/novo">
 					<div class="col-sm-4">
 						<div class="aw-box">
 							<div class="aw-box__icon">
@@ -124,7 +125,7 @@
 
 				</div>
 
-				<div class="row">
+				<div class="row"sec:authorize-url="/usuarios/novo">
 					<div class="col-sm-6">
 						<div class="aw-graph-box">
 							<div class="aw-graph-box__header">

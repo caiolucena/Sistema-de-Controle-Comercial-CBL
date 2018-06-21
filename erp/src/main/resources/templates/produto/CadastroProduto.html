@@ -88,7 +88,7 @@
 							<label for="nome">Descrição*</label> <input id="nome" type="text"
 								autofocus="autofocus" class="form-control"
 								th:classappend="${#fields.hasErrors('*{nome}')}? is-invalid"
-								th:field="*{nome}" tabindex="1" />
+								th:field="*{nome}" tabindex="1" autocomplete="off"/>
 						</div>
 					</div>
 
@@ -99,7 +99,7 @@
 								placeholder="Se necessário, insira informações adicionais sobre o produto"
 								th:field="*{descricao}"
 								th:classappend="${#fields.hasErrors('*{descricao}')}? is-invalid"
-								tabindex="2"></textarea>
+								tabindex="2" autocomplete="off"></textarea>
 						</div>
 					</div>
 					<div class="row">
@@ -108,7 +108,7 @@
 								<label for="preco">Preço*</label> <input id="preco" type="text"
 									class="form-control js-decimal" th:field="*{preco}"
 									th:classappend="${#fields.hasErrors('*{preco}')}? is-invalid"
-									tabindex="3" />
+									tabindex="3"autocomplete="off" />
 							</div>
 						</div>
 						<div class="col-sm-3">
@@ -117,7 +117,7 @@
 									type="text" class="form-control js-plain"
 									placeholder="Quantidade no estoque" th:field="*{estoque}"
 									th:classappend="${#fields.hasErrors('*{estoque}')}? is-invalid"
-									tabindex="4" />
+									tabindex="4" autocomplete="off"/>
 							</div>
 						</div>
 					</div>
