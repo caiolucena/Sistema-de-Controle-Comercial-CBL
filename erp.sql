@@ -419,8 +419,19 @@ INSERT INTO `grupo_has_permissao` VALUES (4,9),(4,10),(4,11),(4,19);
 
 
 INSERT INTO `usuario` VALUES (1,'097.035.854-77','Caio Lucena','caio','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
-
 INSERT INTO `usuario_has_grupo` VALUES (1,1),(1,2),(1,3),(1,4);
+
+INSERT INTO `usuario` VALUES (2,'710.272.260-51','Gerente Maria','gerente','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
+INSERT INTO `usuario_has_grupo` VALUES (2,2);
+
+INSERT INTO `usuario` VALUES (3,'595.192.440-50','Vendedor José','vendedor','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
+INSERT INTO `usuario_has_grupo` VALUES (3,3);
+
+INSERT INTO `usuario` VALUES (4,'960.787.140-58','Estoquista João','estoquista','$2a$10$8IAlZZ5BX1huMcpp2kgrQ.pRfiWe2s1BDhH7YiKiqA8mdcsQvw24e');
+INSERT INTO `usuario_has_grupo` VALUES (4,4);
+
+
+
 
 
 
